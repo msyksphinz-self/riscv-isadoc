@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lui &mdash; riscv-isa-pages  ドキュメント</title>
+  <title>lui(load upper immediate) &mdash; riscv-isa-pages  ドキュメント</title>
   
 
   
@@ -83,10 +83,10 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">lui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#auipc">auipc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#addi">addi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#slti">slti</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">lui(load upper immediate)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#auipc-add-upper-immediate-to-pc">auipc(add upper immediate to pc)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#addi-add-immediate">addi(add immediate)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#slti-set-less-than-immediate">slti(set less than immediate)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#sltiu">sltiu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#xori">xori</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#ori">ori</a></li>
@@ -336,7 +336,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>lui</li>
+      <li>lui(load upper immediate)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -355,8 +355,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="lui">
-<h1>lui<a class="headerlink" href="#lui" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="lui-load-upper-immediate">
+<h1>lui(load upper immediate)<a class="headerlink" href="#lui-load-upper-immediate" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -378,11 +378,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
-<td>XXXXX</td>
-<td>XXX</td>
+<tr class="row-even"><td colspan="5">imm[31:12]</td>
 <td>rd</td>
 <td>01101</td>
 <td>11</td>
@@ -399,20 +395,20 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
-<div class="line"><br /></div>
+<div class="line">build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.</div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
-<div class="line">None</div>
+<div class="line">x[rd] = sext(imm[31:12] &lt;&lt; 12)</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="auipc">
-<h1>auipc<a class="headerlink" href="#auipc" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="auipc-add-upper-immediate-to-pc">
+<h1>auipc(add upper immediate to pc)<a class="headerlink" href="#auipc-add-upper-immediate-to-pc" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -434,11 +430,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
-<td>rs1</td>
-<td>XXX</td>
+<tr class="row-even"><td colspan="5">imm[31:12]</td>
 <td>rd</td>
 <td>00101</td>
 <td>11</td>
@@ -455,20 +447,20 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
-<div class="line"><br /></div>
+<div class="line">build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.</div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
-<div class="line">None</div>
+<div class="line">x[rd] = pc + sext(imm[31:12] &lt;&lt; 12)</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="addi">
-<h1>addi<a class="headerlink" href="#addi" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="addi-add-immediate">
+<h1>addi(add immediate)<a class="headerlink" href="#addi-add-immediate" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -490,9 +482,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>000</td>
 <td>rd</td>
@@ -506,25 +496,25 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">addi       rd,rs1,offset</div>
+<div class="line">addi       rd,rs1,imm</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
-<div class="line"><br /></div>
+<div class="line">adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.</div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
-<div class="line">return m_pe_thread-&gt;SExtXlen(op1 +  op2)</div>
+<div class="line">x[rd] = return x[rs1] + sext(imm)</div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="slti">
-<h1>slti<a class="headerlink" href="#slti" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="slti-set-less-than-immediate">
+<h1>slti(set less than immediate)<a class="headerlink" href="#slti-set-less-than-immediate" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -546,9 +536,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>010</td>
 <td>rd</td>
@@ -562,17 +550,17 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">slti       rd,rs1,offset</div>
+<div class="line">slti       rd,rs1,imm</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
-<div class="line"><br /></div>
+<div class="line">places the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.</div>
 </div>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
-<div class="line">return m_pe_thread-&gt;SExtXlen(op1 &lt;  op2)</div>
+<div class="line">x[rd] = x[rs1] &lt; sext(imm)</div>
 </div>
 </td>
 </tr>
@@ -602,9 +590,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>011</td>
 <td>rd</td>
@@ -618,7 +604,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">sltiu      rd,rs1,offset</div>
+<div class="line">sltiu      rd,rs1,imm</div>
 </div>
 </td>
 </tr>
@@ -658,9 +644,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>100</td>
 <td>rd</td>
@@ -674,7 +658,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">xori       rd,rs1,offset</div>
+<div class="line">xori       rd,rs1,imm</div>
 </div>
 </td>
 </tr>
@@ -714,9 +698,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>110</td>
 <td>rd</td>
@@ -730,7 +712,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">ori        rd,rs1,offset</div>
+<div class="line">ori        rd,rs1,imm</div>
 </div>
 </td>
 </tr>
@@ -770,9 +752,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>111</td>
 <td>rd</td>
@@ -786,7 +766,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">andi       rd,rs1,offset</div>
+<div class="line">andi       rd,rs1,imm</div>
 </div>
 </td>
 </tr>
@@ -828,7 +808,7 @@
 </tr>
 <tr class="row-even"><td>00000</td>
 <td>0X</td>
-<td>XXXXX</td>
+<td>shamt</td>
 <td>rs1</td>
 <td>001</td>
 <td>rd</td>
@@ -884,7 +864,7 @@
 </tr>
 <tr class="row-even"><td>00000</td>
 <td>0X</td>
-<td>XXXXX</td>
+<td>shamt</td>
 <td>rs1</td>
 <td>101</td>
 <td>rd</td>
@@ -940,7 +920,7 @@
 </tr>
 <tr class="row-even"><td>01000</td>
 <td>0X</td>
-<td>XXXXX</td>
+<td>shamt</td>
 <td>rs1</td>
 <td>101</td>
 <td>rd</td>
@@ -3194,7 +3174,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">addiw      rd,rs1,offset</div>
+<div class="line">addiw      rd,rs1,imm</div>
 </div>
 </td>
 </tr>

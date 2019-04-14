@@ -1,5 +1,5 @@
-lui
-----
+lui(load upper immediate)
+-------------------------
 
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
@@ -7,7 +7,7 @@ lui
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|XXXXX|XXX  |rd   |01101|11 |
+  |imm[31:12]                   |rd   |01101|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
@@ -16,15 +16,16 @@ lui
   | lui        rd,imm
 
 :Description:
-  |
+  | build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.
+
 :Implementation:
-  | None
+  | x[rd] = sext(imm[31:12] << 12)
 
 
 
 
-auipc
-------
+auipc(add upper immediate to pc)
+--------------------------------
 
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
@@ -32,7 +33,7 @@ auipc
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |XXX  |rd   |00101|11 |
+  |imm[31:12]                   |rd   |00101|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
@@ -41,14 +42,41 @@ auipc
   | auipc      rd,imm
 
 :Description:
-  |
+  | build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
+
 :Implementation:
-  | None
+  | x[rd] = pc + sext(imm[31:12] << 12)
 
 
 
 
-addi
+addi(add immediate)
+-------------------
+
+.. tabularcolumns:: |c|c|c|c|c|c|c|c|
+.. table::
+
+  +-----+-----+-----+-----+-----+-----+-----+---+
+  |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
+  +-----+-----+-----+-----+-----+-----+-----+---+
+  |imm[11:0]        |rs1  |000  |rd   |00100|11 |
+  +-----+-----+-----+-----+-----+-----+-----+---+
+
+
+
+:Format:
+  | addi       rd,rs1,imm
+
+:Description:
+  | adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.
+
+:Implementation:
+  | x[rd] = return x[rs1] + sext(imm)
+
+
+
+
+slti(set less than immediate)
 -----
 
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
@@ -57,43 +85,19 @@ addi
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |000  |rd   |00100|11 |
+  |imm[11:0]        |rs1  |010  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
 
 :Format:
-  | addi       rd,rs1,offset
+  | slti       rd,rs1,imm
 
 :Description:
-  |
+  | places the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.
+
 :Implementation:
-  | return m_pe_thread->SExtXlen(op1 +  op2)
-
-
-
-
-slti
------
-
-.. tabularcolumns:: |c|c|c|c|c|c|c|c|
-.. table::
-
-  +-----+-----+-----+-----+-----+-----+-----+---+
-  |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
-  +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |010  |rd   |00100|11 |
-  +-----+-----+-----+-----+-----+-----+-----+---+
-
-
-
-:Format:
-  | slti       rd,rs1,offset
-
-:Description:
-  |
-:Implementation:
-  | return m_pe_thread->SExtXlen(op1 <  op2)
+  | x[rd] = x[rs1] < sext(imm)
 
 
 
@@ -107,13 +111,13 @@ sltiu
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |011  |rd   |00100|11 |
+  |imm[11:0]        |rs1  |011  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
 
 :Format:
-  | sltiu      rd,rs1,offset
+  | sltiu      rd,rs1,imm
 
 :Description:
   |
@@ -132,13 +136,13 @@ xori
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |100  |rd   |00100|11 |
+  |imm[11:0]        |rs1  |100  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
 
 :Format:
-  | xori       rd,rs1,offset
+  | xori       rd,rs1,imm
 
 :Description:
   |
@@ -157,13 +161,13 @@ ori
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |110  |rd   |00100|11 |
+  |imm[11:0]        |rs1  |110  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
 
 :Format:
-  | ori        rd,rs1,offset
+  | ori        rd,rs1,imm
 
 :Description:
   |
@@ -182,13 +186,13 @@ andi
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |XXXXX|XX   |XXXXX|rs1  |111  |rd   |00100|11 |
+  |imm[11:0]        |rs1  |111  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
 
 :Format:
-  | andi       rd,rs1,offset
+  | andi       rd,rs1,imm
 
 :Description:
   |
@@ -207,7 +211,7 @@ slli
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |00000|0X   |XXXXX|rs1  |001  |rd   |00100|11 |
+  |00000|0X   |shamt|rs1  |001  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
@@ -232,7 +236,7 @@ srli
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |00000|0X   |XXXXX|rs1  |101  |rd   |00100|11 |
+  |00000|0X   |shamt|rs1  |101  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
@@ -257,7 +261,7 @@ srai
   +-----+-----+-----+-----+-----+-----+-----+---+
   |31-27|26-25|24-20|19-15|14-12|11-7 |6-2  |1-0|
   +-----+-----+-----+-----+-----+-----+-----+---+
-  |01000|0X   |XXXXX|rs1  |101  |rd   |00100|11 |
+  |01000|0X   |shamt|rs1  |101  |rd   |00100|11 |
   +-----+-----+-----+-----+-----+-----+-----+---+
 
 
@@ -493,7 +497,7 @@ or
 :Description:
   |
 :Implementation:
-  | return          op1 |  op2 
+  | return          op1 |  op2
 
 
 
@@ -518,7 +522,7 @@ and
 :Description:
   |
 :Implementation:
-  | return          op1 &  op2 
+  | return          op1 &  op2
 
 
 
@@ -1263,7 +1267,7 @@ addiw
 
 
 :Format:
-  | addiw      rd,rs1,offset
+  | addiw      rd,rs1,imm
 
 :Description:
   |
@@ -1594,7 +1598,3 @@ remuw
   |
 :Implementation:
   | None
-
-
-
-
