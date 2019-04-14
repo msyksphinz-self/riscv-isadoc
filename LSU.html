@@ -1,0 +1,2312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>lb &mdash; riscv-isa-pages  ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="jal" href="BRU.html" />
+    <link rel="prev" title="lui" href="ALU.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> riscv-isa-pages
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ALU.html">lui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#auipc">auipc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#addi">addi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#slti">slti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sltiu">sltiu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#xori">xori</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#ori">ori</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#andi">andi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#slli">slli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#srli">srli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#srai">srai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#add">add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sub">sub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sll">sll</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#slt">slt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sltu">sltu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#xor">xor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#srl">srl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sra">sra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#or">or</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#and">and</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#fence">fence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#fence-i">fence.i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mul">mul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mulh">mulh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mulhsu">mulhsu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mulhu">mulhu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#div">div</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#divu">divu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#rem">rem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#remu">remu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrw">csrrw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrs">csrrs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrc">csrrc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrwi">csrrwi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrsi">csrrsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#csrrci">csrrci</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#ecall">ecall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#ebreak">ebreak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#uret">uret</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sret">sret</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#hret">hret</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mret">mret</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mrts">mrts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mrth">mrth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#wfi">wfi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sfence-vma">sfence.vma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#lwu">lwu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#ld">ld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sd">sd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#addiw">addiw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#slliw">slliw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#srliw">srliw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sraiw">sraiw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#addw">addw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#subw">subw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sllw">sllw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#srlw">srlw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#sraw">sraw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#mulw">mulw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#divw">divw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#divuw">divuw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#remw">remw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ALU.html#remuw">remuw</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">lb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lh">lh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lw">lw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lbu">lbu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lhu">lhu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sb">sb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sh">sh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sw">sw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lr-w">lr.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sc-w">sc.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoswap-w">amoswap.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoadd-w">amoadd.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoxor-w">amoxor.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoand-w">amoand.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoor-w">amoor.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomin-w">amomin.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomax-w">amomax.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amominu-w">amominu.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomaxu-w">amomaxu.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#flw">flw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fsw">fsw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fld">fld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fsd">fsd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#lr-d">lr.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sc-d">sc.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoswap-d">amoswap.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoadd-d">amoadd.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoxor-d">amoxor.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoand-d">amoand.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amoor-d">amoor.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomin-d">amomin.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomax-d">amomax.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amominu-d">amominu.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#amomaxu-d">amomaxu.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html">jal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#jalr">jalr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#beq">beq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#bne">bne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#blt">blt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#bge">bge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#bltu">bltu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BRU.html#bgeu">bgeu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html">fmadd.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmsub-s">fmsub.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fnmsub-s">fnmsub.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fnmadd-s">fnmadd.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fadd-s">fadd.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsub-s">fsub.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmul-s">fmul.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fdiv-s">fdiv.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsqrt-s">fsqrt.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnj-s">fsgnj.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnjn-s">fsgnjn.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnjx-s">fsgnjx.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmin-s">fmin.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmax-s">fmax.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-w-s">fcvt.w.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-wu-s">fcvt.wu.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmv-x-w">fmv.x.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#feq-s">feq.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#flt-s">flt.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fle-s">fle.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fclass-s">fclass.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-s-w">fcvt.s.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-s-wu">fcvt.s.wu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmv-w-x">fmv.w.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmadd-d">fmadd.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmsub-d">fmsub.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fnmsub-d">fnmsub.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fnmadd-d">fnmadd.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fadd-d">fadd.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsub-d">fsub.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmul-d">fmul.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fdiv-d">fdiv.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsqrt-d">fsqrt.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnj-d">fsgnj.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnjn-d">fsgnjn.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fsgnjx-d">fsgnjx.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmin-d">fmin.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmax-d">fmax.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-s-d">fcvt.s.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-d-s">fcvt.d.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#feq-d">feq.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#flt-d">flt.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fle-d">fle.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fclass-d">fclass.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-w-d">fcvt.w.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-wu-d">fcvt.wu.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-d-w">fcvt.d.w</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-d-wu">fcvt.d.wu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-l-s">fcvt.l.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-lu-s">fcvt.lu.s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-s-l">fcvt.s.l</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-s-lu">fcvt.s.lu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-l-d">fcvt.l.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-lu-d">fcvt.lu.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmv-x-d">fmv.x.d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-d-l">fcvt.d.l</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fcvt-d-lu">fcvt.d.lu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FPU.html#fmv-d-x">fmv.d.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html">c.addi4spn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fld">c.fld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-lw">c.lw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-flw">c.flw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-ld">c.ld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fsd">c.fsd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-sw">c.sw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fsw">c.fsw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-sd">c.sd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-nop">c.nop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-addi">c.addi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-jal">c.jal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-addiw">c.addiw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-li">c.li</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-addi16sp">c.addi16sp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-lui">c.lui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-srli">c.srli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-srli64">c.srli64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-srai">c.srai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-srai64">c.srai64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-andi">c.andi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-sub">c.sub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-xor">c.xor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-or">c.or</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-and">c.and</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-subw">c.subw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-addw">c.addw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-j">c.j</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-beqz">c.beqz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-bnez">c.bnez</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-slli">c.slli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fldsp">c.fldsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-lwsp">c.lwsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-flwsp">c.flwsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-ldsp">c.ldsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-jr">c.jr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-mv">c.mv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-ebreak">c.ebreak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-jalr">c.jalr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-add">c.add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fsdsp">c.fsdsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-swsp">c.swsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-fswsp">c.fswsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COMPRESS.html#c-sdsp">c.sdsp</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">riscv-isa-pages</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>lb</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/LSU.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lb">
+<h1>lb<a class="headerlink" href="#lb" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>000</td>
+<td>rd</td>
+<td>00000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lb         rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lh">
+<h1>lh<a class="headerlink" href="#lh" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>001</td>
+<td>rd</td>
+<td>00000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lh         rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lw">
+<h1>lw<a class="headerlink" href="#lw" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>00000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lw         rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lbu">
+<h1>lbu<a class="headerlink" href="#lbu" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>100</td>
+<td>rd</td>
+<td>00000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lbu        rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lhu">
+<h1>lhu<a class="headerlink" href="#lhu" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>101</td>
+<td>rd</td>
+<td>00000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lhu        rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sb">
+<h1>sb<a class="headerlink" href="#sb" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>000</td>
+<td>XXXXX</td>
+<td>01000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">sb         rs2,h[31:25]|h[11:7](rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sh">
+<h1>sh<a class="headerlink" href="#sh" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>001</td>
+<td>XXXXX</td>
+<td>01000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">sh         rs2,h[31:25]|h[11:7](rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sw">
+<h1>sw<a class="headerlink" href="#sw" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>XXXXX</td>
+<td>01000</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">sw         rs2,h[31:25]|h[11:7](rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lr-w">
+<h1>lr.w<a class="headerlink" href="#lr-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00010</td>
+<td>XX</td>
+<td>00000</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lr.w       rd,rs1</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sc-w">
+<h1>sc.w<a class="headerlink" href="#sc-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00011</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">sc.w       rd,rs1,rs2</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoswap-w">
+<h1>amoswap.w<a class="headerlink" href="#amoswap-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00001</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoswap.w  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoadd-w">
+<h1>amoadd.w<a class="headerlink" href="#amoadd-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoadd.w   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoxor-w">
+<h1>amoxor.w<a class="headerlink" href="#amoxor-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoxor.w   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoand-w">
+<h1>amoand.w<a class="headerlink" href="#amoand-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>01100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoand.w   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoor-w">
+<h1>amoor.w<a class="headerlink" href="#amoor-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>01000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoor.w    rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomin-w">
+<h1>amomin.w<a class="headerlink" href="#amomin-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>10000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomin.w   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomax-w">
+<h1>amomax.w<a class="headerlink" href="#amomax-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>10100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomax.w   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amominu-w">
+<h1>amominu.w<a class="headerlink" href="#amominu-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>11000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amominu.w  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomaxu-w">
+<h1>amomaxu.w<a class="headerlink" href="#amomaxu-w" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>11100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomaxu.w  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="flw">
+<h1>flw<a class="headerlink" href="#flw" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>010</td>
+<td>rd</td>
+<td>00001</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">flw        rd,offset(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fsw">
+<h1>fsw<a class="headerlink" href="#fsw" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>rs1</td>
+<td>010</td>
+<td>XXXXX</td>
+<td>01001</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">fsw        rs2,h[31:25]|h[11:7](rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fld">
+<h1>fld<a class="headerlink" href="#fld" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>XXXXX</td>
+<td>011</td>
+<td>rd</td>
+<td>00001</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">fld        rd,rs1,offset</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fsd">
+<h1>fsd<a class="headerlink" href="#fsd" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>XXXXX</td>
+<td>XX</td>
+<td>XXXXX</td>
+<td>XXXXX</td>
+<td>011</td>
+<td>rd</td>
+<td>01001</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">fsd        rs2,h[31:25]|h[11:7](rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lr-d">
+<h1>lr.d<a class="headerlink" href="#lr-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00010</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">lr.d       rd,rs1</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sc-d">
+<h1>sc.d<a class="headerlink" href="#sc-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00011</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">sc.d       rd,rs1,rs2</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoswap-d">
+<h1>amoswap.d<a class="headerlink" href="#amoswap-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00001</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoswap.d  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoadd-d">
+<h1>amoadd.d<a class="headerlink" href="#amoadd-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoadd.d   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoxor-d">
+<h1>amoxor.d<a class="headerlink" href="#amoxor-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>00100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoxor.d   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoand-d">
+<h1>amoand.d<a class="headerlink" href="#amoand-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>01100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoand.d   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amoor-d">
+<h1>amoor.d<a class="headerlink" href="#amoor-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>01000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amoor.d    rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomin-d">
+<h1>amomin.d<a class="headerlink" href="#amomin-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>10000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomin.d   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomax-d">
+<h1>amomax.d<a class="headerlink" href="#amomax-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>10100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomax.d   rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amominu-d">
+<h1>amominu.d<a class="headerlink" href="#amominu-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>11000</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amominu.d  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="amomaxu-d">
+<h1>amomaxu.d<a class="headerlink" href="#amomaxu-d" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>31-27</td>
+<td>26-25</td>
+<td>24-20</td>
+<td>19-15</td>
+<td>14-12</td>
+<td>11-7</td>
+<td>6-2</td>
+<td>1-0</td>
+</tr>
+<tr class="row-even"><td>11100</td>
+<td>XX</td>
+<td>rs2</td>
+<td>rs1</td>
+<td>011</td>
+<td>rd</td>
+<td>01011</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<div class="line">amomaxu.d  rd,rs2,(rs1)</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+<div class="line">None</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BRU.html" class="btn btn-neutral float-right" title="jal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ALU.html" class="btn btn-neutral float-left" title="lui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, msyksphinz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
