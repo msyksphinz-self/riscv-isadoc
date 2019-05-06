@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RISC-V Instruction Set Specifications &mdash; riscv-isa-pages  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="riscv-isa-pages  documentation" href="#"/>
+        <link rel="next" title="RV32I, RV64I Instructions" href="rvi.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> riscv-isa-pages
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rvi.html">RV32I, RV64I Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rv64i.html">RV64I Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rvm.html">RV32M, RV64M Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rv64m.html">RV64M Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rva.html">RV32A, RV64A Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rv64a.html">RV64A Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rvfd.html">RV32F, RV64D Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rv64f.html">RV64F Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rv64d.html">RV64D Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rvc.html">RV32C, RV64C Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regs.html">Register Definitions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">riscv-isa-pages</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>RISC-V Instruction Set Specifications</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="risc-v-instruction-set-specifications">
+<h1>RISC-V Instruction Set Specifications<a class="headerlink" href="#risc-v-instruction-set-specifications" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rvi.html">RV32I, RV64I Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lui">lui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#auipc">auipc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#addi">addi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#slti">slti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sltiu">sltiu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#xori">xori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#ori">ori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#andi">andi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#slli">slli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#srli">srli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#srai">srai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#add">add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sub">sub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sll">sll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#slt">slt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sltu">sltu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#xor">xor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#srl">srl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sra">sra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#or">or</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#and">and</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#fence">fence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#fence-i">fence.i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrw">csrrw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrs">csrrs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrc">csrrc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrwi">csrrwi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrsi">csrrsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#csrrci">csrrci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#ecall">ecall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#ebreak">ebreak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#uret">uret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sret">sret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#mret">mret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#wfi">wfi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sfence-vma">sfence.vma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lb">lb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lh">lh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lw">lw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lbu">lbu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#lhu">lhu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sb">sb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sh">sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#sw">sw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#jal">jal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#jalr">jalr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#beq">beq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#bne">bne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#blt">blt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#bge">bge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#bltu">bltu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvi.html#bgeu">bgeu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rv64i.html">RV64I Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#addiw">addiw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#slliw">slliw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#srliw">srliw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#sraiw">sraiw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#addw">addw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#subw">subw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#sllw">sllw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#srlw">srlw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#sraw">sraw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#lwu">lwu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#ld">ld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64i.html#sd">sd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvm.html">RV32M, RV64M Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#mul">mul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#mulh">mulh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#mulhsu">mulhsu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#mulhu">mulhu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#div">div</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#divu">divu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#rem">rem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvm.html#remu">remu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rv64m.html">RV64M Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rv64m.html#mulw">mulw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64m.html#divw">divw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64m.html#divuw">divuw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64m.html#remw">remw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64m.html#remuw">remuw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rva.html">RV32A, RV64A Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#lr-w">lr.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#sc-w">sc.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amoswap-w">amoswap.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amoadd-w">amoadd.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amoxor-w">amoxor.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amoand-w">amoand.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amoor-w">amoor.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amomin-w">amomin.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amomax-w">amomax.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amominu-w">amominu.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rva.html#amomaxu-w">amomaxu.w</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rv64a.html">RV64A Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#lr-d">lr.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#sc-d">sc.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amoswap-d">amoswap.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amoadd-d">amoadd.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amoxor-d">amoxor.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amoand-d">amoand.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amoor-d">amoor.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amomin-d">amomin.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amomax-d">amomax.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amominu-d">amominu.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64a.html#amomaxu-d">amomaxu.d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvfd.html">RV32F, RV64D Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmadd-s">fmadd.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmsub-s">fmsub.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fnmsub-s">fnmsub.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fnmadd-s">fnmadd.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fadd-s">fadd.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsub-s">fsub.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmul-s">fmul.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fdiv-s">fdiv.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsqrt-s">fsqrt.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnj-s">fsgnj.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnjn-s">fsgnjn.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnjx-s">fsgnjx.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmin-s">fmin.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmax-s">fmax.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-w-s">fcvt.w.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-wu-s">fcvt.wu.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmv-x-w">fmv.x.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#feq-s">feq.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#flt-s">flt.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fle-s">fle.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fclass-s">fclass.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-s-w">fcvt.s.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-s-wu">fcvt.s.wu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmv-w-x">fmv.w.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmadd-d">fmadd.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmsub-d">fmsub.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fnmsub-d">fnmsub.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fnmadd-d">fnmadd.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fadd-d">fadd.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsub-d">fsub.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmul-d">fmul.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fdiv-d">fdiv.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsqrt-d">fsqrt.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnj-d">fsgnj.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnjn-d">fsgnjn.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsgnjx-d">fsgnjx.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmin-d">fmin.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fmax-d">fmax.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-s-d">fcvt.s.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-d-s">fcvt.d.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#feq-d">feq.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#flt-d">flt.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fle-d">fle.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fclass-d">fclass.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-w-d">fcvt.w.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-wu-d">fcvt.wu.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-d-w">fcvt.d.w</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fcvt-d-wu">fcvt.d.wu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#flw">flw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsw">fsw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fld">fld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvfd.html#fsd">fsd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rv64f.html">RV64F Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rv64f.html#fcvt-l-s">fcvt.l.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64f.html#fcvt-lu-s">fcvt.lu.s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64f.html#fcvt-s-l">fcvt.s.l</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64f.html#fcvt-s-lu">fcvt.s.lu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rv64d.html">RV64D Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fcvt-l-d">fcvt.l.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fcvt-lu-d">fcvt.lu.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fmv-x-d">fmv.x.d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fcvt-d-l">fcvt.d.l</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fcvt-d-lu">fcvt.d.lu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rv64d.html#fmv-d-x">fmv.d.x</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvc.html">RV32C, RV64C Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-addi4spn">c.addi4spn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fld">c.fld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-lw">c.lw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-flw">c.flw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-ld">c.ld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fsd">c.fsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-sw">c.sw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fsw">c.fsw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-sd">c.sd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-nop">c.nop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-addi">c.addi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-jal">c.jal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-addiw">c.addiw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-li">c.li</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-addi16sp">c.addi16sp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-lui">c.lui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-srli">c.srli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-srai">c.srai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-andi">c.andi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-sub">c.sub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-xor">c.xor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-or">c.or</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-and">c.and</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-subw">c.subw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-addw">c.addw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-j">c.j</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-beqz">c.beqz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-bnez">c.bnez</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-slli">c.slli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fldsp">c.fldsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-lwsp">c.lwsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-flwsp">c.flwsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-ldsp">c.ldsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-jr">c.jr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-mv">c.mv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-ebreak">c.ebreak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-jalr">c.jalr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-add">c.add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fsdsp">c.fsdsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-swsp">c.swsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-fswsp">c.fswsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rvc.html#c-sdsp">c.sdsp</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regs.html">Register Definitions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regs.html#integer-registers">Integer Registers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regs.html#floating-point-registers">Floating Point Registers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rvi.html" class="btn btn-neutral float-right" title="RV32I, RV64I Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, msyksphinz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
