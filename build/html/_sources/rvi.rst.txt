@@ -21,7 +21,7 @@ load upper immediate.
   | lui        rd,imm
 
 :Description:
-  | build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.
+  | Build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.
 
 :Implementation:
   | x[rd] = sext(immediate[31:12] << 12)
@@ -47,7 +47,7 @@ add upper immediate to pc
   | auipc      rd,imm
 
 :Description:
-  | build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
+  | Build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
 
 :Implementation:
   | x[rd] = pc + sext(immediate[31:12] << 12)
@@ -75,7 +75,7 @@ add immediate
   | addi       rd,rs1,imm
 
 :Description:
-  | adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.
+  | Adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.
 
 :Implementation:
   | x[rd] = x[rs1] + sext(immediate)
@@ -101,7 +101,7 @@ set less than immediate
   | slti       rd,rs1,imm
 
 :Description:
-  | place the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.
+  | Place the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.
 
 :Implementation:
   | x[rd] = x[rs1] <s sext(immediate)
@@ -126,7 +126,7 @@ sltiu
   | sltiu      rd,rs1,imm
 
 :Description:
-  | place the value 1 in register rd if register rs1 is less than the immediate when both are treated as unsigned numbers, else 0 is written to rd.
+  | Place the value 1 in register rd if register rs1 is less than the immediate when both are treated as unsigned numbers, else 0 is written to rd.
 
 :Implementation:
   | x[rd] = x[rs1] <u sext(immediate)
@@ -151,7 +151,7 @@ xori
   | xori       rd,rs1,imm
 
 :Description:
-  | performs bitwise XOR on register rs1 and the sign-extended 12-bit immediate and place the result in rd
+  | Performs bitwise XOR on register rs1 and the sign-extended 12-bit immediate and place the result in rd
   | Note, "XORI rd, rs1, -1" performs a bitwise logical inversion of register rs1(assembler pseudo-instruction NOT rd, rs)
 
 :Implementation:
@@ -176,7 +176,7 @@ ori
   | ori        rd,rs1,imm
 
 :Description:
-  | performs bitwise OR on register rs1 and the sign-extended 12-bit immediate and place the result in rd
+  | Performs bitwise OR on register rs1 and the sign-extended 12-bit immediate and place the result in rd
 
 :Implementation:
   | x[rd] = x[rs1] | sext(immediate)
@@ -200,7 +200,7 @@ andi
   | andi       rd,rs1,imm
 
 :Description:
-  | performs bitwise AND on register rs1 and the sign-extended 12-bit immediate and place the result in rd
+  | Performs bitwise AND on register rs1 and the sign-extended 12-bit immediate and place the result in rd
 
 :Implementation:
   | x[rd] = x[rs1] | sext(immediate)
@@ -225,7 +225,7 @@ slli
   | slli       rd,rs1,h[25:20]
 
 :Description:
-  | performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
 
 :Implementation:
   | x[rd] = x[rs1] << shamt
@@ -249,7 +249,7 @@ srli
   | srli       rd,rs1,h[24:20]
 
 :Description:
-  | performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | Performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
 
 :Implementation:
   | x[rd] = x[rs1] >>u shamt
@@ -273,7 +273,7 @@ srai
   | srai       rd,rs1,h[24:20]
 
 :Description:
-  | performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
 
 :Implementation:
   | x[rd] = x[rs1] >>s shamt
@@ -322,7 +322,7 @@ sub
   | sub        rd,rs1,rs2
 
 :Description:
-  | SUB (SUB - R Type) subs the register rs2 from rs1 and stores the result in rd.
+  | Subs the register rs2 from rs1 and stores the result in rd.
   | Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.
 
 :Implementation:
@@ -347,7 +347,7 @@ sll
   | sll        rd,rs1,rs2
 
 :Description:
-  | performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
+  | Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
 
 :Implementation:
   | x[rd] = x[rs1] << x[rs2]
@@ -373,7 +373,7 @@ slt
   | slt        rd,rs1,rs2
 
 :Description:
-  | place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as signed numbers, else 0 is written to rd.
+  | Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as signed numbers, else 0 is written to rd.
 
 :Implementation:
   | x[rd] = x[rs1] <s x[rs2]
@@ -397,7 +397,7 @@ sltu
   | sltu       rd,rs1,rs2
 
 :Description:
-  | place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as unsigned numbers, else 0 is written to rd.
+  | Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as unsigned numbers, else 0 is written to rd.
 
 :Implementation:
   | x[rd] = x[rs1] <u x[rs2]
@@ -421,7 +421,7 @@ xor
   | xor        rd,rs1,rs2
 
 :Description:
-  | performs bitwise XOR on registers rs1 and rs2 and place the result in rd
+  | Performs bitwise XOR on registers rs1 and rs2 and place the result in rd
 
 :Implementation:
   | x[rd] = x[rs1] ^ x[rs2]
@@ -445,7 +445,7 @@ srl
   | srl        rd,rs1,rs2
 
 :Description:
-  | logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
+  | Logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
 
 :Implementation:
   | x[rd] = x[rs1] >>u x[rs2]
@@ -469,7 +469,7 @@ sra
   | sra        rd,rs1,rs2
 
 :Description:
-  | performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
+  | Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2
 
 :Implementation:
   | x[rd] = x[rs1] >>s x[rs2]
@@ -493,7 +493,7 @@ or
   | or         rd,rs1,rs2
 
 :Description:
-  | performs bitwise OR on registers rs1 and rs2 and place the result in rd
+  | Performs bitwise OR on registers rs1 and rs2 and place the result in rd
 
 :Implementation:
   | x[rd] = x[rs1] | x[rs2]
@@ -517,7 +517,7 @@ and
   | and        rd,rs1,rs2
 
 :Description:
-  | performs bitwise AND on registers rs1 and rs2 and place the result in rd
+  | Performs bitwise AND on registers rs1 and rs2 and place the result in rd
 
 :Implementation:
   | x[rd] = x[rs1] & x[rs2]
@@ -542,7 +542,7 @@ fence
   | fence pred, succ
 
 :Description:
-  | used to order device I/O and memory accesses as viewed by other RISC-V harts and external devices or coprocessors.
+  | Used to order device I/O and memory accesses as viewed by other RISC-V harts and external devices or coprocessors.
   | Any combination of device input (I), device output (O), memory reads (R), and memory writes (W) may be ordered with respect to any combination of the same.
   | Informally, no other RISC-V hart or external device can observe any operation in the successor set following a FENCE before any operation in the predecessor set preceding the FENCE.
 
@@ -568,7 +568,7 @@ fence.i
   | fence.i
 
 :Description:
-  | provides explicit synchronization between writes to instruction memory and instruction fetches on the same hart.
+  | Provides explicit synchronization between writes to instruction memory and instruction fetches on the same hart.
 
 :Implementation:
   | Fence(Store, Fetch)
@@ -877,7 +877,7 @@ wait for interrupt.
   | wfi
 
 :Description:
-  | provides a hint to the implementation that the current hart can be stalled until an interrupt   might need servicing.
+  | Provides a hint to the implementation that the current hart can be stalled until an interrupt   might need servicing.
   | Execution of the WFI instruction can also be used to inform the hardware platform that suitable interrupts should preferentially be routed to this hart.
   | WFI is available in all privileged modes, and optionally available to U-mode.
   | This instruction may raise an illegal instruction exception when TW=1 in mstatus.
@@ -1175,7 +1175,7 @@ beq
   | beq        rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 and rs2 are equal.
+  | Take the branch if registers rs1 and rs2 are equal.
 
 :Implementation:
   | if (rs1 == rs2) pc += sext(offset)
@@ -1201,7 +1201,7 @@ bne
   | bne        rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 and rs2 are not equal.
+  | Take the branch if registers rs1 and rs2 are not equal.
 
 :Implementation:
   | if (rs1 != rs2) pc += sext(offset)
@@ -1225,7 +1225,7 @@ blt
   | blt        rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 is less than rs2, using signed comparison.
+  | Take the branch if registers rs1 is less than rs2, using signed comparison.
 
 :Implementation:
   | if (rs1 <s rs2) pc += sext(offset)
@@ -1251,7 +1251,7 @@ bge
   | bge        rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 is greater than rs2, using signed comparison.
+  | Take the branch if registers rs1 is greater than rs2, using signed comparison.
 
 :Implementation:
   | if (rs1 >=s rs2) pc += sext(offset)
@@ -1276,7 +1276,7 @@ bltu
   | bltu       rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 is less than rs2, using unsigned comparison.
+  | Take the branch if registers rs1 is less than rs2, using unsigned comparison.
 :Implementation:
   | if (rs1 >u rs2) pc += sext(offset)
 
@@ -1299,7 +1299,7 @@ bgeu
   | bgeu       rs1,rs2,offset
 
 :Description:
-  | take the branch if registers rs1 is greater than rs2, using unsigned comparison.
+  | Take the branch if registers rs1 is greater than rs2, using unsigned comparison.
 
 :Implementation:
   | if (rs1 >=u rs2) pc += sext(offset)

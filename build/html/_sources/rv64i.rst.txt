@@ -45,7 +45,7 @@ slliw
   | slliw      rd,rs1,rs2
 
 :Description:
-  | performs logical left shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+  | Performs logical left shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
   | Encodings with $imm[5] \neq 0$ are reserved.
 
 :Implementation:
@@ -70,7 +70,7 @@ srliw
   | srliw      rd,rs1,rs2
 
 :Description:
-  | performs logical right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+  | Performs logical right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
   | Encodings with $imm[5] \neq 0$ are reserved.
 
 :Implementation:
@@ -96,7 +96,7 @@ sraiw
   | sraiw      rd,rs1,rs2
 
 :Description:
-  | performs arithmetic right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+  | Performs arithmetic right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
   | Encodings with $imm[5] \neq 0$ are reserved.
 
 :Implementation:
@@ -173,7 +173,8 @@ sllw
   | sllw       rd,rs1,rs2
 
 :Description:
-  |
+  | Performs logical left shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 :Implementation:
   | x[rd] = sext((x[rs1] << x[rs2][4:0])[31:0])
 
@@ -196,7 +197,8 @@ srlw
   | srlw       rd,rs1,rs2
 
 :Description:
-  |
+  | Performs logical right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 :Implementation:
   | x[rd] = sext(x[rs1][31:0] >>u x[rs2][4:0])
 
@@ -219,7 +221,8 @@ sraw
   | sraw       rd,rs1,rs2
 
 :Description:
-  |
+  | Performs arithmetic right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 :Implementation:
   | x[rd] = sext(x[rs1][31:0] >>s x[rs2][4:0])
 
