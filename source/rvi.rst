@@ -222,10 +222,11 @@ slli
 
 
 :Format:
-  | slli       rd,rs1,h[25:20]
+  | slli       rd,rs1,shamt
 
 :Description:
   | Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | In RV64, bit-25 is used to shamt[5].
 
 :Implementation:
   | x[rd] = x[rs1] << shamt
@@ -246,10 +247,11 @@ srli
 
 
 :Format:
-  | srli       rd,rs1,h[24:20]
+  | srli       rd,rs1,shamt
 
 :Description:
   | Performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | In RV64, bit-25 is used to shamt[5].
 
 :Implementation:
   | x[rd] = x[rs1] >>u shamt
@@ -270,10 +272,11 @@ srai
 
 
 :Format:
-  | srai       rd,rs1,h[24:20]
+  | srai       rd,rs1,shamt
 
 :Description:
   | Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate
+  | In RV64, bit-25 is used to shamt[5].
 
 :Implementation:
   | x[rd] = x[rs1] >>s shamt
@@ -295,7 +298,7 @@ add
 
 :Format:
   | add        rd,rs1,rs2
-
+n
 :Description:
   | Adds the registers rs1 and rs2 and stores the result in rd.
   | Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.
