@@ -17,42 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="riscv-isa-pages  documentation" href="index.html"/>
-        <link rel="next" title="RV64A Instructions" href="rv64a.html"/>
-        <link rel="prev" title="RV64M Instructions" href="rv64m.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RV64A Instructions" href="rv64a.html" />
+    <link rel="prev" title="RV64M Instructions" href="rv64m.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -123,7 +117,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">riscv-isa-pages</a>
@@ -131,9 +125,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -181,18 +176,20 @@
 <h2>lr.w<a class="headerlink" href="#lr-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -201,7 +198,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>00010</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>00000</td>
 <td>rs1</td>
 <td>010</td>
@@ -237,18 +235,20 @@
 <h2>sc.w<a class="headerlink" href="#sc-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -257,8 +257,9 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>00011</td>
-<td>XX</td>
-<td>XXXXX</td>
+<td>aq</td>
+<td>rl</td>
+<td>rs2</td>
 <td>rs1</td>
 <td>010</td>
 <td>rd</td>
@@ -294,18 +295,20 @@
 <h2>amoswap.w<a class="headerlink" href="#amoswap-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -314,7 +317,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>00001</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -350,18 +354,20 @@
 <h2>amoadd.w<a class="headerlink" href="#amoadd-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -370,7 +376,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>00000</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -406,18 +413,20 @@
 <h2>amoxor.w<a class="headerlink" href="#amoxor-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -426,7 +435,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>00100</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -462,18 +472,20 @@
 <h2>amoand.w<a class="headerlink" href="#amoand-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -482,7 +494,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>01100</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -518,18 +531,20 @@
 <h2>amoor.w<a class="headerlink" href="#amoor-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -538,7 +553,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>01000</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -574,18 +590,20 @@
 <h2>amomin.w<a class="headerlink" href="#amomin-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -594,7 +612,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>10000</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -630,18 +649,20 @@
 <h2>amomax.w<a class="headerlink" href="#amomax-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -650,7 +671,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>10100</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -686,18 +708,20 @@
 <h2>amominu.w<a class="headerlink" href="#amominu-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -706,7 +730,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>11000</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -742,18 +767,20 @@
 <h2>amomaxu.w<a class="headerlink" href="#amomaxu-w" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="5%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
+<td>26</td>
+<td>25</td>
 <td>24-20</td>
 <td>19-15</td>
 <td>14-12</td>
@@ -762,7 +789,8 @@
 <td>1-0</td>
 </tr>
 <tr class="row-even"><td>11100</td>
-<td>XX</td>
+<td>aq</td>
+<td>rl</td>
 <td>rs2</td>
 <td>rs1</td>
 <td>010</td>
@@ -798,9 +826,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -809,7 +835,7 @@
         <a href="rv64a.html" class="btn btn-neutral float-right" title="RV64A Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rv64m.html" class="btn btn-neutral" title="RV64M Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rv64m.html" class="btn btn-neutral float-left" title="RV64M Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -818,11 +844,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, msyksphinz.
+        &copy; Copyright 2019, msyksphinz
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -835,37 +861,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -17,42 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="riscv-isa-pages  documentation" href="index.html"/>
-        <link rel="next" title="RV64F Instructions" href="rv64f.html"/>
-        <link rel="prev" title="RV64A Instructions" href="rv64a.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RV64F Instructions" href="rv64f.html" />
+    <link rel="prev" title="RV64A Instructions" href="rv64a.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -164,7 +158,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">riscv-isa-pages</a>
@@ -172,9 +166,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -1544,7 +1539,7 @@
 <tr class="row-even"><td>11110</td>
 <td>00</td>
 <td>00000</td>
-<td>XXXXX</td>
+<td>rs1</td>
 <td>000</td>
 <td>rd</td>
 <td>10100</td>
@@ -2953,9 +2948,7 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
 <td>rs1</td>
 <td>010</td>
 <td>rd</td>
@@ -2990,14 +2983,14 @@
 <h2>fsw<a class="headerlink" href="#fsw" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="20%" />
+<col width="12%" />
+<col width="7%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
@@ -3009,12 +3002,11 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="2">imm[11:5]</td>
+<td>rs2</td>
 <td>rs1</td>
 <td>010</td>
-<td>XXXXX</td>
+<td>imm[4:0]</td>
 <td>01001</td>
 <td>11</td>
 </tr>
@@ -3025,7 +3017,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">fsw        rs2,h[31:25]|h[11:7](rs1)</div>
+<div class="line">fsw        rs2,offset(rs1)</div>
 </div>
 </td>
 </tr>
@@ -3065,10 +3057,8 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="3">imm[11:0]</td>
+<td>rs1</td>
 <td>011</td>
 <td>rd</td>
 <td>00001</td>
@@ -3102,14 +3092,14 @@
 <h2>fsd<a class="headerlink" href="#fsd" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="20%" />
+<col width="12%" />
+<col width="7%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>31-27</td>
@@ -3121,12 +3111,11 @@
 <td>6-2</td>
 <td>1-0</td>
 </tr>
-<tr class="row-even"><td>XXXXX</td>
-<td>XX</td>
-<td>XXXXX</td>
-<td>XXXXX</td>
+<tr class="row-even"><td colspan="2">imm[11:5]</td>
+<td>rs2</td>
+<td>rs1</td>
 <td>011</td>
-<td>rd</td>
+<td>imm[4:0]</td>
 <td>01001</td>
 <td>11</td>
 </tr>
@@ -3137,7 +3126,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
-<div class="line">fsd        rs2,h[31:25]|h[11:7](rs1)</div>
+<div class="line">fsd        rs2,offset(rs1)</div>
 </div>
 </td>
 </tr>
@@ -3166,7 +3155,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>0</td>
-<td>rs1 is −1.</td>
+<td>rs1 is -infinity</td>
 </tr>
 <tr class="row-odd"><td>1</td>
 <td>rs1 is a negative normal number.</td>
@@ -3187,7 +3176,7 @@
 <td>rs1 is a positive normal number.</td>
 </tr>
 <tr class="row-odd"><td>7</td>
-<td>rs1 is +1.</td>
+<td>rs1 is -infinity</td>
 </tr>
 <tr class="row-even"><td>8</td>
 <td>rs1 is a signaling NaN.</td>
@@ -3202,9 +3191,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -3213,7 +3200,7 @@
         <a href="rv64f.html" class="btn btn-neutral float-right" title="RV64F Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rv64a.html" class="btn btn-neutral" title="RV64A Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rv64a.html" class="btn btn-neutral float-left" title="RV64A Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -3222,11 +3209,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, msyksphinz.
+        &copy; Copyright 2019, msyksphinz
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -3239,37 +3226,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
