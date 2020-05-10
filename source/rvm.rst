@@ -19,7 +19,7 @@ mul
   | mul        rd,rs1,rs2
 
 :Description:
-  | performs an XLEN-bit $\times$ XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.
+  | performs an XLEN-bit :math:`\times` XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.
 
 :Implementation:
   | x[rd] = x[rs1] × x[rs2]
@@ -43,7 +43,7 @@ mulh
   | mulh       rd,rs1,rs2
 
 :Description:
-  | performs an XLEN-bit $\times$ XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.
+  | performs an XLEN-bit :math:`\times` XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.
 
 :Implementation:
   | x[rd] = (x[rs1] s×s x[rs2]) >>s XLEN
@@ -67,10 +67,10 @@ mulhsu
   | mulhsu     rd,rs1,rs2
 
 :Description:
-  | performs an XLEN-bit $\times$ XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+  | performs an XLEN-bit :math:`\times` XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
 
 :Implementation:
-  | x[rd] = (x[rs1] s×u x[rs2]) >>s XLEN
+  | x[rd] = (x[rs1] s :math:`\times` x[rs2]) >>s XLEN
 
 
 mulhu
@@ -91,10 +91,10 @@ mulhu
   | mulhu      rd,rs1,rs2
 
 :Description:
-  | performs an XLEN-bit $\times$ XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+  | performs an XLEN-bit :math:`\times` XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
 
 :Implementation:
-  | x[rd] = (x[rs1] u×u x[rs2]) >>u XLEN
+  | x[rd] = (x[rs1] u :math:`\times` x[rs2]) >>u XLEN
 
 
 div

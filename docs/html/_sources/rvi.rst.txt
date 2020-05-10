@@ -203,7 +203,7 @@ andi
   | Performs bitwise AND on register rs1 and the sign-extended 12-bit immediate and place the result in rd
 
 :Implementation:
-  | x[rd] = x[rs1] | sext(immediate)
+  | x[rd] = x[rs1] & sext(immediate)
 
 
 
@@ -298,7 +298,7 @@ add
 
 :Format:
   | add        rd,rs1,rs2
-n
+
 :Description:
   | Adds the registers rs1 and rs2 and stores the result in rd.
   | Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.

@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -639,7 +640,7 @@
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
-<div class="line">x[rd] = x[rs1] | sext(immediate)</div>
+<div class="line">x[rd] = x[rs1] &amp; sext(immediate)</div>
 </div>
 </td>
 </tr>
@@ -860,20 +861,12 @@
 </div>
 </td>
 </tr>
-</tbody>
-</table>
-<p>n
-:Description:</p>
-<blockquote>
-<div><div class="line-block">
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
 <div class="line">Adds the registers rs1 and rs2 and stores the result in rd.</div>
 <div class="line">Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.</div>
 </div>
-</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
+</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
 <div class="line">x[rd] = x[rs1] + x[rs2]</div>
 </div>
