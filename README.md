@@ -7,7 +7,7 @@ RISC-V ISA Specification web page.
 
 This is a documentation of RISC-V ISA.
 
-Document would be deployed at https://msyksphinz.github.io/riscv-isadoc/html/index.html
+Document would be deployed at https://msyksphinz-self.github.io/riscv-isadoc/html/index.html
 
 ISA spec is based on RISC-V User-Level ISA V2.2.
 
