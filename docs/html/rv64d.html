@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,27 +11,30 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="RV32C, RV64C Instructions" href="rvc.html" />
@@ -50,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> riscv-isa-pages
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> riscv-isa-pages
           
 
           
@@ -73,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -106,6 +109,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -144,7 +148,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>RV64D Instructions</li>
     
@@ -169,339 +173,315 @@
 <h1>RV64D Instructions<a class="headerlink" href="#rv64d-instructions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="fcvt-l-d">
 <h2>fcvt.l.d<a class="headerlink" href="#fcvt-l-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11000</td>
-<td>01</td>
-<td>00010</td>
-<td>rs1</td>
-<td>rm</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11000</p></td>
+<td><p>01</p></td>
+<td><p>00010</p></td>
+<td><p>rs1</p></td>
+<td><p>rm</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.l.d   rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = s64_{f64}(f[rs1])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="fcvt-lu-d">
 <h2>fcvt.lu.d<a class="headerlink" href="#fcvt-lu-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11000</td>
-<td>01</td>
-<td>00011</td>
-<td>rs1</td>
-<td>rm</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11000</p></td>
+<td><p>01</p></td>
+<td><p>00011</p></td>
+<td><p>rs1</p></td>
+<td><p>rm</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.lu.d  rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = u64_{f64}(f[rs1])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="fmv-x-d">
 <h2>fmv.x.d<a class="headerlink" href="#fmv-x-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11100</td>
-<td>01</td>
-<td>00000</td>
-<td>rs1</td>
-<td>000</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11100</p></td>
+<td><p>01</p></td>
+<td><p>00000</p></td>
+<td><p>rs1</p></td>
+<td><p>000</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fmv.x.d    rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = f[rs1][63:0]</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="fcvt-d-l">
 <h2>fcvt.d.l<a class="headerlink" href="#fcvt-d-l" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11010</td>
-<td>01</td>
-<td>00010</td>
-<td>rs1</td>
-<td>rm</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11010</p></td>
+<td><p>01</p></td>
+<td><p>00010</p></td>
+<td><p>rs1</p></td>
+<td><p>rm</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.d.l   rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = f64_{s64}(x[rs1])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="fcvt-d-lu">
 <h2>fcvt.d.lu<a class="headerlink" href="#fcvt-d-lu" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11010</td>
-<td>01</td>
-<td>00011</td>
-<td>rs1</td>
-<td>rm</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11010</p></td>
+<td><p>01</p></td>
+<td><p>00011</p></td>
+<td><p>rs1</p></td>
+<td><p>rm</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.d.lu  rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = f64_{u64}(x[rs1])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="fmv-d-x">
 <h2>fmv.d.x<a class="headerlink" href="#fmv-d-x" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11110</td>
-<td>01</td>
-<td>00000</td>
-<td>rs1</td>
-<td>000</td>
-<td>rd</td>
-<td>10100</td>
-<td>11</td>
+<tr class="row-even"><td><p>11110</p></td>
+<td><p>01</p></td>
+<td><p>00000</p></td>
+<td><p>rs1</p></td>
+<td><p>000</p></td>
+<td><p>rd</p></td>
+<td><p>10100</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">fmv.d.x    rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = x[rs1][63:0]</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -525,11 +505,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, msyksphinz
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -540,7 +528,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

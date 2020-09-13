@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,27 +11,30 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="RV32F, RV64D Instructions" href="rvfd.html" />
@@ -50,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> riscv-isa-pages
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> riscv-isa-pages
           
 
           
@@ -73,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -111,6 +114,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -149,7 +153,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>RV64A Instructions</li>
     
@@ -174,653 +178,609 @@
 <h1>RV64A Instructions<a class="headerlink" href="#rv64a-instructions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="lr-d">
 <h2>lr.d<a class="headerlink" href="#lr-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00010</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>00010</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">lr.d       rd,rs1</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">load a 64-bit data from the address in rs1, places value in rd, and registers a reservation on the memory address.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = LoadReserved64(M[x[rs1]])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="sc-d">
 <h2>sc.d<a class="headerlink" href="#sc-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00011</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>00011</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">sc.d       rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">write a 64-bit data in rs2 to the address in rs1, provided a valid reservation still exists on that address.</div>
 <div class="line">SC writes zero to rd on success or a nonzero code on failure.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = StoreConditional64(M[x[rs1]], x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amoswap-d">
 <h2>amoswap.d<a class="headerlink" href="#amoswap-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00001</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>00001</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amoswap.d  rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, swap the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] SWAP x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amoadd-d">
 <h2>amoadd.d<a class="headerlink" href="#amoadd-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amoadd.d   rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply add the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] + x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amoxor-d">
 <h2>amoxor.d<a class="headerlink" href="#amoxor-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00100</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>00100</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amoxor.d   rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply xor the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] ^ x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amoand-d">
 <h2>amoand.d<a class="headerlink" href="#amoand-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>01100</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>01100</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amoand.d   rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply and the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] &amp; x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amoor-d">
 <h2>amoor.d<a class="headerlink" href="#amoor-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>01000</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>01000</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amoor.d    rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply or the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] | x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amomin-d">
 <h2>amomin.d<a class="headerlink" href="#amomin-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>10000</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>10000</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amomin.d   rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply min the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] MIN x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amomax-d">
 <h2>amomax.d<a class="headerlink" href="#amomax-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>10100</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>10100</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amomax.d   rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply max the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] MAX x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amominu-d">
 <h2>amominu.d<a class="headerlink" href="#amominu-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11000</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>11000</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amominu.d  rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply unsigned min the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] MINU x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 <div class="section" id="amomaxu-d">
 <h2>amomaxu.d<a class="headerlink" href="#amomaxu-d" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="5%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="8%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26</td>
-<td>25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26</p></td>
+<td><p>25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>11100</td>
-<td>aq</td>
-<td>rl</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>011</td>
-<td>rd</td>
-<td>01011</td>
-<td>11</td>
+<tr class="row-even"><td><p>11100</p></td>
+<td><p>aq</p></td>
+<td><p>rl</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>011</p></td>
+<td><p>rd</p></td>
+<td><p>01011</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">amomaxu.d  rd,rs2,(rs1)</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">atomically load a 64-bit data value from the address in rs1, place the value into register rd, apply unsigned max the loaded value and the original 64-bit value in rs2, then store the result back to the address in rs1.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = AMO64(M[x[rs1]] MAXU x[rs2])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -844,11 +804,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, msyksphinz
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -859,7 +827,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
