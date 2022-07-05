@@ -1028,7 +1028,7 @@ lhu
 
 
 :Format:
-  | lhu        rs2,offset(rs1)
+  | lhu        rd,offset(rs1)
 
 :Description:
   | Loads a 16-bit value from memory and zero-extends this to XLEN bits before storing it in register rd.
