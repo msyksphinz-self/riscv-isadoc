@@ -369,7 +369,7 @@ c.li
 
 
 :Format:
-  | c.li       rd,uimm
+  | c.li       rd,imm
 
 :Description:
   | Load the sign-extended 6-bit immediate, imm, into register rd.
@@ -423,7 +423,7 @@ c.lui
 
 
 :Format:
-  | c.lui      rd,uimm
+  | c.lui      rd,imm
 
 :Description:
   |
@@ -496,16 +496,16 @@ c.andi
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
 
-  +-----+-------+-----+----+---------+---+
-  |15-13|12     |11-10|9-7 |6-2      |1-0|
-  +-----+-------+-----+----+---------+---+
-  |100  |uimm[5]|10   |rd\'|uimm[4:0]|01 |
-  +-----+-------+-----+----+---------+---+
+  +-----+------+-----+----+--------+---+
+  |15-13|12    |11-10|9-7 |6-2     |1-0|
+  +-----+------+-----+----+--------+---+
+  |100  |imm[5]|10   |rd\'|imm[4:0]|01 |
+  +-----+------+-----+----+--------+---+
 
 
 
 :Format:
-  | c.andi     rd\',uimm
+  | c.andi     rd\',imm
 
 :Description:
   | Compute the bitwise AND of of the value in register rd\' and the sign-extended 6-bit immediate, then writes the result to rd\'.
