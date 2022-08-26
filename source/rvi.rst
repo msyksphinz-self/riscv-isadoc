@@ -1181,7 +1181,7 @@ beq
   | Take the branch if registers rs1 and rs2 are equal.
 
 :Implementation:
-  | if (rs1 == rs2) pc += sext(offset)
+  | if (x[rs1] == x[rs2]) pc += sext(offset)
 
 
 
@@ -1207,7 +1207,7 @@ bne
   | Take the branch if registers rs1 and rs2 are not equal.
 
 :Implementation:
-  | if (rs1 != rs2) pc += sext(offset)
+  | if (x[rs1] != x[rs2]) pc += sext(offset)
 
 
 blt
@@ -1231,7 +1231,7 @@ blt
   | Take the branch if registers rs1 is less than rs2, using signed comparison.
 
 :Implementation:
-  | if (rs1 <s rs2) pc += sext(offset)
+  | if (x[rs1] <s x[rs2]) pc += sext(offset)
 
 
 
@@ -1257,7 +1257,7 @@ bge
   | Take the branch if registers rs1 is greater than rs2, using signed comparison.
 
 :Implementation:
-  | if (rs1 >=s rs2) pc += sext(offset)
+  | if (x[rs1] >=s x[rs2]) pc += sext(offset)
 
 
 
@@ -1281,7 +1281,7 @@ bltu
 :Description:
   | Take the branch if registers rs1 is less than rs2, using unsigned comparison.
 :Implementation:
-  | if (rs1 >u rs2) pc += sext(offset)
+  | if (x[rs1] >u x[rs2]) pc += sext(offset)
 
 
 bgeu
@@ -1305,4 +1305,4 @@ bgeu
   | Take the branch if registers rs1 is greater than rs2, using unsigned comparison.
 
 :Implementation:
-  | if (rs1 >=u rs2) pc += sext(offset)
+  | if (x[rs1] >=u x[rs2]) pc += sext(offset)
