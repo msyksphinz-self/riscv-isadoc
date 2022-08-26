@@ -531,7 +531,7 @@ c.sub
 
 
 :Format:
-  | c.sub      rd\',rd\'
+  | c.sub      rd\',rs2\'
 
 :Description:
   | Subtract the value in register rs2\' from the value in register rd\', then writes the result to register rd\'.
@@ -558,7 +558,7 @@ c.xor
 
 
 :Format:
-  | c.xor      rd\',rd\'
+  | c.xor      rd\',rs2\'
 
 :Description:
   | Compute the bitwise XOR of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -585,7 +585,7 @@ c.or
 
 
 :Format:
-  | c.or       rd\',rd\'
+  | c.or       rd\',rs2\'
 
 :Description:
   | Compute the bitwise OR of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -612,7 +612,7 @@ c.and
 
 
 :Format:
-  | c.and      rd\',rd\'
+  | c.and      rd\',rs2\'
 
 :Description:
   | Compute the bitwise AND of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -934,13 +934,13 @@ c.mv
   +-----+-------+-----+------+---+
   |15-13|12     |11-7 |6-2   |1-0|
   +-----+-------+-----+------+---+
-  |100  |0      |rs1  |rs2   |10 |
+  |100  |0      |rd   |rs2   |10 |
   +-----+-------+-----+------+---+
 
 
 
 :Format:
-  | c.mv       rd,rs2\'
+  | c.mv       rd,rs2
 
 :Description:
   | Copy the value in register rs2 into register rd.
@@ -1022,7 +1022,7 @@ c.add
 
 
 :Format:
-  | c.add      rd,rs2\'
+  | c.add      rd,rs2
 
 :Description:
   | Add the values in registers rd and rs2 and writes the result to register rd.
