@@ -7,11 +7,11 @@ c.addi4spn
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
 
-  +------+--------+-----+---+
-  |15-13 |12-5    |4-2  |1-0|
-  +------+--------+-----+---+
-  |000   |imm     |rd\' |00 |
-  +------+--------+-----+---+
+  +------+-------------------+-----+---+
+  |15-13 |12-5               |4-2  |1-0|
+  +------+-------------------+-----+---+
+  |000   |nzuimm[5:4|9:6|2|3]|rd\' |00 |
+  +------+-------------------+-----+---+
 
 
 :Format:
@@ -22,10 +22,10 @@ c.addi4spn
   | This instruction is used to generate pointers to stack-allocated variables, and expands to addi rd\', x2, nzuimm[9:2].
 
 :Implementation:
-  | x[8+rd\'] = x[2] + uimm
+  | x[8+rd\'] = x[2] + nzuimm
 
 :Expansion:
-  | addi x2,x2,nzimm[9:4]
+  | addi rd\',x2,nzuimm
 
 
 c.fld
