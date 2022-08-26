@@ -458,7 +458,7 @@ c.srli
   | x[8+rd\'] = x[8+rd\'] >>u uimm
 
 :Expansion:
-  | srli rd\',rd\',64
+  | srli rd\',rd\',shamt[5:0]
 
 
 
