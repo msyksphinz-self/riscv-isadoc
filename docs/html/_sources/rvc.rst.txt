@@ -7,11 +7,11 @@ c.addi4spn
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
 
-  +------+--------+-----+---+
-  |15-13 |12-5    |4-2  |1-0|
-  +------+--------+-----+---+
-  |000   |imm     |rd\' |00 |
-  +------+--------+-----+---+
+  +------+-------------------+-----+---+
+  |15-13 |12-5               |4-2  |1-0|
+  +------+-------------------+-----+---+
+  |000   |nzuimm[5:4|9:6|2|3]|rd\' |00 |
+  +------+-------------------+-----+---+
 
 
 :Format:
@@ -22,10 +22,10 @@ c.addi4spn
   | This instruction is used to generate pointers to stack-allocated variables, and expands to addi rd\', x2, nzuimm[9:2].
 
 :Implementation:
-  | x[8+rd\'] = x[2] + uimm
+  | x[8+rd\'] = x[2] + nzuimm
 
 :Expansion:
-  | addi x2,x2,nzimm[9:4]
+  | addi rd\',x2,nzuimm
 
 
 c.fld
@@ -369,7 +369,7 @@ c.li
 
 
 :Format:
-  | c.li       rd,uimm
+  | c.li       rd,imm
 
 :Description:
   | Load the sign-extended 6-bit immediate, imm, into register rd.
@@ -423,7 +423,7 @@ c.lui
 
 
 :Format:
-  | c.lui      rd,uimm
+  | c.lui      rd,imm
 
 :Description:
   |
@@ -458,7 +458,7 @@ c.srli
   | x[8+rd\'] = x[8+rd\'] >>u uimm
 
 :Expansion:
-  | srli rd\',rd\',64
+  | srli rd\',rd\',shamt[5:0]
 
 
 
@@ -496,16 +496,16 @@ c.andi
 .. tabularcolumns:: |c|c|c|c|c|c|c|c|
 .. table::
 
-  +-----+-------+-----+----+---------+---+
-  |15-13|12     |11-10|9-7 |6-2      |1-0|
-  +-----+-------+-----+----+---------+---+
-  |100  |uimm[5]|10   |rd\'|uimm[4:0]|01 |
-  +-----+-------+-----+----+---------+---+
+  +-----+------+-----+----+--------+---+
+  |15-13|12    |11-10|9-7 |6-2     |1-0|
+  +-----+------+-----+----+--------+---+
+  |100  |imm[5]|10   |rd\'|imm[4:0]|01 |
+  +-----+------+-----+----+--------+---+
 
 
 
 :Format:
-  | c.andi     rd\',uimm
+  | c.andi     rd\',imm
 
 :Description:
   | Compute the bitwise AND of of the value in register rd\' and the sign-extended 6-bit immediate, then writes the result to rd\'.
@@ -531,7 +531,7 @@ c.sub
 
 
 :Format:
-  | c.sub      rd\',rd\'
+  | c.sub      rd\',rs2\'
 
 :Description:
   | Subtract the value in register rs2\' from the value in register rd\', then writes the result to register rd\'.
@@ -558,7 +558,7 @@ c.xor
 
 
 :Format:
-  | c.xor      rd\',rd\'
+  | c.xor      rd\',rs2\'
 
 :Description:
   | Compute the bitwise XOR of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -585,7 +585,7 @@ c.or
 
 
 :Format:
-  | c.or       rd\',rd\'
+  | c.or       rd\',rs2\'
 
 :Description:
   | Compute the bitwise OR of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -612,7 +612,7 @@ c.and
 
 
 :Format:
-  | c.and      rd\',rd\'
+  | c.and      rd\',rs2\'
 
 :Description:
   | Compute the bitwise AND of the values in registers rd\' and rs2\', then writes the result to register rd\'.
@@ -934,13 +934,13 @@ c.mv
   +-----+-------+-----+------+---+
   |15-13|12     |11-7 |6-2   |1-0|
   +-----+-------+-----+------+---+
-  |100  |0      |rs1  |rs2   |10 |
+  |100  |0      |rd   |rs2   |10 |
   +-----+-------+-----+------+---+
 
 
 
 :Format:
-  | c.mv       rd,rs2\'
+  | c.mv       rd,rs2
 
 :Description:
   | Copy the value in register rs2 into register rd.
@@ -1022,7 +1022,7 @@ c.add
 
 
 :Format:
-  | c.add      rd,rs2\'
+  | c.add      rd,rs2
 
 :Description:
   | Add the values in registers rd and rs2 and writes the result to register rd.
