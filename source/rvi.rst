@@ -1254,7 +1254,7 @@ bge
   | bge        rs1,rs2,offset
 
 :Description:
-  | Take the branch if registers rs1 is greater than rs2, using signed comparison.
+  | Take the branch if registers rs1 is greater than or equal to rs2, using signed comparison.
 
 :Implementation:
   | if (x[rs1] >=s x[rs2]) pc += sext(offset)
@@ -1302,7 +1302,7 @@ bgeu
   | bgeu       rs1,rs2,offset
 
 :Description:
-  | Take the branch if registers rs1 is greater than rs2, using unsigned comparison.
+  | Take the branch if registers rs1 is greater than or equal to rs2, using unsigned comparison.
 
 :Implementation:
   | if (x[rs1] >=u x[rs2]) pc += sext(offset)
