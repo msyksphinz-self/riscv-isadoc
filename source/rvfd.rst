@@ -70,7 +70,7 @@ fnmsub.s
   | Perform single-precision fused multiply addition.
 
 :Implementation:
-  | f[rd] = -f[rs1]×f[rs2+f[rs3]
+  | f[rd] = -f[rs1]×f[rs2]+f[rs3]
 
 
 fnmadd.s
@@ -745,7 +745,7 @@ fsub.d
   | fsub.d     rd,rs1,rs2
 
 :Description:
-  | Perform single-precision floating-point addition.
+  | Perform single-precision floating-point subtraction.
 
 :Implementation:
   | f[rd] = f[rs1] - f[rs2]
@@ -769,7 +769,7 @@ fmul.d
   | fmul.d     rd,rs1,rs2
 
 :Description:
-  | Perform single-precision floating-point addition.
+  | Perform single-precision floating-point multiplication.
 
 :Implementation:
   | f[rd] = f[rs1] × f[rs2]
@@ -794,7 +794,7 @@ fdiv.d
   | fdiv.d     rd,rs1,rs2
 
 :Description:
-  | Perform single-precision floating-point addition.
+  | Perform single-precision floating-point division.
 
 :Implementation:
   | f[rd] = f[rs1] / f[rs2]
