@@ -1281,7 +1281,7 @@ bltu
 :Description:
   | Take the branch if registers rs1 is less than rs2, using unsigned comparison.
 :Implementation:
-  | if (x[rs1] >u x[rs2]) pc += sext(offset)
+  | if (x[rs1] <u x[rs2]) pc += sext(offset)
 
 
 bgeu
