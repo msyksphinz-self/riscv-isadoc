@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RV64M Instructions &mdash; riscv-isa-pages  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>RV64M Instructions &mdash; riscv-isa-pages  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -26,17 +27,21 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> riscv-isa-pages
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            riscv-isa-pages
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rvi.html">RV32I, RV64I Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rv64i.html">RV64I Instructions</a></li>
@@ -71,8 +76,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>RV64M Instructions</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RV64M Instructions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/rv64m.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,289 +87,269 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="rv64m-instructions">
-<h1>RV64M Instructions<a class="headerlink" href="#rv64m-instructions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="mulw">
-<h2>mulw<a class="headerlink" href="#mulw" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+  <section id="rv64m-instructions">
+<h1>RV64M Instructions<a class="headerlink" href="#rv64m-instructions" title="Permalink to this headline"></a></h1>
+<section id="mulw">
+<h2>mulw<a class="headerlink" href="#mulw" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>01</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>000</td>
-<td>rd</td>
-<td>01110</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>01</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>000</p></td>
+<td><p>rd</p></td>
+<td><p>01110</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">mulw       rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext((x[rs1] × x[rs2])[31:0])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="divw">
-<h2>divw<a class="headerlink" href="#divw" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+</dd>
+</dl>
+</section>
+<section id="divw">
+<h2>divw<a class="headerlink" href="#divw" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>01</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>100</td>
-<td>rd</td>
-<td>01110</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>01</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>100</p></td>
+<td><p>rd</p></td>
+<td><p>01110</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">divw       rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">perform an 32 bits by 32 bits signed integer division of rs1 by rs2.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(x[rs1][31:0] /s x[rs2][31:0]</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="divuw">
-<h2>divuw<a class="headerlink" href="#divuw" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+</dd>
+</dl>
+</section>
+<section id="divuw">
+<h2>divuw<a class="headerlink" href="#divuw" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>01</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>101</td>
-<td>rd</td>
-<td>01110</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>01</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>101</p></td>
+<td><p>rd</p></td>
+<td><p>01110</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">divuw      rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">perform an 32 bits by 32 bits unsigned integer division of rs1 by rs2.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(x[rs1][31:0] /u x[rs2][31:0])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="remw">
-<h2>remw<a class="headerlink" href="#remw" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+</dd>
+</dl>
+</section>
+<section id="remw">
+<h2>remw<a class="headerlink" href="#remw" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>01</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>110</td>
-<td>rd</td>
-<td>01110</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>01</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>110</p></td>
+<td><p>rd</p></td>
+<td><p>01110</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">remw       rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="remuw">
-<h2>remuw<a class="headerlink" href="#remuw" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+</dd>
+</dl>
+</section>
+<section id="remuw">
+<h2>remuw<a class="headerlink" href="#remuw" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="8%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>31-27</td>
-<td>26-25</td>
-<td>24-20</td>
-<td>19-15</td>
-<td>14-12</td>
-<td>11-7</td>
-<td>6-2</td>
-<td>1-0</td>
+<tbody>
+<tr class="row-odd"><td><p>31-27</p></td>
+<td><p>26-25</p></td>
+<td><p>24-20</p></td>
+<td><p>19-15</p></td>
+<td><p>14-12</p></td>
+<td><p>11-7</p></td>
+<td><p>6-2</p></td>
+<td><p>1-0</p></td>
 </tr>
-<tr class="row-even"><td>00000</td>
-<td>01</td>
-<td>rs2</td>
-<td>rs1</td>
-<td>111</td>
-<td>rd</td>
-<td>01110</td>
-<td>11</td>
+<tr class="row-even"><td><p>00000</p></td>
+<td><p>01</p></td>
+<td><p>rs2</p></td>
+<td><p>rs1</p></td>
+<td><p>111</p></td>
+<td><p>rd</p></td>
+<td><p>01110</p></td>
+<td><p>11</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Format:</th><td class="field-body"><div class="first last line-block">
+<dl class="field-list">
+<dt class="field-odd">Format</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">remuw      rd,rs1,rs2</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><div class="line-block">
 <div class="line">perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.</div>
 </div>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Implementation:</th><td class="field-body"><div class="first last line-block">
+</dd>
+<dt class="field-odd">Implementation</dt>
+<dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+</dd>
+</dl>
+</section>
+</section>
 
 
            </div>
