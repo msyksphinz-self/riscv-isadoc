@@ -2,130 +2,136 @@
 
 === mulw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |000 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  mulw rd,rs1,rs2
-  --
-Description::
-  [verse]
-  --
+--
+	mulw rd,rs1,rs2
+--
 
-  --
+Description::
+
 Implementation::
-  [verse]
-  --
-  x[rd] = sext((x[rs1] × x[rs2])[31:0])
-  --
+--
+	x[rd] = sext((x[rs1] × x[rs2])[31:0])
+--
 
 === divw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |100 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x4},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  divw rd,rs1,rs2
-  --
+--
+	divw rd,rs1,rs2
+
 Description::
-  [verse]
-  --
-  perform an 32 bits by 32 bits signed integer division of rs1 by rs2.
-  --
+perform an 32 bits by 32 bits signed integer division of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = sext(x[rs1][31:0] /s x[rs2][31:0]
-  --
+--
+	x[rd] = sext(x[rs1][31:0] /s x[rs2][31:0]
+--
 
 === divuw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |101 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  divuw rd,rs1,rs2
-  --
+--
+	divuw rd,rs1,rs2
+
 Description::
-  [verse]
-  --
-  perform an 32 bits by 32 bits unsigned integer division of rs1 by rs2.
-  --
+perform an 32 bits by 32 bits unsigned integer division of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = sext(x[rs1][31:0] /u x[rs2][31:0])
-  --
+--
+	x[rd] = sext(x[rs1][31:0] /u x[rs2][31:0])
+--
 
 === remw
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x6},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |110 |rd |01110 |11
-|===
 
 Format::
-  [verse]
-  --
-  remw rd,rs1,rs2
-  --
+--
+	remw rd,rs1,rs2
+
 Description::
-  [verse]
-  --
-  perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.
-  --
+perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])
-  --
+--
+	x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])
+--
 
 === remuw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |111 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x7},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  remuw rd,rs1,rs2
-  --
+--
+	remuw rd,rs1,rs2
+
 Description::
-  [verse]
-  --
-  perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.
-  --
+perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])
-  --
+--
+	x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])
+--

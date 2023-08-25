@@ -25,7 +25,6 @@ ifdef::backend-pdf[]
 endif::[]
 
 include::rvi.adoc[]
-include::rvi.adoc[]
 include::rv64i.adoc[]
 include::rvm.adoc[]
 include::rv64m.adoc[]

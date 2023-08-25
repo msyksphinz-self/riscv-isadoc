@@ -2,208 +2,225 @@
 
 === mul
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |000 |rd |01100 |11
-|===
 
 Format::
-  [verse]
-  --
-  mul rd,rs1,rs2
-  --
+--
+	mul rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.
-  --
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = x[rs1] × x[rs2]
-  --
+--
+	x[rd] = x[rs1] × x[rs2]
+--
 
 === mulh
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |001 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  mulh rd,rs1,rs2
-  --
+--
+	mulh rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.
-  --
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = (x[rs1] s×s x[rs2]) >>s XLEN
-  --
+--
+	x[rd] = (x[rs1] s×s x[rs2]) >>s XLEN
+--
 
 === mulhsu
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |010 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x2},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  mulhsu rd,rs1,rs2
-  --
+--
+	mulhsu rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
-  --
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = (x[rs1] s latexmath:[$\times$] x[rs2]) >>s XLEN
-  --
+--
+	x[rd] = (x[rs1] s latexmath:[$\times$] x[rs2]) >>s XLEN
+--
 
 === mulhu
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |011 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  mulhu rd,rs1,rs2
-  --
+--
+	mulhu rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
-  --
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = (x[rs1] u latexmath:[$\times$] x[rs2]) >>u XLEN
-  --
+--
+	x[rd] = (x[rs1] u latexmath:[$\times$] x[rs2]) >>u XLEN
+--
 
 === div
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |100 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x4},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  div rd,rs1,rs2
-  --
+--
+	div rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  perform an XLEN bits by XLEN bits signed integer division of rs1 by rs2, rounding towards zero.
-  --
+perform an XLEN bits by XLEN bits signed integer division of rs1 by rs2, rounding towards zero.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = x[rs1] /s x[rs2]
-  --
+--
+	x[rd] = x[rs1] /s x[rs2]
+--
 
 === divu
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |101 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  divu rd,rs1,rs2
-  --
+--
+	divu rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  perform an XLEN bits by XLEN bits unsigned integer division of rs1 by rs2, rounding towards zero.
-  --
+perform an XLEN bits by XLEN bits unsigned integer division of rs1 by rs2, rounding towards zero.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = x[rs1] /u x[rs2]
-  --
+--
+	x[rd] = x[rs1] /u x[rs2]
+--
 
 === rem
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |110 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x6},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  rem rd,rs1,rs2
-  --
+--
+	rem rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.
-  --
+perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = x[rs1] %s x[rs2]
-  --
+--
+	x[rd] = x[rs1] %s x[rs2]
+--
 
 === remu
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |01 |rs2 |rs1 |111 |rd |01100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x7},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
 
 Format::
-  [verse]
-  --
-  remu rd,rs1,rs2
-  --
+--
+	remu rd,rs1,rs2
+--
+
 Description::
-  [verse]
-  --
-  perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.
-  --
+perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.
+
 Implementation::
-  [verse]
-  --
-  x[rd] = x[rs1] %u x[rs2]
-  --
+--
+	x[rd] = x[rs1] %u x[rs2]
+--

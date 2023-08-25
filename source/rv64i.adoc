@@ -2,319 +2,333 @@
 
 === addiw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|imm[11 |:0] | |rs1 |000 |rd |00110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x1b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   addiw rd,rs1,imm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Adds the sign-extended 12-bit immediate to register rs1 and produces the proper sign-extension of a 32-bit result in rd.
-  Overflows are ignored and the result is the low 32 bits of the result sign-extended to 64 bits.
-  Note, ADDIW rd, rs1, 0 writes the sign-extension of the lower 32 bits of register rs1 into register rd (assembler pseudoinstruction SEXT.W).
-  --
+Adds the sign-extended 12-bit immediate to register rs1 and produces the proper sign-extension of a 32-bit result in rd.
+Overflows are ignored and the result is the low 32 bits of the result sign-extended to 64 bits.
+Note, ADDIW rd, rs1, 0 writes the sign-extension of the lower 32 bits of register rs1 into register rd (assembler pseudoinstruction SEXT.W).
+
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rs1] + sext(immediate))[31:0])
-  --
+--
 
 === slliw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |00 |shamt |rs1 |001 |rd |00110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x13, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   slliw rd,rs1,shamt
-  --
+--
+
 Description::
-  [verse]
-  --
-  Performs logical left shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
-  Encodings with $imm[5] neq 0$ are reserved.
-  --
+Performs logical left shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+Encodings with $imm[5] neq 0$ are reserved.
+
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rs1] << shamt)[31:0])
-  --
+--
 
 === srliw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |00 |shamt |rs1 |101 |rd |00110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x1b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   srliw rd,rs1,shamt
-  --
+--
+
 Description::
-  [verse]
-  --
-  Performs logical right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
-  Encodings with $imm[5] neq 0$ are reserved.
-  --
+Performs logical right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+Encodings with $imm[5] neq 0$ are reserved.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(x[rs1][31:0] >>u shamt)
-  --
+--
 
 === sraiw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|01000 |00 |shamt |rs1 |101 |rd |00110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x1b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   sraiw rd,rs1,shamt
-  --
+--
 Description::
-  [verse]
-  --
-  Performs arithmetic right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
-  Encodings with $imm[5] neq 0$ are reserved.
-  --
+Performs arithmetic right shift on the 32-bit of value in register rs1 by the shift amount held in the lower 5 bits of the immediate.
+Encodings with $imm[5] neq 0$ are reserved.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(x[rs1][31:0] >>s shamt)
-  --
+--
 
 === addw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |00 |rs2 |rs1 |000 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x0}
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   addw rd,rs1,rs2
-  --
+--
+
 Description::
-  [verse]
-  --
-  Adds the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd.
-  Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.
-  --
+Adds the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd.
+Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rs1] + x[rs2])[31:0])
-  --
+--
 
 === subw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|01000 |00 |rs2 |rs1 |000 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x20}
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   subw rd,rs1,rs2
-  --
+--
 Description::
-  [verse]
-  --
-  Subtract the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd.
-  Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.
-  --
+Subtract the 32-bit of registers rs1 and 32-bit of register rs2 and stores the result in rd.
+Arithmetic overflow is ignored and the low 32-bits of the result is sign-extended to 64-bits and written to the destination register.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rs1] - x[rs2])[31:0])
-  --
+--
 
 === sllw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |00 |rs2 |rs1 |001 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x00}
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   sllw rd,rs1,rs2
-  --
+--
 Description::
-  [verse]
-  --
-  Performs logical left shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
-  --
+Performs logical left shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rs1] << x[rs2][4:0])[31:0])
-  --
+--
 
 === srlw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|00000 |00 |rs2 |rs1 |101 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x20}
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   srlw rd,rs1,rs2
-  --
+--
+
 Description::
-  [verse]
-  --
-  Performs logical right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
-  --
+Performs logical right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(x[rs1][31:0] >>u x[rs2][4:0])
-  --
+--
 
 === sraw
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|01000 |00 |rs2 |rs1 |101 |rd |01110 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x20}
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   sraw rd,rs1,rs2
-  --
+--
 Description::
-  [verse]
-  --
-  Performs arithmetic right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
-  --
+Performs arithmetic right shift on the low 32-bits value in register rs1 by the shift amount held in the lower 5 bits of register rs2 and produce 32-bit results and written to the destination register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(x[rs1][31:0] >>s x[rs2][4:0])
-  --
+--
 
 === lwu
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x03, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x6},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|offset |[11:0] | |rs1 |110 |rd |00000 |11
-|===
 
 Format::
-  [verse]
-  --
+--
   lwu rd,offset(rs1)
-  --
+--
 Description::
-  [verse]
-  --
-  Loads a 32-bit value from memory and zero-extends this to 64 bits before storing it in register rd.
-  --
+Loads a 32-bit value from memory and zero-extends this to 64 bits before storing it in register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = M[x[rs1] + sext(offset)][31:0]
-  --
+--
 
 === ld
 
-cccc|
-
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|offset |[11:0] | |rs1 |011 |rd |00000 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x03, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   ld rd,offset(rs1)
-  --
+--
 Description::
-  [verse]
-  --
-  Loads a 64-bit value from memory into register rd for RV64I.
-  --
+Loads a 64-bit value from memory into register rd for RV64I.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = M[x[rs1] + sext(offset)][63:0]
-  --
+--
 
 === sd
 
-cccc|
-
-[width="76%",cols="17%,12%,10%,10%,10%,21%,10%,10%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|offset |[11:5] |rs2 |rs1 |011 |offset[4:0] |01000 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x23, attr: 'opcode'},
+  {bits:  5, name: 'imm[4:0]'},
+  {bits:  3, name: 0x3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 'imm[11: 5]'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   sd rs2,offset(rs1)
-  --
+--
 Description::
-  [verse]
-  --
-  Store 64-bit, values from register rs2 to memory.
-  --
+Store 64-bit, values from register rs2 to memory.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[rs1] + sext(offset)] = x[rs2][63:0]
-  --
+--
