@@ -994,10 +994,10 @@ c.jalr
 
 
 :Format:
-  | c.jalr     rd
+  | c.jalr     rs1
 
 :Description:
-  | Jump to address and place return address in rd.
+  | Jump to rs1 register address and place return address in x[1].
 
 :Implementation:
   | t = pc+2; pc = x[rs1]; x[1] = t
