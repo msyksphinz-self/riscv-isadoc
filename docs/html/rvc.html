@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RV32C, RV64C Instructions &mdash; riscv-isa-pages  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -125,16 +128,10 @@
            <div itemprop="articleBody">
              
   <section id="rv32c-rv64c-instructions">
-<h1>RV32C, RV64C Instructions<a class="headerlink" href="#rv32c-rv64c-instructions" title="Permalink to this headline"></a></h1>
+<h1>RV32C, RV64C Instructions<a class="headerlink" href="#rv32c-rv64c-instructions" title="Link to this heading"></a></h1>
 <section id="c-addi4spn">
-<h2>c.addi4spn<a class="headerlink" href="#c-addi4spn" title="Permalink to this headline"></a></h2>
+<h2>c.addi4spn<a class="headerlink" href="#c-addi4spn" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 58%" />
-<col style="width: 15%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-5</p></td>
@@ -149,23 +146,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.addi4spn rd',uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add a zero-extended non-zero immediate, scaled by 4, to the stack pointer, x2, and writes the result to rd'.</div>
 <div class="line">This instruction is used to generate pointers to stack-allocated variables, and expands to addi rd', x2, nzuimm[9:2].</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[2] + nzuimm</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addi rd',x2,nzuimm</div>
 </div>
@@ -173,16 +170,8 @@
 </dl>
 </section>
 <section id="c-fld">
-<h2>c.fld<a class="headerlink" href="#c-fld" title="Permalink to this headline"></a></h2>
+<h2>c.fld<a class="headerlink" href="#c-fld" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -201,23 +190,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fld      rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a double-precision floating-point value from memory into floating-point register rd'.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[8+rd'] = M[x[8+rs1'] + uimm][63:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fld rd',offset[7:3](rs1')</div>
 </div>
@@ -225,16 +214,8 @@
 </dl>
 </section>
 <section id="c-lw">
-<h2>c.lw<a class="headerlink" href="#c-lw" title="Permalink to this headline"></a></h2>
+<h2>c.lw<a class="headerlink" href="#c-lw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -253,22 +234,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.lw       rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a 32-bit value from memory into register rd'. It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = sext(M[x[8+rs1'] + uimm][31:0])</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">lw rd',offset[6:2](rs1')</div>
 </div>
@@ -276,16 +257,8 @@
 </dl>
 </section>
 <section id="c-flw">
-<h2>c.flw<a class="headerlink" href="#c-flw" title="Permalink to this headline"></a></h2>
+<h2>c.flw<a class="headerlink" href="#c-flw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -304,23 +277,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.flw      rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a single-precision floating-point value from memory into floating-point register rd'.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[8+rd'] = M[x[8+rs1'] + uimm][31:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">lw rd',offset[6:2](rs1')</div>
 </div>
@@ -328,16 +301,8 @@
 </dl>
 </section>
 <section id="c-ld">
-<h2>c.ld<a class="headerlink" href="#c-ld" title="Permalink to this headline"></a></h2>
+<h2>c.ld<a class="headerlink" href="#c-ld" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -356,23 +321,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.ld       rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a 64-bit value from memory into register rd'.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = M[x[8+rs1'] + uimm][63:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">ld rd', offset[7:3](rs1')</div>
 </div>
@@ -380,16 +345,8 @@
 </dl>
 </section>
 <section id="c-fsd">
-<h2>c.fsd<a class="headerlink" href="#c-fsd" title="Permalink to this headline"></a></h2>
+<h2>c.fsd<a class="headerlink" href="#c-fsd" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 28%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -408,23 +365,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fsd      rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a double-precision floating-point value in floating-point register rs2' to memory.</div>
 <div class="line">It computes an effective address by adding the zeroextended offset, scaled by 8, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[8+rs1'] + uimm][63:0] = f[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fsd rs2',offset[7:3](rs1')</div>
 </div>
@@ -432,16 +389,8 @@
 </dl>
 </section>
 <section id="c-sw">
-<h2>c.sw<a class="headerlink" href="#c-sw" title="Permalink to this headline"></a></h2>
+<h2>c.sw<a class="headerlink" href="#c-sw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -460,23 +409,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.sw       rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a 32-bit value in register rs2' to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[8+rs1'] + uimm][31:0] = x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">sw rs2',offset[6:2](rs1')</div>
 </div>
@@ -484,16 +433,8 @@
 </dl>
 </section>
 <section id="c-fsw">
-<h2>c.fsw<a class="headerlink" href="#c-fsw" title="Permalink to this headline"></a></h2>
+<h2>c.fsw<a class="headerlink" href="#c-fsw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -512,23 +453,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fsw      rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a single-precision floating-point value in floatingpoint register rs2' to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[8+rs1'] + uimm][31:0] = f[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fsw rs2', offset[6:2](rs1')</div>
 </div>
@@ -536,16 +477,8 @@
 </dl>
 </section>
 <section id="c-sd">
-<h2>c.sd<a class="headerlink" href="#c-sd" title="Permalink to this headline"></a></h2>
+<h2>c.sd<a class="headerlink" href="#c-sd" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -564,23 +497,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.sd       rd',uimm(rs1')</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a 64-bit value in register rs2' to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[8+rs1'] + uimm][63:0] = x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">sd rs2', offset[7:3](rs1')</div>
 </div>
@@ -588,16 +521,8 @@
 </dl>
 </section>
 <section id="c-nop">
-<h2>c.nop<a class="headerlink" href="#c-nop" title="Permalink to this headline"></a></h2>
+<h2>c.nop<a class="headerlink" href="#c-nop" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -616,22 +541,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.nop</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Does not change any user-visible state, except for advancing the pc.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">None</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addi x0, x0, 0</div>
 </div>
@@ -639,15 +564,8 @@
 </dl>
 </section>
 <section id="c-addi">
-<h2>c.addi<a class="headerlink" href="#c-addi" title="Permalink to this headline"></a></h2>
+<h2>c.addi<a class="headerlink" href="#c-addi" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 27%" />
-<col style="width: 24%" />
-<col style="width: 27%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -664,22 +582,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.addi     rd,u[12:12]|u[6:2]</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add the non-zero sign-extended 6-bit immediate to the value in register rd then writes the result to rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rd] + sext(imm)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addi rd, rd, nzimm[5:0]</div>
 </div>
@@ -687,13 +605,8 @@
 </dl>
 </section>
 <section id="c-jal">
-<h2>c.jal<a class="headerlink" href="#c-jal" title="Permalink to this headline"></a></h2>
+<h2>c.jal<a class="headerlink" href="#c-jal" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 79%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-2</p></td>
@@ -706,22 +619,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.jal offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Jump to address and place return address in rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[1] = pc+2; pc += sext(offset)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">jal x1, offset[11:1]</div>
 </div>
@@ -729,15 +642,8 @@
 </dl>
 </section>
 <section id="c-addiw">
-<h2>c.addiw<a class="headerlink" href="#c-addiw" title="Permalink to this headline"></a></h2>
+<h2>c.addiw<a class="headerlink" href="#c-addiw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 22%" />
-<col style="width: 19%" />
-<col style="width: 30%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -754,22 +660,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.addiw    rd,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add the non-zero sign-extended 6-bit immediate to the value in register rd then produce 32-bit result, then sign-extends result to 64 bits.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext((x[rd] + sext(imm))[31:0])</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addiw rd,rd,imm[5:0]</div>
 </div>
@@ -777,15 +683,8 @@
 </dl>
 </section>
 <section id="c-li">
-<h2>c.li<a class="headerlink" href="#c-li" title="Permalink to this headline"></a></h2>
+<h2>c.li<a class="headerlink" href="#c-li" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 22%" />
-<col style="width: 19%" />
-<col style="width: 30%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -802,23 +701,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.li       rd,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load the sign-extended 6-bit immediate, imm, into register rd.</div>
 <div class="line">C.LI is only valid when rd!=x0.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(imm)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addi rd,x0,imm[5:0]</div>
 </div>
@@ -826,15 +725,8 @@
 </dl>
 </section>
 <section id="c-addi16sp">
-<h2>c.addi16sp<a class="headerlink" href="#c-addi16sp" title="Permalink to this headline"></a></h2>
+<h2>c.addi16sp<a class="headerlink" href="#c-addi16sp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 18%" />
-<col style="width: 15%" />
-<col style="width: 42%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -851,22 +743,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.addi16sp imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add the non-zero sign-extended 6-bit immediate to the value in the stack pointer (sp=x2), where the immediate is scaled to represent multiples of 16 in the range (-512,496).</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[2] = x[2] + sext(imm)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addi x2,x2, nzimm[9:4]</div>
 </div>
@@ -874,15 +766,8 @@
 </dl>
 </section>
 <section id="c-lui">
-<h2>c.lui<a class="headerlink" href="#c-lui" title="Permalink to this headline"></a></h2>
+<h2>c.lui<a class="headerlink" href="#c-lui" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 23%" />
-<col style="width: 17%" />
-<col style="width: 33%" />
-<col style="width: 10%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -899,22 +784,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.lui      rd,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(imm[17:12] &lt;&lt; 12)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">lui rd,nzuimm[17:12]</div>
 </div>
@@ -922,16 +807,8 @@
 </dl>
 </section>
 <section id="c-srli">
-<h2>c.srli<a class="headerlink" href="#c-srli" title="Permalink to this headline"></a></h2>
+<h2>c.srli<a class="headerlink" href="#c-srli" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 12%" />
-<col style="width: 27%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -950,23 +827,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.srli     rd',uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Perform a logical right shift of the value in register rd' then writes the result to rd'.</div>
 <div class="line">The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] &gt;&gt;u uimm</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">srli rd',rd',shamt[5:0]</div>
 </div>
@@ -974,16 +851,8 @@
 </dl>
 </section>
 <section id="c-srai">
-<h2>c.srai<a class="headerlink" href="#c-srai" title="Permalink to this headline"></a></h2>
+<h2>c.srai<a class="headerlink" href="#c-srai" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 12%" />
-<col style="width: 27%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1002,23 +871,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.srai     rd',uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Perform a arithmetic right shift of the value in register rd' then writes the result to rd'.</div>
 <div class="line">The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] &gt;&gt;s uimm</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">srai rd',rd',shamt[5:0]</div>
 </div>
@@ -1026,16 +895,8 @@
 </dl>
 </section>
 <section id="c-andi">
-<h2>c.andi<a class="headerlink" href="#c-andi" title="Permalink to this headline"></a></h2>
+<h2>c.andi<a class="headerlink" href="#c-andi" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 13%" />
-<col style="width: 26%" />
-<col style="width: 10%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1054,22 +915,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.andi     rd',imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Compute the bitwise AND of of the value in register rd' and the sign-extended 6-bit immediate, then writes the result to rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] &amp; sext(imm)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">andi rd',rd',imm[5:0]</div>
 </div>
@@ -1077,15 +938,8 @@
 </dl>
 </section>
 <section id="c-sub">
-<h2>c.sub<a class="headerlink" href="#c-sub" title="Permalink to this headline"></a></h2>
+<h2>c.sub<a class="headerlink" href="#c-sub" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1102,22 +956,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.sub      rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Subtract the value in register rs2' from the value in register rd', then writes the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] - x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">sub rd',rd',rs2'</div>
 </div>
@@ -1125,15 +979,8 @@
 </dl>
 </section>
 <section id="c-xor">
-<h2>c.xor<a class="headerlink" href="#c-xor" title="Permalink to this headline"></a></h2>
+<h2>c.xor<a class="headerlink" href="#c-xor" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1150,22 +997,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.xor      rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Compute the bitwise XOR of the values in registers rd' and rs2', then writes the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] ^ x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">xor rd',rd',rs2'</div>
 </div>
@@ -1173,15 +1020,8 @@
 </dl>
 </section>
 <section id="c-or">
-<h2>c.or<a class="headerlink" href="#c-or" title="Permalink to this headline"></a></h2>
+<h2>c.or<a class="headerlink" href="#c-or" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1198,22 +1038,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.or       rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Compute the bitwise OR of the values in registers rd' and rs2', then writes the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] | x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">or rd',rd',rs2</div>
 </div>
@@ -1221,15 +1061,8 @@
 </dl>
 </section>
 <section id="c-and">
-<h2>c.and<a class="headerlink" href="#c-and" title="Permalink to this headline"></a></h2>
+<h2>c.and<a class="headerlink" href="#c-and" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1246,22 +1079,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.and      rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Compute the bitwise AND of the values in registers rd' and rs2', then writes the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = x[8+rd'] &amp; x[8+rs2']</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">and rd',rd',rs2'</div>
 </div>
@@ -1269,15 +1102,8 @@
 </dl>
 </section>
 <section id="c-subw">
-<h2>c.subw<a class="headerlink" href="#c-subw" title="Permalink to this headline"></a></h2>
+<h2>c.subw<a class="headerlink" href="#c-subw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1294,22 +1120,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.subw     rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Subtract the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = sext((x[8+rd'] - x[8+rs2'])[31:0])</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">subw rd',rd',rs2'</div>
 </div>
@@ -1317,15 +1143,8 @@
 </dl>
 </section>
 <section id="c-addw">
-<h2>c.addw<a class="headerlink" href="#c-addw" title="Permalink to this headline"></a></h2>
+<h2>c.addw<a class="headerlink" href="#c-addw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 24%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-10</p></td>
 <td><p>9-7</p></td>
@@ -1342,22 +1161,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.addw     rd',rs2'</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[8+rd'] = sext((x[8+rd'] + x[8+rs2'])[31:0])</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">addw rd',rd',rs2'</div>
 </div>
@@ -1365,13 +1184,8 @@
 </dl>
 </section>
 <section id="c-j">
-<h2>c.j<a class="headerlink" href="#c-j" title="Permalink to this headline"></a></h2>
+<h2>c.j<a class="headerlink" href="#c-j" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 79%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-2</p></td>
@@ -1384,22 +1198,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.j offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Unconditional control transfer.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">pc += sext(offset)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">jal x0,offset[11:1]</div>
 </div>
@@ -1407,15 +1221,8 @@
 </dl>
 </section>
 <section id="c-beqz">
-<h2>c.beqz<a class="headerlink" href="#c-beqz" title="Permalink to this headline"></a></h2>
+<h2>c.beqz<a class="headerlink" href="#c-beqz" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 30%" />
-<col style="width: 12%" />
-<col style="width: 40%" />
-<col style="width: 7%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -1432,22 +1239,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.beqz     rs1',offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if the value in register rs1' is zero.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[8+rs1'] == 0) pc += sext(offset)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">beq rs1',x0,offset[8:1]</div>
 </div>
@@ -1455,15 +1262,8 @@
 </dl>
 </section>
 <section id="c-bnez">
-<h2>c.bnez<a class="headerlink" href="#c-bnez" title="Permalink to this headline"></a></h2>
+<h2>c.bnez<a class="headerlink" href="#c-bnez" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 30%" />
-<col style="width: 12%" />
-<col style="width: 40%" />
-<col style="width: 7%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-10</p></td>
@@ -1480,22 +1280,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.bnez     rs1',offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if the value in register rs1' is not zero.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[8+rs1'] != 0) pc += sext(offset)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">bne rs1',x0,offset[8:1]</div>
 </div>
@@ -1503,15 +1303,8 @@
 </dl>
 </section>
 <section id="c-slli">
-<h2>c.slli<a class="headerlink" href="#c-slli" title="Permalink to this headline"></a></h2>
+<h2>c.slli<a class="headerlink" href="#c-slli" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 23%" />
-<col style="width: 17%" />
-<col style="width: 33%" />
-<col style="width: 10%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1528,23 +1321,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.slli     rd,uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Perform a logical left shift of the value in register rd then writes the result to rd.</div>
 <div class="line">The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rd] &lt;&lt; uimm</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">slli rd,rd,shamt[5:0]</div>
 </div>
@@ -1552,15 +1345,8 @@
 </dl>
 </section>
 <section id="c-fldsp">
-<h2>c.fldsp<a class="headerlink" href="#c-fldsp" title="Permalink to this headline"></a></h2>
+<h2>c.fldsp<a class="headerlink" href="#c-fldsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 41%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1577,23 +1363,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fldsp    rd,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a double-precision floating-point value from memory into floating-point register rd.</div>
 <div class="line">It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = M[x[2] + uimm][63:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fld rd,offset[8:3](x2)</div>
 </div>
@@ -1601,15 +1387,8 @@
 </dl>
 </section>
 <section id="c-lwsp">
-<h2>c.lwsp<a class="headerlink" href="#c-lwsp" title="Permalink to this headline"></a></h2>
+<h2>c.lwsp<a class="headerlink" href="#c-lwsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 41%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1626,22 +1405,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.lwsp     rd,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a 32-bit value from memory into register rd. It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(M[x[2] + uimm][31:0])</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">lw rd,offset[7:2](x2)</div>
 </div>
@@ -1649,15 +1428,8 @@
 </dl>
 </section>
 <section id="c-flwsp">
-<h2>c.flwsp<a class="headerlink" href="#c-flwsp" title="Permalink to this headline"></a></h2>
+<h2>c.flwsp<a class="headerlink" href="#c-flwsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 41%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1674,23 +1446,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.flwsp    rd,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a single-precision floating-point value from memory into floating-point register rd.</div>
 <div class="line">It computes its effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = M[x[2] + uimm][31:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">flw rd,offset[7:2](x2)</div>
 </div>
@@ -1698,15 +1470,8 @@
 </dl>
 </section>
 <section id="c-ldsp">
-<h2>c.ldsp<a class="headerlink" href="#c-ldsp" title="Permalink to this headline"></a></h2>
+<h2>c.ldsp<a class="headerlink" href="#c-ldsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 21%" />
-<col style="width: 15%" />
-<col style="width: 41%" />
-<col style="width: 9%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1723,23 +1488,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.ldsp     rd,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Load a 64-bit value from memory into register rd.</div>
 <div class="line">It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = M[x[2] + uimm][63:0]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">ld rd,offset[8:3](x2)</div>
 </div>
@@ -1747,15 +1512,8 @@
 </dl>
 </section>
 <section id="c-jr">
-<h2>c.jr<a class="headerlink" href="#c-jr" title="Permalink to this headline"></a></h2>
+<h2>c.jr<a class="headerlink" href="#c-jr" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 27%" />
-<col style="width: 19%" />
-<col style="width: 23%" />
-<col style="width: 12%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1772,22 +1530,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.jr rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs an unconditional control transfer to the address in register rs1.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">pc = x[rs1]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">jalr x0,rs1,0</div>
 </div>
@@ -1795,15 +1553,8 @@
 </dl>
 </section>
 <section id="c-mv">
-<h2>c.mv<a class="headerlink" href="#c-mv" title="Permalink to this headline"></a></h2>
+<h2>c.mv<a class="headerlink" href="#c-mv" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 27%" />
-<col style="width: 19%" />
-<col style="width: 23%" />
-<col style="width: 12%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1820,22 +1571,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.mv       rd,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Copy the value in register rs2 into register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">add rd, x0, rs2</div>
 </div>
@@ -1843,15 +1594,8 @@
 </dl>
 </section>
 <section id="c-ebreak">
-<h2>c.ebreak<a class="headerlink" href="#c-ebreak" title="Permalink to this headline"></a></h2>
+<h2>c.ebreak<a class="headerlink" href="#c-ebreak" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 14%" />
-<col style="width: 23%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1868,22 +1612,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.ebreak</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Cause control to be transferred back to the debugging environment.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">RaiseException(Breakpoint)</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">ebreak</div>
 </div>
@@ -1891,15 +1635,8 @@
 </dl>
 </section>
 <section id="c-jalr">
-<h2>c.jalr<a class="headerlink" href="#c-jalr" title="Permalink to this headline"></a></h2>
+<h2>c.jalr<a class="headerlink" href="#c-jalr" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 14%" />
-<col style="width: 23%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1916,22 +1653,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.jalr     rd</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Jump to address and place return address in rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = pc+2; pc = x[rs1]; x[1] = t</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">jalr x1,rs1,0</div>
 </div>
@@ -1939,15 +1676,8 @@
 </dl>
 </section>
 <section id="c-add">
-<h2>c.add<a class="headerlink" href="#c-add" title="Permalink to this headline"></a></h2>
+<h2>c.add<a class="headerlink" href="#c-add" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 14%" />
-<col style="width: 23%" />
-<col style="width: 27%" />
-<col style="width: 14%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12</p></td>
@@ -1964,22 +1694,22 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.add      rd,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Add the values in registers rd and rs2 and writes the result to register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rd] + x[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">add rd,rd,rs2</div>
 </div>
@@ -1987,14 +1717,8 @@
 </dl>
 </section>
 <section id="c-fsdsp">
-<h2>c.fsdsp<a class="headerlink" href="#c-fsdsp" title="Permalink to this headline"></a></h2>
+<h2>c.fsdsp<a class="headerlink" href="#c-fsdsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 52%" />
-<col style="width: 19%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-7</p></td>
@@ -2009,23 +1733,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fsdsp rs2,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a double-precision floating-point value in floating-point register rs2 to memory.</div>
 <div class="line">It computes an effective address by adding the zeroextended offset, scaled by 8, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[2] + uimm][63:0] = f[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fsd rs2,offset[8:3](x2)</div>
 </div>
@@ -2033,14 +1757,8 @@
 </dl>
 </section>
 <section id="c-swsp">
-<h2>c.swsp<a class="headerlink" href="#c-swsp" title="Permalink to this headline"></a></h2>
+<h2>c.swsp<a class="headerlink" href="#c-swsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 52%" />
-<col style="width: 19%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-7</p></td>
@@ -2055,23 +1773,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.swsp rs2,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a 32-bit value in register rs2 to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[2] + uimm][31:0] = x[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">sw rs2,offset[7:2](x2)</div>
 </div>
@@ -2079,14 +1797,8 @@
 </dl>
 </section>
 <section id="c-fswsp">
-<h2>c.fswsp<a class="headerlink" href="#c-fswsp" title="Permalink to this headline"></a></h2>
+<h2>c.fswsp<a class="headerlink" href="#c-fswsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 52%" />
-<col style="width: 19%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-7</p></td>
@@ -2101,23 +1813,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.fswsp rs2,uimm(rs2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a single-precision floating-point value in floating-point register rs2 to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[2] + uimm][31:0] = f[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">fsw rs2,offset[7:2](x2)</div>
 </div>
@@ -2125,14 +1837,8 @@
 </dl>
 </section>
 <section id="c-sdsp">
-<h2>c.sdsp<a class="headerlink" href="#c-sdsp" title="Permalink to this headline"></a></h2>
+<h2>c.sdsp<a class="headerlink" href="#c-sdsp" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 52%" />
-<col style="width: 19%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>15-13</p></td>
 <td><p>12-7</p></td>
@@ -2147,23 +1853,23 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">c.sdsp rs2,uimm(x2)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store a 64-bit value in register rs2 to memory.</div>
 <div class="line">It computes an effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[2] + uimm][63:0] = x[rs2]</div>
 </div>
 </dd>
-<dt class="field-even">Expansion</dt>
+<dt class="field-even">Expansion<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">sd rs2,offset[8:3](x2)</div>
 </div>

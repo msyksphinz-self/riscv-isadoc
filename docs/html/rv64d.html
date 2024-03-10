@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RV64D Instructions &mdash; riscv-isa-pages  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -89,20 +92,10 @@
            <div itemprop="articleBody">
              
   <section id="rv64d-instructions">
-<h1>RV64D Instructions<a class="headerlink" href="#rv64d-instructions" title="Permalink to this headline"></a></h1>
+<h1>RV64D Instructions<a class="headerlink" href="#rv64d-instructions" title="Link to this heading"></a></h1>
 <section id="fcvt-l-d">
-<h2>fcvt.l.d<a class="headerlink" href="#fcvt-l-d" title="Permalink to this headline"></a></h2>
+<h2>fcvt.l.d<a class="headerlink" href="#fcvt-l-d" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -125,17 +118,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.l.d   rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = s64_{f64}(f[rs1])</div>
 </div>
@@ -143,18 +136,8 @@
 </dl>
 </section>
 <section id="fcvt-lu-d">
-<h2>fcvt.lu.d<a class="headerlink" href="#fcvt-lu-d" title="Permalink to this headline"></a></h2>
+<h2>fcvt.lu.d<a class="headerlink" href="#fcvt-lu-d" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -177,17 +160,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.lu.d  rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = u64_{f64}(f[rs1])</div>
 </div>
@@ -195,18 +178,8 @@
 </dl>
 </section>
 <section id="fmv-x-d">
-<h2>fmv.x.d<a class="headerlink" href="#fmv-x-d" title="Permalink to this headline"></a></h2>
+<h2>fmv.x.d<a class="headerlink" href="#fmv-x-d" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -229,17 +202,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fmv.x.d    rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = f[rs1][63:0]</div>
 </div>
@@ -247,18 +220,8 @@
 </dl>
 </section>
 <section id="fcvt-d-l">
-<h2>fcvt.d.l<a class="headerlink" href="#fcvt-d-l" title="Permalink to this headline"></a></h2>
+<h2>fcvt.d.l<a class="headerlink" href="#fcvt-d-l" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -281,17 +244,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.d.l   rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = f64_{s64}(x[rs1])</div>
 </div>
@@ -299,18 +262,8 @@
 </dl>
 </section>
 <section id="fcvt-d-lu">
-<h2>fcvt.d.lu<a class="headerlink" href="#fcvt-d-lu" title="Permalink to this headline"></a></h2>
+<h2>fcvt.d.lu<a class="headerlink" href="#fcvt-d-lu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -333,17 +286,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fcvt.d.lu  rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = f64_{u64}(x[rs1])</div>
 </div>
@@ -351,18 +304,8 @@
 </dl>
 </section>
 <section id="fmv-d-x">
-<h2>fmv.d.x<a class="headerlink" href="#fmv-d-x" title="Permalink to this headline"></a></h2>
+<h2>fmv.d.x<a class="headerlink" href="#fmv-d-x" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -385,17 +328,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fmv.d.x    rd,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line"><br /></div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">f[rd] = x[rs1][63:0]</div>
 </div>
