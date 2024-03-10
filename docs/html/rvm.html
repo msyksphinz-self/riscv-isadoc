@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RV32M, RV64M Instructions &mdash; riscv-isa-pages  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -92,20 +95,10 @@
            <div itemprop="articleBody">
              
   <section id="rv32m-rv64m-instructions">
-<h1>RV32M, RV64M Instructions<a class="headerlink" href="#rv32m-rv64m-instructions" title="Permalink to this headline"></a></h1>
+<h1>RV32M, RV64M Instructions<a class="headerlink" href="#rv32m-rv64m-instructions" title="Link to this heading"></a></h1>
 <section id="mul">
-<h2>mul<a class="headerlink" href="#mul" title="Permalink to this headline"></a></h2>
+<h2>mul<a class="headerlink" href="#mul" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -128,17 +121,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">mul        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">performs an XLEN-bit <span class="math notranslate nohighlight">\(\times\)</span> XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] × x[rs2]</div>
 </div>
@@ -146,18 +139,8 @@
 </dl>
 </section>
 <section id="mulh">
-<h2>mulh<a class="headerlink" href="#mulh" title="Permalink to this headline"></a></h2>
+<h2>mulh<a class="headerlink" href="#mulh" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -180,17 +163,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">mulh       rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">performs an XLEN-bit <span class="math notranslate nohighlight">\(\times\)</span> XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = (x[rs1] s×s x[rs2]) &gt;&gt;s XLEN</div>
 </div>
@@ -198,18 +181,8 @@
 </dl>
 </section>
 <section id="mulhsu">
-<h2>mulhsu<a class="headerlink" href="#mulhsu" title="Permalink to this headline"></a></h2>
+<h2>mulhsu<a class="headerlink" href="#mulhsu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -232,17 +205,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">mulhsu     rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">performs an XLEN-bit <span class="math notranslate nohighlight">\(\times\)</span> XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = (x[rs1] s <span class="math notranslate nohighlight">\(\times\)</span> x[rs2]) &gt;&gt;s XLEN</div>
 </div>
@@ -250,18 +223,8 @@
 </dl>
 </section>
 <section id="mulhu">
-<h2>mulhu<a class="headerlink" href="#mulhu" title="Permalink to this headline"></a></h2>
+<h2>mulhu<a class="headerlink" href="#mulhu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -284,17 +247,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">mulhu      rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">performs an XLEN-bit <span class="math notranslate nohighlight">\(\times\)</span> XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = (x[rs1] u <span class="math notranslate nohighlight">\(\times\)</span> x[rs2]) &gt;&gt;u XLEN</div>
 </div>
@@ -302,18 +265,8 @@
 </dl>
 </section>
 <section id="div">
-<h2>div<a class="headerlink" href="#div" title="Permalink to this headline"></a></h2>
+<h2>div<a class="headerlink" href="#div" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -336,17 +289,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">div        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">perform an XLEN bits by XLEN bits signed integer division of rs1 by rs2, rounding towards zero.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] /s x[rs2]</div>
 </div>
@@ -354,18 +307,8 @@
 </dl>
 </section>
 <section id="divu">
-<h2>divu<a class="headerlink" href="#divu" title="Permalink to this headline"></a></h2>
+<h2>divu<a class="headerlink" href="#divu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -388,17 +331,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">divu       rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">perform an XLEN bits by XLEN bits unsigned integer division of rs1 by rs2, rounding towards zero.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] /u x[rs2]</div>
 </div>
@@ -406,18 +349,8 @@
 </dl>
 </section>
 <section id="rem">
-<h2>rem<a class="headerlink" href="#rem" title="Permalink to this headline"></a></h2>
+<h2>rem<a class="headerlink" href="#rem" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -440,17 +373,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">rem        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] %s x[rs2]</div>
 </div>
@@ -458,18 +391,8 @@
 </dl>
 </section>
 <section id="remu">
-<h2>remu<a class="headerlink" href="#remu" title="Permalink to this headline"></a></h2>
+<h2>remu<a class="headerlink" href="#remu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -492,17 +415,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">remu       rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] %u x[rs2]</div>
 </div>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RV32I, RV64I Instructions &mdash; riscv-isa-pages  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -135,21 +138,11 @@
            <div itemprop="articleBody">
              
   <section id="rv32i-rv64i-instructions">
-<h1>RV32I, RV64I Instructions<a class="headerlink" href="#rv32i-rv64i-instructions" title="Permalink to this headline"></a></h1>
+<h1>RV32I, RV64I Instructions<a class="headerlink" href="#rv32i-rv64i-instructions" title="Link to this heading"></a></h1>
 <section id="lui">
-<h2>lui<a class="headerlink" href="#lui" title="Permalink to this headline"></a></h2>
+<h2>lui<a class="headerlink" href="#lui" title="Link to this heading"></a></h2>
 <p>load upper immediate.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -168,17 +161,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lui        rd,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Build 32-bit constants and uses the U-type format. LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest 12 bits with zeros.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(immediate[31:12] &lt;&lt; 12)</div>
 </div>
@@ -186,19 +179,9 @@
 </dl>
 </section>
 <section id="auipc">
-<h2>auipc<a class="headerlink" href="#auipc" title="Permalink to this headline"></a></h2>
+<h2>auipc<a class="headerlink" href="#auipc" title="Link to this heading"></a></h2>
 <p>add upper immediate to pc</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -217,17 +200,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">auipc      rd,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Build pc-relative addresses and uses the U-type format. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = pc + sext(immediate[31:12] &lt;&lt; 12)</div>
 </div>
@@ -235,19 +218,9 @@
 </dl>
 </section>
 <section id="addi">
-<h2>addi<a class="headerlink" href="#addi" title="Permalink to this headline"></a></h2>
+<h2>addi<a class="headerlink" href="#addi" title="Link to this heading"></a></h2>
 <p>add immediate</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -268,17 +241,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">addi       rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result. ADDI rd, rs1, 0 is used to implement the MV rd, rs1 assembler pseudo-instruction.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] + sext(immediate)</div>
 </div>
@@ -286,19 +259,9 @@
 </dl>
 </section>
 <section id="slti">
-<h2>slti<a class="headerlink" href="#slti" title="Permalink to this headline"></a></h2>
+<h2>slti<a class="headerlink" href="#slti" title="Link to this heading"></a></h2>
 <p>set less than immediate</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -319,17 +282,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">slti       rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Place the value 1 in register rd if register rs1 is less than the signextended immediate when both are treated as signed numbers, else 0 is written to rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;s sext(immediate)</div>
 </div>
@@ -337,18 +300,8 @@
 </dl>
 </section>
 <section id="sltiu">
-<h2>sltiu<a class="headerlink" href="#sltiu" title="Permalink to this headline"></a></h2>
+<h2>sltiu<a class="headerlink" href="#sltiu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -369,17 +322,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sltiu      rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Place the value 1 in register rd if register rs1 is less than the immediate when both are treated as unsigned numbers, else 0 is written to rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;u sext(immediate)</div>
 </div>
@@ -387,18 +340,8 @@
 </dl>
 </section>
 <section id="xori">
-<h2>xori<a class="headerlink" href="#xori" title="Permalink to this headline"></a></h2>
+<h2>xori<a class="headerlink" href="#xori" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -419,18 +362,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">xori       rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise XOR on register rs1 and the sign-extended 12-bit immediate and place the result in rd</div>
 <div class="line">Note, “XORI rd, rs1, -1” performs a bitwise logical inversion of register rs1(assembler pseudo-instruction NOT rd, rs)</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] ^ sext(immediate)</div>
 </div>
@@ -438,18 +381,8 @@
 </dl>
 </section>
 <section id="ori">
-<h2>ori<a class="headerlink" href="#ori" title="Permalink to this headline"></a></h2>
+<h2>ori<a class="headerlink" href="#ori" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -470,17 +403,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ori        rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise OR on register rs1 and the sign-extended 12-bit immediate and place the result in rd</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] | sext(immediate)</div>
 </div>
@@ -488,18 +421,8 @@
 </dl>
 </section>
 <section id="andi">
-<h2>andi<a class="headerlink" href="#andi" title="Permalink to this headline"></a></h2>
+<h2>andi<a class="headerlink" href="#andi" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -520,17 +443,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">andi       rd,rs1,imm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise AND on register rs1 and the sign-extended 12-bit immediate and place the result in rd</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &amp; sext(immediate)</div>
 </div>
@@ -538,18 +461,8 @@
 </dl>
 </section>
 <section id="slli">
-<h2>slli<a class="headerlink" href="#slli" title="Permalink to this headline"></a></h2>
+<h2>slli<a class="headerlink" href="#slli" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -572,18 +485,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">slli       rd,rs1,shamt</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate</div>
 <div class="line">In RV64, bit-25 is used to shamt[5].</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;&lt; shamt</div>
 </div>
@@ -591,18 +504,8 @@
 </dl>
 </section>
 <section id="srli">
-<h2>srli<a class="headerlink" href="#srli" title="Permalink to this headline"></a></h2>
+<h2>srli<a class="headerlink" href="#srli" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -625,18 +528,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">srli       rd,rs1,shamt</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate</div>
 <div class="line">In RV64, bit-25 is used to shamt[5].</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &gt;&gt;u shamt</div>
 </div>
@@ -644,18 +547,8 @@
 </dl>
 </section>
 <section id="srai">
-<h2>srai<a class="headerlink" href="#srai" title="Permalink to this headline"></a></h2>
+<h2>srai<a class="headerlink" href="#srai" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -678,18 +571,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">srai       rd,rs1,shamt</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of the immediate</div>
 <div class="line">In RV64, bit-25 is used to shamt[5].</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &gt;&gt;s shamt</div>
 </div>
@@ -697,18 +590,8 @@
 </dl>
 </section>
 <section id="add">
-<h2>add<a class="headerlink" href="#add" title="Permalink to this headline"></a></h2>
+<h2>add<a class="headerlink" href="#add" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -731,18 +614,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">add        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Adds the registers rs1 and rs2 and stores the result in rd.</div>
 <div class="line">Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] + x[rs2]</div>
 </div>
@@ -750,18 +633,8 @@
 </dl>
 </section>
 <section id="sub">
-<h2>sub<a class="headerlink" href="#sub" title="Permalink to this headline"></a></h2>
+<h2>sub<a class="headerlink" href="#sub" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -784,18 +657,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sub        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Subs the register rs2 from rs1 and stores the result in rd.</div>
 <div class="line">Arithmetic overflow is ignored and the result is simply the low XLEN bits of the result.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] - x[rs2]</div>
 </div>
@@ -803,18 +676,8 @@
 </dl>
 </section>
 <section id="sll">
-<h2>sll<a class="headerlink" href="#sll" title="Permalink to this headline"></a></h2>
+<h2>sll<a class="headerlink" href="#sll" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -837,17 +700,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sll        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs logical left shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;&lt; x[rs2]</div>
 </div>
@@ -855,18 +718,8 @@
 </dl>
 </section>
 <section id="slt">
-<h2>slt<a class="headerlink" href="#slt" title="Permalink to this headline"></a></h2>
+<h2>slt<a class="headerlink" href="#slt" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -889,17 +742,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">slt        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as signed numbers, else 0 is written to rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;s x[rs2]</div>
 </div>
@@ -907,18 +760,8 @@
 </dl>
 </section>
 <section id="sltu">
-<h2>sltu<a class="headerlink" href="#sltu" title="Permalink to this headline"></a></h2>
+<h2>sltu<a class="headerlink" href="#sltu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -941,17 +784,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sltu       rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Place the value 1 in register rd if register rs1 is less than register rs2 when both are treated as unsigned numbers, else 0 is written to rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &lt;u x[rs2]</div>
 </div>
@@ -959,18 +802,8 @@
 </dl>
 </section>
 <section id="xor">
-<h2>xor<a class="headerlink" href="#xor" title="Permalink to this headline"></a></h2>
+<h2>xor<a class="headerlink" href="#xor" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -993,17 +826,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">xor        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise XOR on registers rs1 and rs2 and place the result in rd</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] ^ x[rs2]</div>
 </div>
@@ -1011,18 +844,8 @@
 </dl>
 </section>
 <section id="srl">
-<h2>srl<a class="headerlink" href="#srl" title="Permalink to this headline"></a></h2>
+<h2>srl<a class="headerlink" href="#srl" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1045,17 +868,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">srl        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Logical right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &gt;&gt;u x[rs2]</div>
 </div>
@@ -1063,18 +886,8 @@
 </dl>
 </section>
 <section id="sra">
-<h2>sra<a class="headerlink" href="#sra" title="Permalink to this headline"></a></h2>
+<h2>sra<a class="headerlink" href="#sra" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1097,17 +910,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sra        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs arithmetic right shift on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &gt;&gt;s x[rs2]</div>
 </div>
@@ -1115,18 +928,8 @@
 </dl>
 </section>
 <section id="or">
-<h2>or<a class="headerlink" href="#or" title="Permalink to this headline"></a></h2>
+<h2>or<a class="headerlink" href="#or" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1149,17 +952,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">or         rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise OR on registers rs1 and rs2 and place the result in rd</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] | x[rs2]</div>
 </div>
@@ -1167,18 +970,8 @@
 </dl>
 </section>
 <section id="and">
-<h2>and<a class="headerlink" href="#and" title="Permalink to this headline"></a></h2>
+<h2>and<a class="headerlink" href="#and" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1201,17 +994,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">and        rd,rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Performs bitwise AND on registers rs1 and rs2 and place the result in rd</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = x[rs1] &amp; x[rs2]</div>
 </div>
@@ -1219,18 +1012,8 @@
 </dl>
 </section>
 <section id="fence">
-<h2>fence<a class="headerlink" href="#fence" title="Permalink to this headline"></a></h2>
+<h2>fence<a class="headerlink" href="#fence" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-28</p></td>
 <td><p>27-24</p></td>
@@ -1253,19 +1036,19 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fence pred, succ</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Used to order device I/O and memory accesses as viewed by other RISC-V harts and external devices or coprocessors.</div>
 <div class="line">Any combination of device input (I), device output (O), memory reads (R), and memory writes (W) may be ordered with respect to any combination of the same.</div>
 <div class="line">Informally, no other RISC-V hart or external device can observe any operation in the successor set following a FENCE before any operation in the predecessor set preceding the FENCE.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">Fence(pred, succ)</div>
 </div>
@@ -1273,18 +1056,8 @@
 </dl>
 </section>
 <section id="fence-i">
-<h2>fence.i<a class="headerlink" href="#fence-i" title="Permalink to this headline"></a></h2>
+<h2>fence.i<a class="headerlink" href="#fence-i" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1307,17 +1080,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">fence.i</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Provides explicit synchronization between writes to instruction memory and instruction fetches on the same hart.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">Fence(Store, Fetch)</div>
 </div>
@@ -1325,19 +1098,9 @@
 </dl>
 </section>
 <section id="csrrw">
-<h2>csrrw<a class="headerlink" href="#csrrw" title="Permalink to this headline"></a></h2>
+<h2>csrrw<a class="headerlink" href="#csrrw" title="Link to this heading"></a></h2>
 <p>atomic read/write CSR.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1358,12 +1121,12 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrw      rd,offset,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Atomically swaps values in the CSRs and integer registers.</div>
 <div class="line">CSRRW reads the old value of the CSR, zero-extends the value to XLEN bits, then writes it to integer register rd.</div>
@@ -1371,7 +1134,7 @@
 <div class="line">If rd=x0, then the instruction shall not read the CSR and shall not cause any of the side effects that might occur on a CSR read.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = CSRs[csr]; CSRs[csr] = x[rs1]; x[rd] = t</div>
 </div>
@@ -1379,19 +1142,9 @@
 </dl>
 </section>
 <section id="csrrs">
-<h2>csrrs<a class="headerlink" href="#csrrs" title="Permalink to this headline"></a></h2>
+<h2>csrrs<a class="headerlink" href="#csrrs" title="Link to this heading"></a></h2>
 <p>atomic read and set bits in CSR.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1412,12 +1165,12 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrs      rd,offset,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd.</div>
 <div class="line">The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be set in the CSR.</div>
@@ -1425,7 +1178,7 @@
 <div class="line">Other bits in the CSR are unaffected (though CSRs might have side effects when written).</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = CSRs[csr]; CSRs[csr] = t | x[rs1]; x[rd] = t</div>
 </div>
@@ -1433,19 +1186,9 @@
 </dl>
 </section>
 <section id="csrrc">
-<h2>csrrc<a class="headerlink" href="#csrrc" title="Permalink to this headline"></a></h2>
+<h2>csrrc<a class="headerlink" href="#csrrc" title="Link to this heading"></a></h2>
 <p>atomic read and clear bits in CSR.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1466,12 +1209,12 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrc      rd,offset,rs1</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Reads the value of the CSR, zero-extends the value to XLEN bits, and writes it to integer register rd.</div>
 <div class="line">The initial value in integer register rs1 is treated as a bit mask that specifies bit positions to be cleared in the CSR.</div>
@@ -1479,7 +1222,7 @@
 <div class="line">Other bits in the CSR are unaffected.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = CSRs[csr]; CSRs[csr] = t &amp;∼x[rs1]; x[rd] = t</div>
 </div>
@@ -1487,18 +1230,8 @@
 </dl>
 </section>
 <section id="csrrwi">
-<h2>csrrwi<a class="headerlink" href="#csrrwi" title="Permalink to this headline"></a></h2>
+<h2>csrrwi<a class="headerlink" href="#csrrwi" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1519,17 +1252,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrwi     rd,offset,uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Update the CSR using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = CSRs[csr]; CSRs[csr] = zimm</div>
 </div>
@@ -1537,18 +1270,8 @@
 </dl>
 </section>
 <section id="csrrsi">
-<h2>csrrsi<a class="headerlink" href="#csrrsi" title="Permalink to this headline"></a></h2>
+<h2>csrrsi<a class="headerlink" href="#csrrsi" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1569,17 +1292,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrsi     rd,offset,uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Set CSR bit using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = CSRs[csr]; CSRs[csr] = t | zimm; x[rd] = t</div>
 </div>
@@ -1587,18 +1310,8 @@
 </dl>
 </section>
 <section id="csrrci">
-<h2>csrrci<a class="headerlink" href="#csrrci" title="Permalink to this headline"></a></h2>
+<h2>csrrci<a class="headerlink" href="#csrrci" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1619,17 +1332,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">csrrci     rd,offset,uimm</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Clear CSR bit using an XLEN-bit value obtained by zero-extending a 5-bit unsigned immediate (uimm[4:0]) field encoded in the rs1 field.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t = CSRs[csr]; CSRs[csr] = t &amp;∼zimm; x[rd] = t</div>
 </div>
@@ -1637,18 +1350,8 @@
 </dl>
 </section>
 <section id="ecall">
-<h2>ecall<a class="headerlink" href="#ecall" title="Permalink to this headline"></a></h2>
+<h2>ecall<a class="headerlink" href="#ecall" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1671,18 +1374,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ecall</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Make a request to the supporting execution environment.</div>
 <div class="line">When executed in U-mode, S-mode, or M-mode, it generates an environment-call-from-U-mode exception, environment-call-from-S-mode exception, or environment-call-from-M-mode exception, respectively, and performs no other operation.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">RaiseException(EnvironmentCall)</div>
 </div>
@@ -1690,18 +1393,8 @@
 </dl>
 </section>
 <section id="ebreak">
-<h2>ebreak<a class="headerlink" href="#ebreak" title="Permalink to this headline"></a></h2>
+<h2>ebreak<a class="headerlink" href="#ebreak" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1724,18 +1417,18 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ebreak</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Used by debuggers to cause control to be transferred back to a debugging environment.</div>
 <div class="line">It generates a breakpoint exception and performs no other operation.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">RaiseException(Breakpoint)</div>
 </div>
@@ -1743,18 +1436,8 @@
 </dl>
 </section>
 <section id="uret">
-<h2>uret<a class="headerlink" href="#uret" title="Permalink to this headline"></a></h2>
+<h2>uret<a class="headerlink" href="#uret" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1777,17 +1460,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">uret</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Return from traps in U-mode, and URET copies UPIE into UIE, then sets UPIE.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ExceptionReturn(User)</div>
 </div>
@@ -1795,18 +1478,8 @@
 </dl>
 </section>
 <section id="sret">
-<h2>sret<a class="headerlink" href="#sret" title="Permalink to this headline"></a></h2>
+<h2>sret<a class="headerlink" href="#sret" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1829,17 +1502,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sret</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Return from traps in S-mode, and SRET copies SPIE into SIE, then sets SPIE.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ExceptionReturn(User)</div>
 </div>
@@ -1847,18 +1520,8 @@
 </dl>
 </section>
 <section id="mret">
-<h2>mret<a class="headerlink" href="#mret" title="Permalink to this headline"></a></h2>
+<h2>mret<a class="headerlink" href="#mret" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1881,17 +1544,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">mret</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Return from traps in M-mode, and MRET copies MPIE into MIE, then sets MPIE.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">ExceptionReturn(Machine)</div>
 </div>
@@ -1899,19 +1562,9 @@
 </dl>
 </section>
 <section id="wfi">
-<h2>wfi<a class="headerlink" href="#wfi" title="Permalink to this headline"></a></h2>
+<h2>wfi<a class="headerlink" href="#wfi" title="Link to this heading"></a></h2>
 <p>wait for interrupt.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1934,12 +1587,12 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">wfi</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Provides a hint to the implementation that the current hart can be stalled until an interrupt   might need servicing.</div>
 <div class="line">Execution of the WFI instruction can also be used to inform the hardware platform that suitable interrupts should preferentially be routed to this hart.</div>
@@ -1947,7 +1600,7 @@
 <div class="line">This instruction may raise an illegal instruction exception when TW=1 in mstatus.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">while (noInterruptsPending) idle</div>
 </div>
@@ -1955,18 +1608,8 @@
 </dl>
 </section>
 <section id="sfence-vma">
-<h2>sfence.vma<a class="headerlink" href="#sfence-vma" title="Permalink to this headline"></a></h2>
+<h2>sfence.vma<a class="headerlink" href="#sfence-vma" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -1989,12 +1632,12 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sfence.vma rs1,rs2</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Guarantees that any previous stores already visible to the current RISC-V hart are ordered before all subsequent implicit references from that hart to the memory-management data structures.</div>
 <div class="line">The SFENCE.VMA is used to flush any local hardware caches related to address translation.</div>
@@ -2002,7 +1645,7 @@
 <div class="line">SFENCE.VMA is also used by higher privilege levels to synchronize page table writes and the address translation hardware.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">Fence(Store, AddressTranslation)</div>
 </div>
@@ -2010,18 +1653,8 @@
 </dl>
 </section>
 <section id="lb">
-<h2>lb<a class="headerlink" href="#lb" title="Permalink to this headline"></a></h2>
+<h2>lb<a class="headerlink" href="#lb" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2042,17 +1675,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lb         rd,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Loads a 8-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(M[x[rs1] + sext(offset)][7:0])</div>
 </div>
@@ -2060,18 +1693,8 @@
 </dl>
 </section>
 <section id="lh">
-<h2>lh<a class="headerlink" href="#lh" title="Permalink to this headline"></a></h2>
+<h2>lh<a class="headerlink" href="#lh" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2092,17 +1715,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lh         rd,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Loads a 16-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(M[x[rs1] + sext(offset)][15:0])</div>
 </div>
@@ -2110,18 +1733,8 @@
 </dl>
 </section>
 <section id="lw">
-<h2>lw<a class="headerlink" href="#lw" title="Permalink to this headline"></a></h2>
+<h2>lw<a class="headerlink" href="#lw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2142,17 +1755,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lw         rd,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Loads a 32-bit value from memory and sign-extends this to XLEN bits before storing it in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = sext(M[x[rs1] + sext(offset)][31:0])</div>
 </div>
@@ -2160,18 +1773,8 @@
 </dl>
 </section>
 <section id="lbu">
-<h2>lbu<a class="headerlink" href="#lbu" title="Permalink to this headline"></a></h2>
+<h2>lbu<a class="headerlink" href="#lbu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2192,17 +1795,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lbu        rd,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Loads a 8-bit value from memory and zero-extends this to XLEN bits before storing it in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = M[x[rs1] + sext(offset)][7:0]</div>
 </div>
@@ -2210,18 +1813,8 @@
 </dl>
 </section>
 <section id="lhu">
-<h2>lhu<a class="headerlink" href="#lhu" title="Permalink to this headline"></a></h2>
+<h2>lhu<a class="headerlink" href="#lhu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2242,17 +1835,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">lhu        rd,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Loads a 16-bit value from memory and zero-extends this to XLEN bits before storing it in register rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = M[x[rs1] + sext(offset)][15:0]</div>
 </div>
@@ -2260,18 +1853,8 @@
 </dl>
 </section>
 <section id="sb">
-<h2>sb<a class="headerlink" href="#sb" title="Permalink to this headline"></a></h2>
+<h2>sb<a class="headerlink" href="#sb" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 13%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 24%" />
-<col style="width: 11%" />
-<col style="width: 7%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2293,17 +1876,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sb         rs2,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store 8-bit, values from the low bits of register rs2 to memory.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[rs1] + sext(offset)] = x[rs2][7:0]</div>
 </div>
@@ -2311,18 +1894,8 @@
 </dl>
 </section>
 <section id="sh">
-<h2>sh<a class="headerlink" href="#sh" title="Permalink to this headline"></a></h2>
+<h2>sh<a class="headerlink" href="#sh" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 13%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 24%" />
-<col style="width: 11%" />
-<col style="width: 7%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2344,17 +1917,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sh         rs2,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store 16-bit, values from the low bits of register rs2 to memory.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[rs1] + sext(offset)] = x[rs2][15:0]</div>
 </div>
@@ -2362,18 +1935,8 @@
 </dl>
 </section>
 <section id="sw">
-<h2>sw<a class="headerlink" href="#sw" title="Permalink to this headline"></a></h2>
+<h2>sw<a class="headerlink" href="#sw" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 13%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 24%" />
-<col style="width: 11%" />
-<col style="width: 7%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2395,17 +1958,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">sw         rs2,offset(rs1)</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Store 32-bit, values from the low bits of register rs2 to memory.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">M[x[rs1] + sext(offset)] = x[rs2][31:0]</div>
 </div>
@@ -2413,18 +1976,8 @@
 </dl>
 </section>
 <section id="jal">
-<h2>jal<a class="headerlink" href="#jal" title="Permalink to this headline"></a></h2>
+<h2>jal<a class="headerlink" href="#jal" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2444,17 +1997,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">jal        rd,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Jump to address and place return address in rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">x[rd] = pc+4; pc += sext(offset)</div>
 </div>
@@ -2462,18 +2015,8 @@
 </dl>
 </section>
 <section id="jalr">
-<h2>jalr<a class="headerlink" href="#jalr" title="Permalink to this headline"></a></h2>
+<h2>jalr<a class="headerlink" href="#jalr" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2494,17 +2037,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">jalr       rd,rs1,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Jump to address and place return address in rd.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">t =pc+4; pc=(x[rs1]+sext(offset))&amp;∼1; x[rd]=t</div>
 </div>
@@ -2512,18 +2055,8 @@
 </dl>
 </section>
 <section id="beq">
-<h2>beq<a class="headerlink" href="#beq" title="Permalink to this headline"></a></h2>
+<h2>beq<a class="headerlink" href="#beq" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2545,17 +2078,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">beq        rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 and rs2 are equal.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] == x[rs2]) pc += sext(offset)</div>
 </div>
@@ -2563,18 +2096,8 @@
 </dl>
 </section>
 <section id="bne">
-<h2>bne<a class="headerlink" href="#bne" title="Permalink to this headline"></a></h2>
+<h2>bne<a class="headerlink" href="#bne" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2596,17 +2119,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">bne        rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 and rs2 are not equal.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] != x[rs2]) pc += sext(offset)</div>
 </div>
@@ -2614,18 +2137,8 @@
 </dl>
 </section>
 <section id="blt">
-<h2>blt<a class="headerlink" href="#blt" title="Permalink to this headline"></a></h2>
+<h2>blt<a class="headerlink" href="#blt" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2647,17 +2160,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">blt        rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 is less than rs2, using signed comparison.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] &lt;s x[rs2]) pc += sext(offset)</div>
 </div>
@@ -2665,18 +2178,8 @@
 </dl>
 </section>
 <section id="bge">
-<h2>bge<a class="headerlink" href="#bge" title="Permalink to this headline"></a></h2>
+<h2>bge<a class="headerlink" href="#bge" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2698,17 +2201,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">bge        rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 is greater than or equal to rs2, using signed comparison.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] &gt;=s x[rs2]) pc += sext(offset)</div>
 </div>
@@ -2716,18 +2219,8 @@
 </dl>
 </section>
 <section id="bltu">
-<h2>bltu<a class="headerlink" href="#bltu" title="Permalink to this headline"></a></h2>
+<h2>bltu<a class="headerlink" href="#bltu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2749,17 +2242,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">bltu       rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 is less than rs2, using unsigned comparison.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] &lt;u x[rs2]) pc += sext(offset)</div>
 </div>
@@ -2767,18 +2260,8 @@
 </dl>
 </section>
 <section id="bgeu">
-<h2>bgeu<a class="headerlink" href="#bgeu" title="Permalink to this headline"></a></h2>
+<h2>bgeu<a class="headerlink" href="#bgeu" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 27%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>31-27</p></td>
 <td><p>26-25</p></td>
@@ -2800,17 +2283,17 @@
 </tbody>
 </table>
 <dl class="field-list">
-<dt class="field-odd">Format</dt>
+<dt class="field-odd">Format<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">bgeu       rs1,rs2,offset</div>
 </div>
 </dd>
-<dt class="field-even">Description</dt>
+<dt class="field-even">Description<span class="colon">:</span></dt>
 <dd class="field-even"><div class="line-block">
 <div class="line">Take the branch if registers rs1 is greater than or equal to rs2, using unsigned comparison.</div>
 </div>
 </dd>
-<dt class="field-odd">Implementation</dt>
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
 <div class="line">if (x[rs1] &gt;=u x[rs2]) pc += sext(offset)</div>
 </div>
