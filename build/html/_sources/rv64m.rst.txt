@@ -90,7 +90,7 @@ remw
   | remw       rd,rs1,rs2
 
 :Description:
-  | perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.
+  | perform an 32 bits by 32 bits signed integer remainder of rs1 by rs2.
 
 :Implementation:
   | x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])
@@ -114,7 +114,7 @@ remuw
   | remuw      rd,rs1,rs2
 
 :Description:
-  | perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.
+  | perform an 32 bits by 32 bits unsigned integer remainder of rs1 by rs2.
 
 :Implementation:
   | x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])

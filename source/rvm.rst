@@ -165,7 +165,7 @@ rem
   | rem        rd,rs1,rs2
 
 :Description:
-  | perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.
+  | perform an XLEN bits by XLEN bits signed integer remainder of rs1 by rs2.
 
 :Implementation:
   | x[rd] = x[rs1] %s x[rs2]
@@ -189,7 +189,7 @@ remu
   | remu       rd,rs1,rs2
 
 :Description:
-  | perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.
+  | perform an XLEN bits by XLEN bits unsigned integer remainder of rs1 by rs2.
 
 :Implementation:
   | x[rd] = x[rs1] %u x[rs2]
