@@ -10,7 +10,7 @@ $(PROJECT).html: $(SOURCE)
 		-a stylesheet=readthedocs.css \
 		-r asciidoctor-diagram \
 		index.adoc \
-		-o ../docs/index.html
+		-o ../$@
 
 $(PROJECT).pdf: $(SOURCE)
 	asciidoctor-pdf -r asciidoctor-diagram -a compress source/index.adoc -o $@
