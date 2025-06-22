@@ -1,0 +1,226 @@
+== RV32M, RV64M Instructions
+
+=== mul
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+
+Format::
+--
+	mul rd,rs1,rs2
+--
+
+Description::
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the lower XLEN bits in the destination register.
+
+Implementation::
+--
+	x[rd] = x[rs1] × x[rs2]
+--
+
+=== mulh
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	mulh rd,rs1,rs2
+--
+
+Description::
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by signed rs2 and places the upper XLEN bits in the destination register.
+
+Implementation::
+--
+	x[rd] = (x[rs1] s×s x[rs2]) >>s XLEN
+--
+
+=== mulhsu
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x2},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	mulhsu rd,rs1,rs2
+--
+
+Description::
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of signed rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+
+Implementation::
+--
+	x[rd] = (x[rs1] s latexmath:[$\times$] x[rs2]) >>s XLEN
+--
+
+=== mulhu
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	mulhu rd,rs1,rs2
+--
+
+Description::
+performs an XLEN-bit latexmath:[$\times$] XLEN-bit multiplication of unsigned rs1 by unsigned rs2 and places the upper XLEN bits in the destination register.
+
+Implementation::
+--
+	x[rd] = (x[rs1] u latexmath:[$\times$] x[rs2]) >>u XLEN
+--
+
+=== div
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x4},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	div rd,rs1,rs2
+--
+
+Description::
+perform an XLEN bits by XLEN bits signed integer division of rs1 by rs2, rounding towards zero.
+
+Implementation::
+--
+	x[rd] = x[rs1] /s x[rs2]
+--
+
+=== divu
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	divu rd,rs1,rs2
+--
+
+Description::
+perform an XLEN bits by XLEN bits unsigned integer division of rs1 by rs2, rounding towards zero.
+
+Implementation::
+--
+	x[rd] = x[rs1] /u x[rs2]
+--
+
+=== rem
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x6},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	rem rd,rs1,rs2
+--
+
+Description::
+perform an XLEN bits by XLEN bits signed integer reminder of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = x[rs1] %s x[rs2]
+--
+
+=== remu
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x33, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x7},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	remu rd,rs1,rs2
+--
+
+Description::
+perform an XLEN bits by XLEN bits unsigned integer reminder of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = x[rs1] %u x[rs2]
+--

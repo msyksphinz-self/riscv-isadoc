@@ -1,0 +1,105 @@
+== RV64F Instructions
+
+=== fcvt.l.s
+
+cccc|
+
+[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
+|===
+|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
+|11000 |00 |00010 |rs1 |rm |rd |10100 |11
+|===
+
+Format::
+  [verse]
+  --
+  fcvt.l.s rd,rs1
+  --
+Description::
+  [verse]
+  --
+
+  --
+Implementation::
+  [verse]
+  --
+  x[rd] = link:[s64]\{f32}(f[rs1])
+  --
+
+=== fcvt.lu.s
+
+cccc|
+
+[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
+|===
+|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
+|11000 |00 |00011 |rs1 |rm |rd |10100 |11
+|===
+
+Format::
+  [verse]
+  --
+  fcvt.lu.s rd,rs1
+  --
+Description::
+  [verse]
+  --
+
+  --
+Implementation::
+  [verse]
+  --
+  x[rd] = link:[u64]\{f32}(f[rs1])
+  --
+
+=== fcvt.s.l
+
+cccc|
+
+[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
+|===
+|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
+|11010 |00 |00010 |rs1 |rm |rd |10100 |11
+|===
+
+Format::
+  [verse]
+  --
+  fcvt.s.l rd,rs1
+  --
+Description::
+  [verse]
+  --
+
+  --
+Implementation::
+  [verse]
+  --
+  f[rd] = link:[f32]\{s64}(x[rs1])
+  --
+
+=== fcvt.s.lu
+
+cccc|
+
+[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
+|===
+|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
+|11010 |00 |00011 |rs1 |rm |rd |10100 |11
+|===
+
+Format::
+  [verse]
+  --
+  fcvt.s.lu rd,rs1
+  --
+Description::
+  [verse]
+  --
+
+  --
+Implementation::
+  [verse]
+  --
+  f[rd] = link:[f32]\{u64}(x[rs1])
+  --

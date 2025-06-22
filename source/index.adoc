@@ -1,0 +1,38 @@
+= RISC-V Instruction Set Specifications
+:toc: left
+:description: RISC-V Instruction Set Specifications
+:company: RISC-V
+// Pull in variable with revision info
+:url-riscv: http://riscv.org
+//:doctype: manpage
+//:doctype: book
+:doctype: article
+//:doctype: inline
+
+:imagesdir: images
+
+// needs to be changed
+:WaveDromEditorApp: ~/wavedrom-cli/cli/wavedrom-cli.js
+:imagesoutdir: ../docs/images
+:icons: font
+:lang: en
+:listing-caption: Listing
+:sectnums:
+:toclevels: 4
+:source-highlighter: pygments
+ifdef::backend-pdf[]
+:source-highlighter: coderay
+endif::[]
+
+include::rvi.adoc[]
+include::rv64i.adoc[]
+include::rvm.adoc[]
+include::rv64m.adoc[]
+include::rva.adoc[]
+include::rv64a.adoc[]
+include::rvfd.adoc[]
+include::rv64f.adoc[]
+include::rv64d.adoc[]
+include::rvc.adoc[]
+
+include::regs.adoc[]

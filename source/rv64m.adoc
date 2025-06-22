@@ -1,0 +1,137 @@
+== RV64M Instructions
+
+=== mulw
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	mulw rd,rs1,rs2
+--
+
+Description::
+
+Implementation::
+--
+	x[rd] = sext((x[rs1] × x[rs2])[31:0])
+--
+
+=== divw
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x4},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	divw rd,rs1,rs2
+
+Description::
+perform an 32 bits by 32 bits signed integer division of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = sext(x[rs1][31:0] /s x[rs2][31:0]
+--
+
+=== divuw
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x5},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	divuw rd,rs1,rs2
+
+Description::
+perform an 32 bits by 32 bits unsigned integer division of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = sext(x[rs1][31:0] /u x[rs2][31:0])
+--
+
+=== remw
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x6},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+
+Format::
+--
+	remw rd,rs1,rs2
+
+Description::
+perform an 32 bits by 32 bits signed integer reminder of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = sext(x[rs1][31:0] %s x[rs2][31:0])
+--
+
+=== remuw
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x3b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x7},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 0x01},
+]}
+....
+
+Format::
+--
+	remuw rd,rs1,rs2
+
+Description::
+perform an 32 bits by 32 bits unsigned integer reminder of rs1 by rs2.
+
+Implementation::
+--
+	x[rd] = sext(x[rs1][31:0] %u x[rs2][31:0])
+--
