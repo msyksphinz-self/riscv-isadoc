@@ -4909,7 +4909,7 @@ Arithmetic overflow is ignored and the low 32-bits of the result is sign-extende
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform negated single-precision fused multiply subtraction.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -4965,7 +4965,7 @@ Arithmetic overflow is ignored and the low 32-bits of the result is sign-extende
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform negated single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -5752,7 +5752,7 @@ The result’s sign bit is XOR of sign bit of rs1 and rs2.&#8201;&#8212;&#8201;<
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet equal comparison between single-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -5810,7 +5810,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less comparison between single-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -5868,7 +5868,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less or equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less or equal comparison between single-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -5926,7 +5926,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Examines the value in floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
+<p>[verse]&#8201;&#8212;&#8201;Examines the value in single-precision floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
 The format of the mask is described in [classify table]_.
 The corresponding bit in rd will be set if the property is true and clear otherwise.
 All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#8201;&#8212;&#8201;</p>
@@ -6153,7 +6153,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6209,7 +6209,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision fused multiply subtraction.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6265,7 +6265,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform negated double-precision fused multiply subtraction.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6321,7 +6321,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform negated double-precision fused multiply addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6377,7 +6377,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision floating-point addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision floating-point addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6433,7 +6433,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision floating-point addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision floating-point addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6489,7 +6489,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision floating-point addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision floating-point addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6545,7 +6545,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision floating-point addition.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision floating-point addition.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6601,7 +6601,7 @@ All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Perform single-precision square root.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Perform double-precision square root.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6828,7 +6828,7 @@ The result’s sign bit is XOR of sign bit of rs1 and rs2.&#8201;&#8212;&#8201;<
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Write the smaller of single precision data in rs1 and rs2 to rd.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Write the smaller of double precision data in rs1 and rs2 to rd.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -6884,7 +6884,7 @@ The result’s sign bit is XOR of sign bit of rs1 and rs2.&#8201;&#8212;&#8201;<
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Write the larger of single precision data in rs1 and rs2 to rd.&#8201;&#8212;&#8201;</p>
+<p>[verse]&#8201;&#8212;&#8201;Write the larger of double precision data in rs1 and rs2 to rd.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Implementation</dt>
 <dd>
@@ -7052,7 +7052,7 @@ The result’s sign bit is XOR of sign bit of rs1 and rs2.&#8201;&#8212;&#8201;<
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet equal comparison between double-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -7110,7 +7110,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less comparison between double-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -7168,7 +7168,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less or equal comparison between floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+<p>[verse]&#8201;&#8212;&#8201;Performs a quiet less or equal comparison between double-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
 Only signaling NaN inputs cause an Invalid Operation exception.
 The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
@@ -7226,7 +7226,7 @@ The result is 0 if either operand is NaN.&#8201;&#8212;&#8201;</p>
 </dd>
 <dt class="hdlist1">Description</dt>
 <dd>
-<p>[verse]&#8201;&#8212;&#8201;Examines the value in floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
+<p>[verse]&#8201;&#8212;&#8201;Examines the value in double-precision floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
 The format of the mask is described in table [classify table]_.
 The corresponding bit in rd will be set if the property is true and clear otherwise.
 All other bits in rd are cleared. Note that exactly one bit in rd will be set.&#8201;&#8212;&#8201;</p>
@@ -9847,7 +9847,7 @@ The shift amount is encoded in the shamt field, where shamt[5] must be zero for 
 <td class="tableblock halign-left valign-top"><p class="tableblock">1-0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">000</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uimm[5]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rd</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uimm[4:0]</p></td>
