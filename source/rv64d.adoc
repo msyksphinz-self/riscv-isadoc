@@ -2,144 +2,186 @@
 
 === fcvt.l.d
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11000 |01 |00010 |rs1 |rm |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fcvt.l.d rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fcvt.l.d rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
-  x[rd] = link:[s64]\{f64}(f[rs1])
-  --
+--
+  x[rd] = f64->s64(f[rs1])
+--
 
 === fcvt.lu.d
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11000 |01 |00011 |rs1 |rm |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x3},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fcvt.lu.d rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fcvt.lu.d rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
-  x[rd] = link:[u64]\{f64}(f[rs1])
-  --
+--
+x[rd] = f64->u64(f[rs1])
+--
 
 === fmv.x.d
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11100 |01 |00000 |rs1 |000 |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x1c, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fmv.x.d rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fmv.x.d rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = f[rs1][63:0]
-  --
+--
 
 === fcvt.d.l
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11010 |01 |00010 |rs1 |rm |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fcvt.d.l rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fcvt.d.l rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
-  f[rd] = link:[f64]\{s64}(x[rs1])
-  --
+--
+  f[rd] = s64->f64(x[rs1])
+--
 
 === fcvt.d.lu
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11010 |01 |00011 |rs1 |rm |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x3},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fcvt.d.lu rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fcvt.d.lu rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
-  f[rd] = link:[f64]\{u64}(x[rs1])
-  --
+--
+  f[rd] = u64->f64(x[rs1])
+--
 
 === fmv.d.x
 
-[width="66%",cols="16%,12%,12%,12%,12%,12%,12%,12%",]
-|===
-|31-27 |26-25 |24-20 |19-15 |14-12 |11-7 |6-2 |1-0
-|11110 |01 |00000 |rs1 |000 |rd |10100 |11
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x1e, attr: 'funct5'},
+]}
+....
 
 Format::
-  [verse]
-  --
-  fmv.d.x rd,rs1
-  --
-Description::
-  [verse]
-  --
+--
+fmv.d.x rd,rs1
+--
 
-  --
+Description::
+--
+
+--
+
 Implementation::
-  [verse]
-  --
+--
   f[rd] = x[rs1][63:0]
-  --
+--
