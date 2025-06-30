@@ -641,7 +641,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x1},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
@@ -673,7 +673,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x2},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
@@ -704,7 +704,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x3},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
@@ -733,7 +733,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x5},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
@@ -759,7 +759,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x6},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
@@ -785,7 +785,7 @@ Encoding::
   {bits:  5, name: 'rd', type: 2},
   {bits:  3, name: 0x7},
   {bits:  5, name: 'rs1', type: 2},
-  {bits: 12, name: 'csr', type: 2}
+  {bits: 12, name: 'csr', type: 4}
 ]}
 ....
 
