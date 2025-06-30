@@ -2,1321 +2,1386 @@
 
 === c.addi4spn
 
-cccc|
-
-[width="38%",cols="26%,32%,21%,21%",]
-|===
-|15-13 |12-5 |4-2 |1-0
-|000 |imm |rd' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  8, name: 'uimm[5:4|9:6|2|3]'},
+  {bits:  3, name: 0x0, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.addi4spn rd',uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add a zero-extended non-zero immediate, scaled by 4, to the stack pointer, x2, and writes the result to rd'.
-  This instruction is used to generate pointers to stack-allocated variables, and expands to addi rd', x2, nzuimm[9:2].
-  --
+Add a zero-extended non-zero immediate, scaled by 4, to the stack pointer, x2, and writes the result to rd'.
+This instruction is used to generate pointers to stack-allocated variables, and expands to addi rd', x2, nzuimm[9:2].
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[2] + uimm
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addi x2,x2,nzimm[9:4]
-  --
+--
 
 === c.fld
 
-cccc|
-
-[width="59%",cols="17%,25%,13%,23%,11%,11%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|001 |uimm[5:3] |rs1' |uimm[7:6] |rd' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[7:6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x1, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.fld rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a double-precision floating-point value from memory into floating-point register rd'.
-  It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
-  --
+Load a double-precision floating-point value from memory into floating-point register rd'.
+It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   f[8+rd'] = M[x[8+rs1'] + uimm][63:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   fld rd',offset[7:3](rs1')
-  --
+--
 
 === c.lw
 
-cccc|
-
-[width="59%",cols="17%,25%,13%,23%,11%,11%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|010 |uimm[5:3] |rs1' |uimm[2|6] |rd' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[2|6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x2, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.lw rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a 32-bit value from memory into register rd'. It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
-  --
+Load a 32-bit value from memory into register rd'. It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = sext(M[x[8+rs1'] + uimm][31:0])
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   lw rd',offset[6:2](rs1')
-  --
+--
 
 === c.flw
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[2|6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
-[width="59%",cols="17%,25%,13%,23%,11%,11%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|011 |uimm[5:3] |rs1' |uimm[2|6] |rd' |00
-|===
 
 Format::
-  [verse]
-  --
+--
   c.flw rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a single-precision floating-point value from memory into floating-point register rd'.
-  It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
-  --
+Load a single-precision floating-point value from memory into floating-point register rd'.
+It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   f[8+rd'] = M[x[8+rs1'] + uimm][31:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   lw rd',offset[6:2](rs1')
-  --
+--
 
 === c.ld
 
-cccc|
-
-[width="59%",cols="17%,25%,13%,23%,11%,11%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|011 |uimm[5:3] |rs1' |uimm[7:6] |rd' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[7:6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.ld rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a 64-bit value from memory into register rd'.
-  It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
-  --
+Load a 64-bit value from memory into register rd'.
+It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
+--
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = M[x[8+rs1'] + uimm][63:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   ld rd', offset[7:3](rs1')
-  --
+--
 
 === c.fsd
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[7:6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x5, attr: 'funct3'},
+]}
+....
 
-[width="59%",cols="17%,25%,13%,23%,11%,11%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|101 |uimm[5:3] |rs1' |uimm[7:6] |rd' |00
-|===
 
 Format::
-  [verse]
-  --
+--
   c.fsd rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a double-precision floating-point value in floating-point register rs2' to memory.
-  It computes an effective address by adding the zeroextended offset, scaled by 8, to the base address in register rs1'.
-  --
+Store a double-precision floating-point value in floating-point register rs2' to memory.
+It computes an effective address by adding the zeroextended offset, scaled by 8, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[8+rs1'] + uimm][63:0] = f[8+rs2']
-  --
+---
+
 Expansion::
-  [verse]
-  --
+--
   fsd rs2',offset[7:3](rs1')
-  --
+--
 
 === c.sw
 
-cccc|
-
-[width="62%",cols="15%,24%,13%,22%,13%,13%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|110 |uimm[5:3] |rs1' |uimm[2|6] |rs2' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[2|6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x6, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.sw rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a 32-bit value in register rs2' to memory.
-  It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
-  --
+Store a 32-bit value in register rs2' to memory.
+It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[8+rs1'] + uimm][31:0] = x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   sw rs2',offset[6:2](rs1')
-  --
+--
 
 === c.fsw
 
-cccc|
-
-[width="62%",cols="15%,24%,13%,22%,13%,13%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|111 |uimm[5:3] |rs1' |uimm[2|6] |rs2' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[2|6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x7, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.fsw rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a single-precision floating-point value in floatingpoint register rs2' to memory.
+Store a single-precision floating-point value in floatingpoint register rs2' to memory.
   It computes an effective address by adding the zero-extended offset, scaled by 4, to the base address in register rs1'.
-  --
+
 Implementation::
-  [verse]
-  --
+--
   M[x[8+rs1'] + uimm][31:0] = f[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   fsw rs2', offset[6:2](rs1')
-  --
+--
 
 === c.sd
 
-cccc|
-
-[width="62%",cols="15%,24%,13%,22%,13%,13%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|111 |uimm[5:3] |rs1' |uimm[7:6] |rs2' |00
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x0, attr: 'op'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 'uimm[7:6]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'uimm[5:3]'},
+  {bits:  3, name: 0x7, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.sd rd',uimm(rs1')
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a 64-bit value in register rs2' to memory.
-  It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
-  --
+Store a 64-bit value in register rs2' to memory.
+It computes an effective address by adding the zero-extended offset, scaled by 8, to the base address in register rs1'.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[8+rs1'] + uimm][63:0] = x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   sd rs2', offset[7:3](rs1')
-  --
+--
 
 === c.nop
 
-cccc|
-
-[width="62%",cols="15%,24%,13%,22%,13%,13%",]
-|===
-|15-13 |12-10 |9-7 |6-5 |4-2 |1-0
-|000 |0 |0 |0 |0 |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 0x0},
+  {bits:  2, name: 0x0},
+  {bits:  3, name: 0x0},
+  {bits:  3, name: 0x0},
+  {bits:  3, name: 0x0},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.nop
-  --
+--
+
 Description::
-  [verse]
-  --
-  Does not change any user-visible state, except for advancing the pc.
-  --
+Does not change any user-visible state, except for advancing the pc.
+
 Implementation::
-  [verse]
-  --
+--
   None
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addi x0, x0, 0
-  --
+--
 
 === c.addi
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'nzimm[4:0]'},
+  {bits:  5, name: 'rs1/rd != 0', type: 2},
+  {bits:  1, name: 'nzimm[5]'},
+  {bits:  3, name: 0x0, attr: 'funct3'},
+]}
+....
 
-[width="58%",cols="16%,26%,23%,26%,9%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|000 |nzimm[5] |rs1/rd!=0 |nzimm[4:0] |01
-|===
 
 Format::
-  [verse]
-  --
+--
   c.addi rd,u[12:12]|u[6:2]
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add the non-zero sign-extended 6-bit immediate to the value in register rd then writes the result to rd.
-  --
+Add the non-zero sign-extended 6-bit immediate to the value in register rd then writes the result to rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = x[rd] + sext(imm)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addi rd, rd, nzimm[5:0]
-  --
+--
 
 === c.jal
 
-cccc|
-
-[width="58%",cols="15%,76%,9%",]
-|===
-|15-13 |12-2 |1-0
-|001 |imm[119:863:1|5] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits: 11, name: 'imm[11|4|9:8|10|6|7|3:1|5]'},
+  {bits:  3, name: 0x1, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.jal offset
-  --
+--
+
 Description::
-  [verse]
-  --
-  Jump to address and place return address in rd.
-  --
+Jump to address and place return address in rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[1] = pc+2; pc += sext(offset)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   jal x1, offset[11:1]
-  --
+--
 
 === c.addiw
 
-cccc|
-
-[width="44%",cols="21%,21%,18%,28%,12%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|001 |imm[5] |rd |imm[4:0] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[4:0]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'imm[5]'},
+  {bits:  3, name: 0x1, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.addiw rd,imm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add the non-zero sign-extended 6-bit immediate to the value in register rd then produce 32-bit result, then sign-extends result to 64 bits.
-  --
+Add the non-zero sign-extended 6-bit immediate to the value in register rd then produce 32-bit result, then sign-extends result to 64 bits.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext((x[rd] + sext(imm))[31:0])
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addiw rd,rd,imm[5:0]
-  --
+--
 
 === c.li
 
-cccc|
-
-[width="44%",cols="21%,21%,18%,28%,12%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|010 |imm[5] |rd |imm[4:0] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[4:0]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'imm[5]'},
+  {bits:  3, name: 0x2, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.li rd,uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load the sign-extended 6-bit immediate, imm, into register rd.
-  C.LI is only valid when rd!=x0.
-  --
+Load the sign-extended 6-bit immediate, imm, into register rd.
+C.LI is only valid when rd!=x0.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(imm)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addi rd,x0,imm[5:0]
-  --
+--
 
 === c.addi16sp
 
-cccc|
-
-[width="52%",cols="18%,18%,15%,39%,10%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|011 |imm[9] |00010 |imm[48:7|5] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[4|6|8:7|5]'},
+  {bits:  5, name: 0x2},
+  {bits:  1, name: 'imm[9]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.addi16sp imm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add the non-zero sign-extended 6-bit immediate to the value in the stack pointer (sp=x2), where the immediate is scaled to represent multiples of 16 in the range (-512,496).
-  --
+Add the non-zero sign-extended 6-bit immediate to the value in the stack pointer (sp=x2), where the immediate is scaled to represent multiples of 16 in the range (-512,496).
+
 Implementation::
-  [verse]
-  --
+--
   x[2] = x[2] + sext(imm)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addi x2,x2, nzimm[9:4]
-  --
+--
 
 === c.lui
 
-cccc|
-
-[width="48%",cols="19%,22%,17%,31%,11%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|011 |imm[17] |rd |imm[16:12] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[16:12]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'imm[17]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.lui rd,uimm
-  --
-Description::
-  [verse]
-  --
+--
 
-  --
+Description::
+
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(imm[17:12] << 12)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   lui rd,nzuimm[17:12]
-  --
+--
 
 === c.srli
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'uimm[4:0]'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x0},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
-[width="54%",cols="18%,20%,15%,12%,25%,10%",]
-|===
-|15-13 |12 |11-10 |9-7 |6-2 |1-0
-|100 |uimm[5] |00 |rd' |uimm[4:0] |01
-|===
 
 Format::
-  [verse]
-  --
+--
   c.srli rd',uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Perform a logical right shift of the value in register rd' then writes the result to rd'.
-  The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
-  --
+Perform a logical right shift of the value in register rd' then writes the result to rd'.
+The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] >>u uimm
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   srli rd',rd',64
-  --
+--
 
 === c.srai
 
-cccc|
-
-[width="54%",cols="18%,20%,15%,12%,25%,10%",]
-|===
-|15-13 |12 |11-10 |9-7 |6-2 |1-0
-|100 |uimm[5] |01 |rd' |uimm[4:0] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'uimm[4:0]'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x1},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.srai rd',uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Perform a arithmetic right shift of the value in register rd' then writes the result to rd'.
-  The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
-  --
+Perform a arithmetic right shift of the value in register rd' then writes the result to rd'.
+The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] >>s uimm
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   srai rd',rd',shamt[5:0]
-  --
+--
 
 === c.andi
 
-cccc|
-
-[width="54%",cols="18%,20%,15%,12%,25%,10%",]
-|===
-|15-13 |12 |11-10 |9-7 |6-2 |1-0
-|100 |uimm[5] |10 |rd' |uimm[4:0] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'uimm[4:0]'},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.andi rd',uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Compute the bitwise AND of of the value in register rd' and the sign-extended 6-bit immediate, then writes the result to rd'.
-  --
+Compute the bitwise AND of of the value in register rd' and the sign-extended 6-bit immediate, then writes the result to rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] & sext(imm)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   andi rd',rd',imm[5:0]
-  --
+--
 
 === c.sub
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100011 |rd' |00 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x0},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.sub rd',rd'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Subtract the value in register rs2' from the value in register rd', then writes the result to register rd'.
-  --
+Subtract the value in register rs2' from the value in register rd', then writes the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] - x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   sub rd',rd',rs2'
-  --
+--
 
 === c.xor
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100011 |rd' |01 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x1},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.xor rd',rd'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Compute the bitwise XOR of the values in registers rd' and rs2', then writes the result to register rd'.
-  --
+Compute the bitwise XOR of the values in registers rd' and rs2', then writes the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] ^ x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   xor rd',rd',rs2'
-  --
+--
 
 === c.or
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100011 |rd' |10 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x2},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.or rd',rd'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Compute the bitwise OR of the values in registers rd' and rs2', then writes the result to register rd'.
-  --
+Compute the bitwise OR of the values in registers rd' and rs2', then writes the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] | x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
    or rd',rd',rs2
-  --
+--
 
 === c.and
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100011 |rd' |11 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.and rd',rd'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Compute the bitwise AND of the values in registers rd' and rs2', then writes the result to register rd'.
-  --
+Compute the bitwise AND of the values in registers rd' and rs2', then writes the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = x[8+rd'] & x[8+rs2']
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   and rd',rd',rs2'
-  --
+--
 
 === c.subw
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100111 |rd' |00 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x0},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x1},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.subw rd',rs2'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Subtract the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.
-  --
+Subtract the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = sext((x[8+rd'] - x[8+rs2'])[31:0])
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   subw rd',rd',rs2'
-  --
+--
 
 === c.addw
 
-cccc|
-
-[width="38%",cols="27%,17%,14%,21%,21%",]
-|===
-|15-10 |9-7 |6-5 |4-2 |1-0
-|100111 |rd' |01 |rs2' |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  3, name: 'rs2\'', type: 2},
+  {bits:  2, name: 0x1},
+  {bits:  3, name: 'rd\'', type: 2},
+  {bits:  2, name: 0x3},
+  {bits:  1, name: 0x1},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.addw rd',rs2'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.
-  --
+Add the value in register rs2' from the value in register rd', then sign-extends the lower 32 bits of the difference before writing the result to register rd'.
+
 Implementation::
-  [verse]
-  --
+--
   x[8+rd'] = sext((x[8+rd'] + x[8+rs2'])[31:0])
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   addw rd',rd',rs2'
-  --
+--
 
 === c.j
 
-cccc|
-
-[width="58%",cols="15%,76%,9%",]
-|===
-|15-13 |12-2 |1-0
-|101 |imm[119:863:1|5] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits: 11, name: 'imm[11|4|9:8|10|6|7|3:1|5]'},
+  {bits:  3, name: 0x1, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.j offset
-  --
+--
+
 Description::
-  [verse]
-  --
-  Unconditional control transfer.
-  --
+Unconditional control transfer.
+
 Implementation::
-  [verse]
-  --
+--
   pc += sext(offset)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   jal x0,offset[11:1]
-  --
+--
 
 === c.beqz
 
-cccc|
-
-[width="66%",cols="14%,29%,12%,37%,8%",]
-|===
-|15-13 |12-10 |9-7 |6-2 |1-0
-|110 |offset[8|4:3] |rs1' |offset[7:65] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[7:6|2:1|5]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'imm[8|4:3]'},
+  {bits:  3, name: 0x6, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.beqz rs1',offset
-  --
+--
+
 Description::
-  [verse]
-  --
-  Take the branch if the value in register rs1' is zero.
-  --
+Take the branch if the value in register rs1' is zero.
+
 Implementation::
-  [verse]
-  --
+--
   if (x[8+rs1'] == 0) pc += sext(offset)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   beq rs1',x0,offset[8:1]
-  --
+--
 
 === c.bnez
 
-cccc|
-
-[width="66%",cols="14%,29%,12%,37%,8%",]
-|===
-|15-13 |12-10 |9-7 |6-2 |1-0
-|111 |offset[8|4:3] |rs1' |offset[7:65] |01
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x1, attr: 'op'},
+  {bits:  5, name: 'imm[7:6|2:1|5]'},
+  {bits:  3, name: 'rs1\'', type: 2},
+  {bits:  3, name: 'imm[8|4:3]'},
+  {bits:  3, name: 0x7, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.bnez rs1',offset
-  --
+--
+
 Description::
-  [verse]
-  --
-  Take the branch if the value in register rs1' is not zero.
-  --
+Take the branch if the value in register rs1' is not zero.
+
 Implementation::
-  [verse]
-  --
+--
   if (x[8+rs1'] != 0) pc += sext(offset)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   bne rs1',x0,offset[8:1]
-  --
+--
 
 === c.slli
 
-cccc|
-
-[width="48%",cols="19%,22%,17%,31%,11%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|000 |uimm[5] |rd |uimm[4:0] |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'uimm[4:0]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x0, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.slli rd,uimm
-  --
+--
+
 Description::
-  [verse]
-  --
-  Perform a logical left shift of the value in register rd then writes the result to rd.
-  The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
-  --
+Perform a logical left shift of the value in register rd then writes the result to rd.
+The shift amount is encoded in the shamt field, where shamt[5] must be zero for RV32C.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = x[rd] << uimm
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   slli rd,rd,shamt[5:0]
-  --
+--
 
 === c.fldsp
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'uimm[4:3|8:6]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x1, attr: 'funct3'},
+]}
+....
 
-[width="54%",cols="17%,20%,15%,38%,10%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|001 |uimm[5] |rd |uimm[4:3|8:6] |10
-|===
 
 Format::
-  [verse]
-  --
+--
   c.fldsp rd,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a double-precision floating-point value from memory into floating-point register rd.
-  It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
-  --
+Load a double-precision floating-point value from memory into floating-point register rd.
+It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
+
 Implementation::
-  [verse]
-  --
+--
   f[rd] = M[x[2] + uimm][63:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   fld rd,offset[8:3](x2)
-  --
+--
 
 === c.lwsp
 
-cccc|
-
-[width="54%",cols="17%,20%,15%,38%,10%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|010 |uimm[5] |rd |uimm[4:2|7:6] |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'uimm[4:2|7:6]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x2, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.lwsp rd,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a 32-bit value from memory into register rd. It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.
-  --
+Load a 32-bit value from memory into register rd. It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = sext(M[x[2] + uimm][31:0])
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   lw rd,offset[7:2](x2)
-  --
+--
 
 === c.flwsp
 
-cccc|
-
-[width="54%",cols="17%,20%,15%,38%,10%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|011 |uimm[5] |rd |uimm[4:2|7:6] |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'uimm[4:2|7:6]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.flwsp rd,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a single-precision floating-point value from memory into floating-point register rd.
+Load a single-precision floating-point value from memory into floating-point register rd.
   It computes its effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.
-  --
+
 Implementation::
-  [verse]
-  --
+--
   f[rd] = M[x[2] + uimm][31:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   flw rd,offset[7:2](x2)
-  --
+--
 
 === c.ldsp
 
-cccc|
-
-[width="54%",cols="17%,20%,15%,38%,10%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|011 |uimm[5] |rd |uimm[4:3|8:6] |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'uimm[4:3|8:6]'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 'uimm[5]'},
+  {bits:  3, name: 0x3, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.ldsp rd,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Load a 64-bit value from memory into register rd.
-  It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
-  --
+Load a 64-bit value from memory into register rd.
+It computes its effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = M[x[2] + uimm][63:0]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   ld rd,offset[8:3](x2)
-  --
+--
 
 === c.jr
 
-cccc|
-
-[width="43%",cols="22%,25%,19%,22%,12%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|100 |0 |rs1 |00000 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.jr rs1
-  --
+--
+
 Description::
-  [verse]
-  --
-  Performs an unconditional control transfer to the address in register rs1.
-  --
+Performs an unconditional control transfer to the address in register rs1.
+
 Implementation::
-  [verse]
-  --
+--
   pc = x[rs1]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   jalr x0,rs1,0
-  --
+--
 
 === c.mv
 
-cccc|
-
-[width="43%",cols="22%,25%,19%,22%,12%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|100 |0 |rs1 |rs2 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  1, name: 0x0},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.mv rd,rs2'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Copy the value in register rs2 into register rd.
-  --
+Copy the value in register rs2 into register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = x[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   add rd, x0, rs2
-  --
+--
 
 === c.ebreak
 
-cccc|
-
-[width="37%",cols="25%,14%,22%,25%,14%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|100 |1 |00000 |00000 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 0x0},
+  {bits:  5, name: 0x0},
+  {bits:  1, name: 0x1},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.ebreak
-  --
+--
+
 Description::
-  [verse]
-  --
-  Cause control to be transferred back to the debugging environment.
-  --
+Cause control to be transferred back to the debugging environment.
+
 Implementation::
-  [verse]
-  --
+--
   RaiseException(Breakpoint)
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   ebreak
-  --
+--
 
 === c.jalr
 
-cccc|
-
-[width="37%",cols="25%,14%,22%,25%,14%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|100 |1 |rs1 |00000 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  1, name: 0x1},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.jalr rd
-  --
+--
+
 Description::
-  [verse]
-  --
-  Jump to address and place return address in rd.
-  --
+Jump to address and place return address in rd.
+
 Implementation::
-  [verse]
-  --
+--
   t = pc+2; pc = x[rs1]; x[1] = t
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   jalr x1,rs1,0
-  --
+--
 
 === c.add
 
-cccc|
-
-[width="37%",cols="25%,14%,22%,25%,14%",]
-|===
-|15-13 |12 |11-7 |6-2 |1-0
-|100 |1 |rd |rs2 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  1, name: 0x1},
+  {bits:  3, name: 0x4, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.add rd,rs2'
-  --
+--
+
 Description::
-  [verse]
-  --
-  Add the values in registers rd and rs2 and writes the result to register rd.
-  --
+Add the values in registers rd and rs2 and writes the result to register rd.
+
 Implementation::
-  [verse]
-  --
+--
   x[rd] = x[rd] + x[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   add rd,rd,rs2
-  --
+--
 
 === c.fsdsp
 
-cccc|
-
-[width="45%",cols="19%,45%,18%,18%",]
-|===
-|15-13 |12-7 |4-2 |1-0
-|101 |uimm[5:3|8:6] |rs2 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  6, name: 'uimm[5:3|8:6]'},
+  {bits:  3, name: 0x5, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.fsdsp rs2,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a double-precision floating-point value in floating-point register rs2 to memory.
-  It computes an effective address by adding the zeroextended offset, scaled by 8, to the stack pointer, x2.
-  --
+Store a double-precision floating-point value in floating-point register rs2 to memory.
+It computes an effective address by adding the zeroextended offset, scaled by 8, to the stack pointer, x2.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[2] + uimm][63:0] = f[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   fsd rs2,offset[8:3](x2)
-  --
+--
 
 === c.swsp
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  6, name: 'uimm[5:2|7:6]'},
+  {bits:  3, name: 0x6, attr: 'funct3'},
+]}
+....
 
-[width="45%",cols="19%,45%,18%,18%",]
-|===
-|15-13 |12-7 |4-2 |1-0
-|110 |uimm[5:2|7:6] |rs2 |10
-|===
 
 Format::
-  [verse]
-  --
+--
   c.swsp rs2,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a 32-bit value in register rs2 to memory.
+Store a 32-bit value in register rs2 to memory.
   It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.
-  --
+
 Implementation::
-  [verse]
-  --
+--
   M[x[2] + uimm][31:0] = x[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   sw rs2,offset[7:2](x2)
-  --
+--
 
 === c.fswsp
 
-cccc|
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  6, name: 'uimm[5:2|7:6]'},
+  {bits:  3, name: 0x7, attr: 'funct3'},
+]}
+....
 
-[width="45%",cols="19%,45%,18%,18%",]
-|===
-|15-13 |12-7 |4-2 |1-0
-|111 |uimm[5:2|7:6] |rs2 |10
-|===
 
 Format::
-  [verse]
-  --
+--
   c.fswsp rs2,uimm(rs2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a single-precision floating-point value in floating-point register rs2 to memory.
+Store a single-precision floating-point value in floating-point register rs2 to memory.
   It computes an effective address by adding the zero-extended offset, scaled by 4, to the stack pointer, x2.
-  --
+
 Implementation::
-  [verse]
-  --
+--
   M[x[2] + uimm][31:0] = f[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   fsw rs2,offset[7:2](x2)
-  --
+--
 
 === c.sdsp
 
-cccc|
-
-[width="45%",cols="19%,45%,18%,18%",]
-|===
-|15-13 |12-7 |4-2 |1-0
-|111 |uimm[5:3|8:6] |rs2 |10
-|===
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  2, name: 0x2, attr: 'op'},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  6, name: 'uimm[5:3|8:6]'},
+  {bits:  3, name: 0x7, attr: 'funct3'},
+]}
+....
 
 Format::
-  [verse]
-  --
+--
   c.sdsp rs2,uimm(x2)
-  --
+--
+
 Description::
-  [verse]
-  --
-  Store a 64-bit value in register rs2 to memory.
-  It computes an effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
-  --
+Store a 64-bit value in register rs2 to memory.
+It computes an effective address by adding the zero-extended offset, scaled by 8, to the stack pointer, x2.
+
 Implementation::
-  [verse]
-  --
+--
   M[x[2] + uimm][63:0] = x[rs2]
-  --
+--
+
 Expansion::
-  [verse]
-  --
+--
   sd rs2,offset[8:3](x2)
-  --
+--
