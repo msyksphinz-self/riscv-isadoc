@@ -34,5 +34,6 @@ include::rvfd.adoc[]
 include::rv64f.adoc[]
 include::rv64d.adoc[]
 include::rvc.adoc[]
+include::rvb.adoc[]
 
 include::regs.adoc[]
