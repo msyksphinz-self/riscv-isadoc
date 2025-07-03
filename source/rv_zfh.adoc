@@ -1,0 +1,1037 @@
+== RV32Zfh / RV64Zfh Standard Extension
+
+=== fmadd.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x43, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 'rs3', type: 2},
+]}
+....
+
+Format::
+--
+fmadd.h rd,rs1,rs2,rs3
+--
+Description::
+Perform half-precision fused multiply addition.
+
+Implementation::
+--
+  f[rd] = f[rs1]×f[rs2]+f[rs3]
+--
+
+=== fmsub.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x47, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 'rs3', type: 2},
+]}
+....
+
+Format::
+--
+fmsub.h rd,rs1,rs2,rs3
+--
+Description::
+Perform half-precision fused multiply addition.
+
+Implementation::
+--
+  f[rd] = f[rs1]×f[rs2]-f[rs3]
+--
+
+=== fnmsub.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x4b, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 'rs3', type: 2},
+]}
+....
+
+Format::
+--
+fnmsub.h rd,rs1,rs2,rs3
+--
+Description::
+Perform negated half-precision fused multiply subtraction.
+
+Implementation::
+--
+  f[rd] = -f[rs1]×f[rs2]+f[rs3]
+--
+
+=== fnmadd.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x4f, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 'rs3', type: 2},
+]}
+....
+
+Format::
+--
+fnmadd.h rd,rs1,rs2,rs3
+--
+Description::
+Perform negated half-precision fused multiply addition.
+
+Implementation::
+--
+  f[rd] = -f[rs1]×f[rs2]-f[rs3]
+--
+
+=== fadd.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x0, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fadd.h rd,rs1,rs2
+--
+Description::
+Perform half-precision floating-point addition.
+
+Implementation::
+--
+  f[rd] = f[rs1] + f[rs2]
+--
+
+=== fsub.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fsub.h rd,rs1,rs2
+--
+Description::
+Perform half-precision floating-point substraction.
+
+Implementation::
+--
+  f[rd] = f[rs1] - f[rs2]
+--
+
+=== fmul.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x2, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fmul.h rd,rs1,rs2
+--
+Description::
+Perform half-precision floating-point multiplication.
+
+Implementation::
+--
+  f[rd] = f[rs1] × f[rs2]
+--
+
+=== fdiv.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x3, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fdiv.h rd,rs1,rs2
+--
+Description::
+Perform half-precision floating-point division.
+
+Implementation::
+--
+  f[rd] = f[rs1] / f[rs2]
+--
+
+=== fsqrt.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x0b, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fsqrt.h rd,rs1
+--
+Description::
+Perform half-precision square root.
+
+Implementation::
+--
+  f[rd] = sqrt(f[rs1])
+--
+
+=== fsgnj.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0 },
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x4, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fsgnj.h rd,rs1,rs2
+--
+Description::
+Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is rs2’s sign bit.
+
+Implementation::
+--
+  f[rd] = {f[rs2][31], f[rs1][30:0]}
+--
+
+=== fsgnjn.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x4, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fsgnjn.h rd,rs1,rs2
+--
+Description::
+Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is opposite of rs2’s sign bit.
+
+Implementation::
+--
+  f[rd] = {~f[rs2][31], f[rs1][30:0]}
+--
+
+=== fsgnjx.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x2 },
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x4, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fsgnjx.h rd,rs1,rs2
+--
+Description::
+Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is XOR of sign bit of rs1 and rs2.
+
+Implementation::
+--
+  f[rd] = {f[rs1][31] ^ f[rs2][31], f[rs1][30:0]}
+--
+
+=== fmin.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0 },
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x5, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fmin.h rd,rs1,rs2
+--
+Description::
+Write the smaller of single precision data in rs1 and rs2 to rd.
+
+Implementation::
+--
+  f[rd] = min(f[rs1], f[rs2])
+--
+
+=== fmax.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1 },
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x5, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fmax.h rd,rs1,rs2
+--
+Description::
+Write the larger of single precision data in rs1 and rs2 to rd.
+
+Implementation::
+--
+  f[rd] = max(f[rs1], f[rs2])
+--
+
+=== fcvt.s.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2},
+  {bits:  2, name: 0x0, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.s.h rd,rs1
+--
+
+Description::
+Convert a half-precision floating-point number in floating-point register rs1 to a single-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f16->f32(f[rs1])
+--
+
+=== fcvt.h.s
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.h.s rd,rs1
+--
+
+Description::
+Convert a single-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f32->f16(f[rs1])
+--
+
+
+=== fcvt.d.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2},
+  {bits:  2, name: 0x1, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.d.h rd,rs1
+--
+
+Description::
+Convert a half-precision floating-point number in floating-point register rs1 to a double-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f16->f64(f[rs1])
+--
+
+=== fcvt.h.d
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x1},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.h.d rd,rs1
+--
+
+Description::
+Convert a double-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f64->f16(f[rs1])
+--
+
+
+=== fcvt.q.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2},
+  {bits:  2, name: 0x3, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.q.h rd,rs1
+--
+
+Description::
+Convert a half-precision floating-point number in floating-point register rs1 to a quad-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f16->f128(f[rs1])
+--
+
+=== fcvt.h.q
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x3},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x8, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.h.q rd,rs1
+--
+
+Description::
+Convert a quad-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.
+
+Implementation::
+--
+  f[rd] = f128->f16(f[rs1])
+--
+
+
+=== feq.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x2},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x14, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+feq.h rd,rs1,rs2
+--
+Description::
+Performs a quiet equal comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.
+
+Implementation::
+--
+  x[rd] = f[rs1] == f[rs2]
+--
+
+=== flt.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x14, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+flt.h rd,rs1,rs2
+--
+Description::
+Performs a quiet less comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.
+
+Implementation::
+--
+  x[rd] = f[rs1] < f[rs2]
+--
+
+=== fle.h
+
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x14, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fle.h rd,rs1,rs2
+--
+Description::
+Performs a quiet less or equal comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.
+
+Implementation::
+--
+  x[rd] = f[rs1] <= f[rs2]
+--
+
+=== fclass.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1c, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fclass.h rd,rs1
+--
+Description::
+Examines the value in half-precision floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
+  The format of the mask is described in [classify table]_.
+  The corresponding bit in rd will be set if the property is true and clear otherwise.
+  All other bits in rd are cleared. Note that exactly one bit in rd will be set.
+
+Implementation::
+--
+  x[rd] = classify_s(f[rs1])
+--
+
+=== fcvt.w.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.w.h rd,rs1
+--
+Description::
+Converts half-precision floating point number in floating point register in rs1 into a sigend integer in integer register rd.
+
+Implementation::
+--
+  f[rd] = f16->s32(x[rs1])
+--
+
+=== fcvt.wu.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x1 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.wu.h rd,rs1
+--
+Description::
+Converts half-precision floating point number in floating point register in rs1 into a unsigned integer in integer register rd.
+
+Implementation::
+--
+  f[rd] = f16->u32(x[rs1])
+--
+
+=== fmv.x.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1c, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fmv.x.w rd,rs1
+--
+Description::
+Move the half-precision value in floating-point register rs1 represented in IEEE 754-2008 encoding to the lower 32 bits of integer register rd.
+
+Implementation::
+--
+  x[rd] = sext(f[rs1][15:0])
+--
+
+
+=== fcvt.h.w
+
+Format::
+--
+fcvt.h.w rd,rs1
+--
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
+
+Description::
+Converts a 32-bit signed integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.
+
+Implementation::
+--
+  f[rd] = u32->f16(x[rs1])
+--
+
+
+=== fcvt.h.wu
+
+Format::
+--
+fcvt.h.wu rd,rs1
+--
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x1 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
+
+Description::
+Converts a 32-bit unsigned integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.
+
+Implementation::
+--
+  f[rd] = u32->f16(x[rs1])
+--
+
+=== fmv.h.x
+
+Format::
+--
+fmv.h.x rd,rs1
+--
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x0 },
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x0 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1e, attr: 'funct5'},
+]}
+....
+
+Description::
+Move the half-precision value encoded in IEEE 754-2008 standard encoding from the lower 15 bits of integer register rs1 to the floating-point register rd.
+
+Implementation::
+--
+  f[rd] = x[rs1][15:0]
+--
+
+
+=== flh
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x07, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits: 12, name: 'imm[11: 0]'},
+]}
+....
+
+Format::
+--
+flh rd,offset(rs1)
+--
+Description::
+Load a half-precision floating-point value from memory into floating-point register rd.
+
+Implementation::
+--
+  f[rd] = M[x[rs1] + sext(offset)][15:0]
+--
+
+=== fsh
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x27, attr: 'opcode'},
+  {bits:  5, name: 'imm[ 4: 0]'},
+  {bits:  3, name: 0x1},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
+  {bits:  7, name: 'imm[11: 5]'},
+]}
+....
+
+Format::
+--
+fsw rs2,offset(rs1)
+--
+Description::
+Store a half-precision value from floating-point register rs2 to memory.
+
+Implementation::
+--
+  M[x[rs1] + sext(offset)] = f[rs2][15:0]
+--
+
+=== fcvt.l.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.l.h rd,rs1
+--
+Description::
+Converts half-precision floating point number in floating point register in rs1 into a 64-bit sigend integer in integer register rd.
+
+Implementation::
+--
+  f[rd] = f16->s64(x[rs1])
+--
+
+=== fcvt.lu.h
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x3 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x18, attr: 'funct5'},
+]}
+....
+
+Format::
+--
+fcvt.lu.h rd,rs1
+--
+Description::
+Converts half-precision floating point number in floating point register in rs1 into a 64-bit unsigned integer in integer register rd.
+
+Implementation::
+--
+  f[rd] = f16->s64(x[rs1])
+--
+
+=== fcvt.h.l
+
+Format::
+--
+fcvt.h.l rd,rs1
+--
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x2 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
+
+Description::
+Converts a 64-bit signed integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.
+
+Implementation::
+--
+  f[rd] = u64->f16(x[rs1])
+--
+
+
+=== fcvt.h.lu
+
+Format::
+--
+fcvt.h.lu rd,rs1
+--
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg: [
+  {bits:  7, name: 0x53, attr: 'opcode'},
+  {bits:  5, name: 'rd', type: 2},
+  {bits:  3, name: 'rm', type: 3},
+  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 0x3 },
+  {bits:  2, name: 0x2, attr: 'fmt'},
+  {bits:  5, name: 0x1a, attr: 'funct5'},
+]}
+....
+
+Description::
+Converts a 64-bit unsigned integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.
+
+Implementation::
+--
+  f[rd] = u64->f16(x[rs1])
+--

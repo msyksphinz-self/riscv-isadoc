@@ -302,10 +302,50 @@
 <li><a href="#_bseti">11.41. bseti</a></li>
 </ul>
 </li>
-<li><a href="#_register_definitions">12. Register Definitions</a>
+<li><a href="#_rv32zfh_rv64zfh_standard_extension">12. RV32Zfh / RV64Zfh Standard Extension</a>
 <ul class="sectlevel2">
-<li><a href="#_integer_registers">12.1. Integer Registers</a></li>
-<li><a href="#_floating_point_registers">12.2. Floating Point Registers</a></li>
+<li><a href="#_fmadd_h">12.1. fmadd.h</a></li>
+<li><a href="#_fmsub_h">12.2. fmsub.h</a></li>
+<li><a href="#_fnmsub_h">12.3. fnmsub.h</a></li>
+<li><a href="#_fnmadd_h">12.4. fnmadd.h</a></li>
+<li><a href="#_fadd_h">12.5. fadd.h</a></li>
+<li><a href="#_fsub_h">12.6. fsub.h</a></li>
+<li><a href="#_fmul_h">12.7. fmul.h</a></li>
+<li><a href="#_fdiv_h">12.8. fdiv.h</a></li>
+<li><a href="#_fsqrt_h">12.9. fsqrt.h</a></li>
+<li><a href="#_fsgnj_h">12.10. fsgnj.h</a></li>
+<li><a href="#_fsgnjn_h">12.11. fsgnjn.h</a></li>
+<li><a href="#_fsgnjx_h">12.12. fsgnjx.h</a></li>
+<li><a href="#_fmin_h">12.13. fmin.h</a></li>
+<li><a href="#_fmax_h">12.14. fmax.h</a></li>
+<li><a href="#_fcvt_s_h">12.15. fcvt.s.h</a></li>
+<li><a href="#_fcvt_h_s">12.16. fcvt.h.s</a></li>
+<li><a href="#_fcvt_d_h">12.17. fcvt.d.h</a></li>
+<li><a href="#_fcvt_h_d">12.18. fcvt.h.d</a></li>
+<li><a href="#_fcvt_q_h">12.19. fcvt.q.h</a></li>
+<li><a href="#_fcvt_h_q">12.20. fcvt.h.q</a></li>
+<li><a href="#_feq_h">12.21. feq.h</a></li>
+<li><a href="#_flt_h">12.22. flt.h</a></li>
+<li><a href="#_fle_h">12.23. fle.h</a></li>
+<li><a href="#_fclass_h">12.24. fclass.h</a></li>
+<li><a href="#_fcvt_w_h">12.25. fcvt.w.h</a></li>
+<li><a href="#_fcvt_wu_h">12.26. fcvt.wu.h</a></li>
+<li><a href="#_fmv_x_h">12.27. fmv.x.h</a></li>
+<li><a href="#_fcvt_h_w">12.28. fcvt.h.w</a></li>
+<li><a href="#_fcvt_h_wu">12.29. fcvt.h.wu</a></li>
+<li><a href="#_fmv_h_x">12.30. fmv.h.x</a></li>
+<li><a href="#_flh">12.31. flh</a></li>
+<li><a href="#_fsh">12.32. fsh</a></li>
+<li><a href="#_fcvt_l_h">12.33. fcvt.l.h</a></li>
+<li><a href="#_fcvt_lu_h">12.34. fcvt.lu.h</a></li>
+<li><a href="#_fcvt_h_l">12.35. fcvt.h.l</a></li>
+<li><a href="#_fcvt_h_lu">12.36. fcvt.h.lu</a></li>
+</ul>
+</li>
+<li><a href="#_register_definitions">13. Register Definitions</a>
+<ul class="sectlevel2">
+<li><a href="#_integer_registers">13.1. Integer Registers</a></li>
+<li><a href="#_floating_point_registers">13.2. Floating Point Registers</a></li>
 </ul>
 </li>
 </ul>
@@ -12260,10 +12300,1575 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_register_definitions">12. Register Definitions</h2>
+<h2 id="_rv32zfh_rv64zfh_standard_extension">12. RV32Zfh / RV64Zfh Standard Extension</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_integer_registers">12.1. Integer Registers</h3>
+<h3 id="_fmadd_h">12.1. fmadd.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-f6a483ea8204300e7389b6e19bc059ec.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmadd.h rd,rs1,rs2,rs3</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision fused multiply addition.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1]×f[rs2]+f[rs3]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmsub_h">12.2. fmsub.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-67cccc9eace4de515855923ce4474daf.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmsub.h rd,rs1,rs2,rs3</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision fused multiply addition.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1]×f[rs2]-f[rs3]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fnmsub_h">12.3. fnmsub.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-06fc9be0fb0f0bbcc14f5ac6ea9be24a.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fnmsub.h rd,rs1,rs2,rs3</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform negated half-precision fused multiply subtraction.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = -f[rs1]×f[rs2]+f[rs3]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fnmadd_h">12.4. fnmadd.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-a80be7b039cb23e23c131682a8db0c11.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fnmadd.h rd,rs1,rs2,rs3</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform negated half-precision fused multiply addition.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = -f[rs1]×f[rs2]-f[rs3]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fadd_h">12.5. fadd.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-8083212c732e8df5ccc85cc1bca427d2.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fadd.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision floating-point addition.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1] + f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsub_h">12.6. fsub.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-90a1fac1e9a112ca92489013398a8473.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsub.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision floating-point substraction.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1] - f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmul_h">12.7. fmul.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-06c185903548b04e189ed3fa25afa4b2.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmul.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision floating-point multiplication.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1] × f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fdiv_h">12.8. fdiv.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-5dd07085ff2388d76f79f32d72df5786.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fdiv.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision floating-point division.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f[rs1] / f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsqrt_h">12.9. fsqrt.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-779dc72e0038e809fc01b81f5bc95f6f.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsqrt.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Perform half-precision square root.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = sqrt(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsgnj_h">12.10. fsgnj.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-f3867fe2b46e3ca0246a9befd46c57a5.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsgnj.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is rs2’s sign bit.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = {f[rs2][31], f[rs1][30:0]}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsgnjn_h">12.11. fsgnjn.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-aecfb6f622c21185206eedb649ea17cd.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsgnjn.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is opposite of rs2’s sign bit.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = {~f[rs2][31], f[rs1][30:0]}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsgnjx_h">12.12. fsgnjx.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-3ec6e2b3c46d17bcd60953895c65f22c.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsgnjx.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Produce a result that takes all bits except the sign bit from rs1.
+  The result’s sign bit is XOR of sign bit of rs1 and rs2.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = {f[rs1][31] ^ f[rs2][31], f[rs1][30:0]}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmin_h">12.13. fmin.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-0defe55e296284adde6e9527c6fa3d28.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmin.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Write the smaller of single precision data in rs1 and rs2 to rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = min(f[rs1], f[rs2])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmax_h">12.14. fmax.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-b37b121f0de067ab66ada7adcd5366f4.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmax.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Write the larger of single precision data in rs1 and rs2 to rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = max(f[rs1], f[rs2])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_s_h">12.15. fcvt.s.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-90baf1048a496990914578f2e401b6db.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.s.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a half-precision floating-point number in floating-point register rs1 to a single-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;f32(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_s">12.16. fcvt.h.s</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-ee0ba476d657a9e5788ed2de72d63cfd.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.s rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a single-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f32-&gt;f16(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_d_h">12.17. fcvt.d.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-51c72a9d1497f9106c2213ac8dc20f1c.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.d.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a half-precision floating-point number in floating-point register rs1 to a double-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;f64(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_d">12.18. fcvt.h.d</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-deb9f395ad2a7193bb241c3637dcb07a.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.d rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a double-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f64-&gt;f16(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_q_h">12.19. fcvt.q.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-4d0ce29cf7d7fb31349d8ec886c73bd5.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.q.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a half-precision floating-point number in floating-point register rs1 to a quad-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;f128(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_q">12.20. fcvt.h.q</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-bade5a475c2770dcceaa09d634eb6f85.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.q rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Convert a quad-precision floating-point number in floating-point register rs1 to a half-precision flaoting-point number register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f128-&gt;f16(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feq_h">12.21. feq.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-95a6e29b64cc102d4f03607cf7106ac1.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>feq.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Performs a quiet equal comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>x[rd] = f[rs1] == f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flt_h">12.22. flt.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-2887e98fd7291b11b3566b75235eb09b.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>flt.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Performs a quiet less comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>x[rd] = f[rs1] &lt; f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fle_h">12.23. fle.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-88aa3c3972de94e094c4f2698d924450.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fle.h rd,rs1,rs2</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Performs a quiet less or equal comparison between half-precision floating-point registers rs1 and rs2 and record the Boolean result in integer register rd.
+  Only signaling NaN inputs cause an Invalid Operation exception.
+  The result is 0 if either operand is NaN.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>x[rd] = f[rs1] &lt;= f[rs2]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fclass_h">12.24. fclass.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-06d2fc9d6cb6388636a5f66eaff06a04.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fclass.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Examines the value in half-precision floating-point register rs1 and writes to integer register rd a 10-bit mask that indicates the class of the floating-point number.
+  The format of the mask is described in [classify table]_.
+  The corresponding bit in rd will be set if the property is true and clear otherwise.
+  All other bits in rd are cleared. Note that exactly one bit in rd will be set.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>x[rd] = classify_s(f[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_w_h">12.25. fcvt.w.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-b702182484fd1372503f670cbeaf690e.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.w.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts half-precision floating point number in floating point register in rs1 into a sigend integer in integer register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;s32(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_wu_h">12.26. fcvt.wu.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-a4a962b7a4f67178cfe09f7e86f92a0d.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.wu.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts half-precision floating point number in floating point register in rs1 into a unsigned integer in integer register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;u32(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmv_x_h">12.27. fmv.x.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-64d03cc103eb0bf338591c14f050fb8c.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmv.x.w rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Move the half-precision value in floating-point register rs1 represented in IEEE 754-2008 encoding to the lower 32 bits of integer register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>x[rd] = sext(f[rs1][15:0])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_w">12.28. fcvt.h.w</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.w rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-5d1542a49038cd726af763054c855088.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts a 32-bit signed integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = u32-&gt;f16(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_wu">12.29. fcvt.h.wu</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.wu rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-3a1e0cf1a7d4bf4e7e93d7fe9986e236.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts a 32-bit unsigned integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = u32-&gt;f16(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fmv_h_x">12.30. fmv.h.x</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fmv.h.x rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-75690efd99f4c06f397fc78c8a28c262.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Move the half-precision value encoded in IEEE 754-2008 standard encoding from the lower 15 bits of integer register rs1 to the floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = x[rs1][15:0]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flh">12.31. flh</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-935ebacbd72a5f964f69175f6afe5dbc.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>flh rd,offset(rs1)</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Load a half-precision floating-point value from memory into floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = M[x[rs1] + sext(offset)][15:0]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fsh">12.32. fsh</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-dde8034ee4a52210f065dafc28c55e55.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fsw rs2,offset(rs1)</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Store a half-precision value from floating-point register rs2 to memory.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>M[x[rs1] + sext(offset)] = f[rs2][15:0]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_l_h">12.33. fcvt.l.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-fb806ba7d37b0d303a9ba563e89efb36.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.l.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts half-precision floating point number in floating point register in rs1 into a 64-bit sigend integer in integer register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;s64(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_lu_h">12.34. fcvt.lu.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-16502a2f86e5447b388548e36f8ae0a2.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.lu.h rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts half-precision floating point number in floating point register in rs1 into a 64-bit unsigned integer in integer register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = f16-&gt;s64(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_l">12.35. fcvt.h.l</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.l rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-3e5dc4cac8f169e562ce6412360d4e80.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts a 64-bit signed integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = u64-&gt;f16(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fcvt_h_lu">12.36. fcvt.h.lu</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>fcvt.h.lu rd,rs1</p>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-2c53c967e1a64498c27bfe2eaddb6fb4.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>Converts a 64-bit unsigned integer, in integer register rs1 into a half-precision floating-point number in floating-point register rd.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>f[rd] = u64-&gt;f16(x[rs1])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_definitions">13. Register Definitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_integer_registers">13.1. Integer Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -12476,7 +14081,7 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_floating_point_registers">12.2. Floating Point Registers</h3>
+<h3 id="_floating_point_registers">13.2. Floating Point Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -12693,7 +14298,7 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-07-02 01:51:45 +0900
+Last updated 2025-07-04 01:19:21 +0900
 </div>
 </div>
 </body>
