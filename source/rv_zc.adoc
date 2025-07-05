@@ -1,0 +1,1700 @@
+== Zc Extension
+
+[#insns-c_lbu,reftext="Load unsigned byte, 16-bit encoding"]
+=== c.lbu
+
+Mnemonic::
+--
+  c.lbu rd', uimm(rs1')
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x0, attr: ['C0'] },
+    { bits:  3, name: 'rd\'' },
+    { bits:  2, name: 'uimm[0|1]' },
+    { bits:  3, name: 'rs1\'' },
+    { bits:  3, name: 0x0 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+The immediate offset is formed as follows:
+
+[source,sail]
+--
+  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = encoding[6];
+--
+
+Description::
+
+This instruction loads a byte from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting byte is zero extended to XLEN bits and is written to rd'.
+
+[NOTE]
+====
+rd' and rs1' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+//32-bit equivalent::
+//<<insns-lbu>>
+
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTZ(mem[X(rs1c)+EXTZ(uimm)][7..0]);
+----
+
+[#insns-c_lhu,reftext="Load unsigned halfword, 16-bit encoding"]
+=== c.lhu
+
+Mnemonic::
+--
+  c.lhu rd', uimm(rs1')
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x0, attr: ['C0'] },
+    { bits:  3, name: 'rd\'' },
+    { bits:  1, name: 'uimm[1]' },
+    { bits:  1, name: 0x0 },
+    { bits:  3, name: 'rs1\'' },
+    { bits:  3, name: 0x1 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+The immediate offset is formed as follows:
+
+[source,sail]
+----
+  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;
+----
+
+Description::
+
+This instruction loads a halfword from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting halfword is zero extended to XLEN bits and is written to rd'.
+
+[NOTE]
+====
+rd' and rs1' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+//32-bit equivalent::
+//
+//<<insns-lhu>>
+
+Implementation::
+
+[source,sail]
+--
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTZ(load_mem[X(rs1c)+EXTZ(uimm)][15..0]);
+--
+
+[#insns-c_lh,reftext="Load signed halfword, 16-bit encoding"]
+=== c.lh
+
+Mnemonic::
+--
+  c.lh rd', uimm(rs1')
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x0, attr: ['C0'] },
+    { bits:  3, name: 'rd\'' },
+    { bits:  1, name: 'uimm[1]' },
+    { bits:  1, name: 0x1 },
+    { bits:  3, name: 'rs1\'' },
+    { bits:  3, name: 0x1 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+The immediate offset is formed as follows:
+
+[source,sail]
+----
+  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;
+----
+
+Description::
+
+This instruction loads a halfword from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting halfword is sign extended to XLEN bits and is written to rd'.
+
+[NOTE]
+====
+rd' and rs1' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+//32-bit equivalent::
+//
+//<<insns-lh>>
+
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTS(load_mem[X(rs1c)+EXTZ(uimm)][15..0]);
+----
+
+[#insns-c_sb,reftext="Store byte, 16-bit encoding"]
+=== c.sb
+
+Mnemonic::
+--
+  c.sb rs2', uimm(rs1')
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x0, attr: ['C0'] },
+    { bits:  3, name: 'rs2\'' },
+    { bits:  2, name: 'uimm[0|1]' },
+    { bits:  3, name: 'rs1\'' },
+    { bits:  3, name: 0x2 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+The immediate offset is formed as follows:
+
+[source,sail]
+----
+  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = encoding[6];
+----
+
+Description::
+
+This instruction stores the least significant byte of rs2' to the memory address formed by adding rs1' to the zero extended immediate uimm.
+
+[NOTE]
+====
+rs1' and rs2' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+//
+//32-bit equivalent::
+//
+//<<insns-sb>>
+
+Implementation::
+
+[source,sail]
+--
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+mem[X(rs1c)+EXTZ(uimm)][7..0] = X(rs2c)
+--
+
+[#insns-c_sh,reftext="Store halfword, 16-bit encoding"]
+=== c.sh
+
+Mnemonic::
+--
+  c.sh rs2', uimm(rs1')
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x0, attr: ['C0'] },
+    { bits:  3, name: 'rs2\'' },
+    { bits:  1, name: 'uimm[1]' },
+    { bits:  1, name: '0' },
+    { bits:  3, name: 'rs1\'' },
+    { bits:  3, name: 0x3 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+The immediate offset is formed as follows:
+
+[source,sail]
+----
+  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;
+----
+
+Description::
+
+This instruction stores the least significant halfword of rs2' to the memory address formed by adding rs1' to the zero extended immediate uimm.
+
+[NOTE]
+====
+rs1' and rs2' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+//
+//32-bit equivalent::
+//
+//<<insns-sh>>
+
+Implementation::
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+mem[X(rs1c)+EXTZ(uimm)][15..0] = X(rs2c)
+----
+
+[#insns-c_zext_b,reftext="Zero extend byte, 16-bit encoding"]
+=== c.zext.b
+
+Mnemonic::
+--
+  c.zext.b rd'/rs1'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x0, attr: ['C.ZEXT.B'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes a single source/destination operand.
+It zero-extends the least-significant byte of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 7.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+[source,sail]
+----
+andi rd'/rs1', rd'/rs1', 0xff
+----
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+====
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = EXTZ(X(rsdc)[7..0]);
+----
+
+[#insns-c_sext_b,reftext="Sign extend byte, 16-bit encoding"]
+=== c.sext.b
+
+Mnemonic::
+--
+  c.sext.b rd'/rs1'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x1, attr: ['C.SEXT.B'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes a single source/destination operand.
+It sign-extends the least-significant byte in the operand to XLEN bits by copying the most-significant bit
+in the byte (i.e., bit 7) to all of the more-significant bits.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+Zbb is also required.
+//
+//32-bit equivalent::
+//
+//<<insns-sext_b>> from Zbb
+
+[NOTE]
+
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = EXTS(X(rsdc)[7..0]);
+----
+
+[#insns-c_zext_h,reftext="Zero extend halfword, 16-bit encoding"]
+=== c.zext.h
+
+Mnemonic::
+--
+  c.zext.h rd'/rs1'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x2, attr: ['C.ZEXT.H'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes a single source/destination operand.
+It zero-extends the least-significant halfword of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 15.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+Zbb is also required.
+//
+//32-bit equivalent::
+//
+//<<insns-zext_h>> from Zbb
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+====
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = EXTZ(X(rsdc)[15..0]);
+----
+
+[#insns-c_sext_h,reftext="Sign extend halfword, 16-bit encoding"]
+=== c.sext.h
+
+Mnemonic::
+--
+  c.sext.h rd'/rs1'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x3, attr: ['C.SEXT.H'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes a single source/destination operand.
+It sign-extends the least-significant halfword in the operand to XLEN bits by copying the most-significant bit
+in the halfword (i.e., bit 15) to all of the more-significant bits.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+Zbb is also required.
+//
+//32-bit equivalent::
+//
+//<<insns-sext_h>> from Zbb
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+====
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = EXTS(X(rsdc)[15..0]);
+----
+
+[#insns-c_zext_w,reftext="Zero extend word, 16-bit encoding"]
+=== c.zext.w
+
+Mnemonic::
+--
+  c.zext.w rd'/rs1'
+--
+
+Encoding (RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x4, attr: ['C.ZEXT.W'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes a single source/destination operand.
+It zero-extends the least-significant word of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 31.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+Zba is also required.
+
+32-bit equivalent::
+
+[source,sail]
+----
+add.uw rd'/rs1', rd'/rs1', zero
+----
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+====
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = EXTZ(X(rsdc)[31..0]);
+----
+
+[#insns-c_not,reftext="Bitwise not, 16-bit encoding"]
+=== c.not
+
+Mnemonic::
+--
+  c.not rd'/rs1'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 0x5, attr: ['C.NOT'] },
+    { bits:  2, name: 0x3, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction takes the one's complement of rd'/rs1' and writes the result to the same register.
+
+[NOTE]
+====
+rd'/rs1' is from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+[source,sail]
+----
+xori rd'/rs1', rd'/rs1', -1
+----
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_.
+====
+
+Implementation::
+
+[source,sail]
+----
+X(rsdc) = X(rsdc) XOR -1;
+----
+
+[#insns-c_mul,reftext="Multiply, 16-bit encoding"]
+=== c.mul
+
+Mnemonic::
+--
+  c.mul _rsd'_, rs2'
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x1, attr: ['C1'] },
+    { bits:  3, name: 'rs2\'', attr: ['SRC2']  },
+    { bits:  2, name: 0x2, attr: ['FUNCT2'] },
+    { bits:  3, name: 'rd\'/rs1\'', attr: ['SRCDST'] },
+    { bits:  3, name: 0x7 },
+    { bits:  3, name: 0x4, attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Description::
+
+This instruction multiplies XLEN bits of the source operands from _rsd'_ and rs2' and writes the lowest XLEN bits of the result to _rsd'_.
+
+[NOTE]
+====
+rd'/rs1' and rs2' are from the standard 8-register set x8-x15.
+====
+
+Prerequisites::
+
+M or Zmmul must be configured.
+//
+//32-bit equivalent::
+//
+//<<insns-mul>>
+
+[NOTE]
+====
+The SAIL module variable for rd'/rs1' is called _rsdc_, and for rs2' is called _rs2c_.
+====
+
+Implementation::
+
+[source,sail]
+----
+let result_wide = to_bits(2 * sizeof(xlen), signed(X(rsdc)) * signed(X(rs2c)));
+X(rsdc) = result_wide[(sizeof(xlen) - 1) .. 0];
+----
+
+[#insns-cm_push,reftext="cm.push"]
+=== cm.push
+
+Mnemonic::
+--
+  cm.push _{reg_list}, -stack_adj_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  2, name: 'spimm',  attr: [] },
+    { bits:  4, name: 'rlist',  attr: [] },
+    { bits:  5, name: 0x18,     attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+_rlist_ values 0 to 3 are reserved for a future EABI variant called _cm.push.e_
+====
+
+Assembly Syntax::
+
+[source,sail]
+--
+cm.push {reg_list},  -stack_adj
+cm.push {xreg_list}, -stack_adj
+--
+
+The variables used in the assembly syntax are defined below.
+
+[source,sail]
+----
+RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];
+----
+
+[source,sail]
+----
+RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}
+----
+
+[source,sail]
+----
+RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}
+----
+
+Description::
+
+This instruction pushes (stores) the registers in _reg_list_ to the memory below the stack pointer,
+and then creates the stack frame by decrementing the stack pointer by _stack_adj_,
+including any additional stack space requested by the value of _spimm_.
+
+
+[NOTE]
+====
+All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.
+====
+
+For further information see <<insns-pushpop>>.
+
+Stack Adjustment Calculation::
+
+_stack_adj_base_ is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.
+
+_spimm_ is the number of additional 16-byte address increments allocated for the stack frame.
+
+The total stack adjustment represents the total size of the stack frame, which is _stack_adj_base_ added to _spimm_ scaled by 16,
+as defined above.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists
+
+Implementation::
+
+The first section of pseudocode may be executed multiple times before the instruction successfully completes.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("sw x[i], 0(addr)");
+      8:  asm("sd x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}
+----
+
+The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp-=stack_adj;
+----
+
+[#insns-cm_pop,reftext="cm.pop"]
+=== cm.pop
+
+Mnemonic::
+--
+  cm.pop  _{reg_list}, stack_adj_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  2, name: 'spimm',  attr: [] },
+    { bits:  4, name: 'rlist',  attr: [] },
+    { bits:  5, name: 0x1a,     attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+_rlist_ values 0 to 3 are reserved for a future EABI variant called _cm.pop.e_
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.pop {reg_list},  stack_adj
+cm.pop {xreg_list}, stack_adj
+----
+
+The variables used in the assembly syntax are defined below.
+
+[source,sail]
+----
+RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];
+----
+
+[source,sail]
+----
+RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}
+----
+
+[source,sail]
+----
+RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}
+----
+
+
+Description::
+
+This instruction pops (loads) the registers in _reg_list_ from stack memory,
+and then adjusts the stack pointer by _stack_adj_.
+
+[NOTE]
+====
+All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.
+====
+
+For further information see <<insns-pushpop>>.
+
+Stack Adjustment Calculation::
+
+_stack_adj_base_ is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.
+
+_spimm_ is the number of additional 16-byte address increments allocated for the stack frame.
+
+The total stack adjustment represents the total size of the stack frame, which is _stack_adj_base_ added to _spimm_ scaled by 16,
+as defined above.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists
+
+Implementation::
+
+The first section of pseudocode may be executed multiple times before the instruction successfully completes.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}
+----
+
+The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp+=stack_adj;
+----
+
+[#insns-cm_popretz,reftext="cm.popretz"]
+=== cm.popretz
+
+Mnemonic::
+--
+  cm.popretz _{reg_list}, stack_adj_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,             attr: ['C2'] },
+    { bits:  2, name: 'spimm\[5:4\]',  attr: [] },
+    { bits:  4, name: 'rlist',         attr: [] },
+    { bits:  5, name: 0x1c,            attr: [] },
+    { bits:  3, name: 0x5,             attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+_rlist_ values 0 to 3 are reserved for a future EABI variant called _cm.popretz.e_
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.popretz {reg_list},  stack_adj
+cm.popretz {xreg_list}, stack_adj
+----
+
+[source,sail]
+----
+RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];
+----
+
+[source,sail]
+----
+RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}
+----
+
+[source,sail]
+----
+RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}
+----
+
+
+Description::
+
+This instruction pops (loads) the registers in _reg_list_ from stack memory, adjusts the stack pointer by _stack_adj_, moves zero into a0 and then returns to _ra_.
+
+[NOTE]
+====
+All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.
+====
+
+For further information see <<insns-pushpop>>.
+
+Stack Adjustment Calculation::
+
+_stack_adj_base_ is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.
+
+_spimm_ is the number of additional 16-byte address increments allocated for the stack frame.
+
+The total stack adjustment represents the total size of the stack frame, which is _stack_adj_base_ added to _spimm_ scaled by 16, as defined above.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists
+
+
+Implementation::
+
+The first section of pseudocode may be executed multiple times before the instruction successfully completes.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}
+----
+
+The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.
+
+[NOTE]
+====
+The _li a0, 0_ *could* be executed more than once, but is included in the atomic section for convenience.
+====
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+asm("li a0, 0");
+sp+=stack_adj;
+asm("ret");
+----
+
+[#insns-cm_popret,reftext="cm.popret"]
+=== cm.popret
+
+Mnemonic::
+--
+  cm.popret _{reg_list}, stack_adj_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  2, name: 'spimm',  attr: [] },
+    { bits:  4, name: 'rlist',  attr: [] },
+    { bits:  5, name: 0x1e,     attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+_rlist_ values 0 to 3 are reserved for a future EABI variant called _cm.popret.e_
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.popret {reg_list},  stack_adj
+cm.popret {xreg_list}, stack_adj
+----
+
+The variables used in the assembly syntax are defined below.
+
+[source,sail]
+----
+RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;
+----
+
+[source,sail]
+----
+RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];
+----
+
+[source,sail]
+----
+RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}
+----
+
+[source,sail]
+----
+RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}
+----
+
+
+Description::
+
+This instruction pops (loads) the registers in _reg_list_ from stack memory, adjusts the stack pointer by _stack_adj_ and then returns to _ra_.
+
+[NOTE]
+====
+All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.
+====
+
+For further information see <<insns-pushpop>>.
+
+Stack Adjustment Calculation::
+
+_stack_adj_base_ is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.
+
+_spimm_ is the number of additional 16-byte address increments allocated for the stack frame.
+
+The total stack adjustment represents the total size of the stack frame, which is _stack_adj_base_ added to _spimm_ scaled by 16, as defined above.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists
+
+Implementation::
+
+The first section of pseudocode may be executed multiple times before the instruction successfully completes.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}
+----
+
+The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp+=stack_adj;
+asm("ret");
+----
+
+
+[#insns-cm_mvsa01,reftext="Move a0-a1 into two different s0-s7 registers"]
+=== cm.mvsa01
+
+Mnemonic::
+--
+  cm.mvsa01 _r1s'_, _r2s'_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  3, name: 'r2s\'',  attr: [] },
+    { bits:  2, name: 0x1,      attr: [] },
+    { bits:  3, name: 'r1s\'',  attr: [] },
+    { bits:  3, name: 0x3,      attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+For the encoding to be legal _r1s'_ != _r2s'_.
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.mvsa01 r1s', r2s'
+----
+
+Description::
+This instruction moves _a0_ into _r1s'_ and _a1_ into _r2s'_.  _r1s'_ and _r2s'_ must be different.
+The execution is atomic, so it is not possible to observe state where only one of _r1s'_ or _r2s'_ has been updated.
+
+The encoding uses _sreg_ number specifiers instead of _xreg_ number specifiers to save encoding space.
+The mapping between them is specified in the pseudocode below.
+
+[NOTE]
+====
+The _s_ register mapping is taken from the UABI, and may not match the currently unratified EABI. _cm.mvsa01.e_ may be included in the future.
+====
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists.
+
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+if (RV32E && (r1sc>1 || r2sc>1)) {
+  reserved();
+}
+xreg1 = {r1sc[2:1]>0,r1sc[2:1]==0,r1sc[2:0]};
+xreg2 = {r2sc[2:1]>0,r2sc[2:1]==0,r2sc[2:0]};
+X[xreg1] = X[10];
+X[xreg2] = X[11];
+----
+
+
+[#insns-cm_mva01s,reftext="Move two s0-s7 registers into a0-a1"]
+=== cm.mva01s
+
+Mnemonic::
+--
+  cm.mva01s _r1s'_, _r2s'_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  3, name: 'r2s\'',  attr: [] },
+    { bits:  2, name: 0x3,      attr: [] },
+    { bits:  3, name: 'r1s\'',  attr: [] },
+    { bits:  3, name: 0x3,      attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.mva01s r1s', r2s'
+----
+
+Description::
+This instruction moves _r1s'_ into _a0_ and _r2s'_ into _a1_.
+The execution is atomic, so it is not possible to observe state where only one of _a0_ or _a1_ have been updated.
+
+The encoding uses _sreg_ number specifiers instead of _xreg_ number specifiers to save encoding space.
+The mapping between them is specified in the pseudocode below.
+
+[NOTE]
+====
+The _s_ register mapping is taken from the UABI, and may not match the currently unratified EABI. _cm.mva01s.e_ may be included in the future.
+====
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists.
+
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+if (RV32E && (r1sc>1 || r2sc>1)) {
+  reserved();
+}
+xreg1 = {r1sc[2:1]>0,r1sc[2:1]==0,r1sc[2:0]};
+xreg2 = {r2sc[2:1]>0,r2sc[2:1]==0,r2sc[2:0]};
+X[10] = X[xreg1];
+X[11] = X[xreg2];
+----
+
+[#insns-cm_jt,reftext="Jump via table"]
+=== cm.jt
+
+Mnemonic::
+--
+  cm.jt _index_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  8, name: 'index',  attr: [] },
+    { bits:  3, name: 0x0,      attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+For this encoding to decode as _cm.jt_, _index<32_, otherwise it decodes as _cm.jalt_, see <<insns-cm_jalt>>.
+====
+
+[NOTE]
+====
+If jvt.mode = 0 (Jump Table Mode) then _cm.jt_ behaves as specified here. If jvt.mode is a reserved value, then _cm.jt_ is also reserved. In the future other defined values of jvt.mode may change the behaviour of _cm.jt_.
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.jt index
+----
+
+Description::
+
+_cm.jt_ reads an entry from the jump vector table in memory and jumps to the address that was read.
+
+For further information see <<insns-tablejump>>.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists.
+
+
+[#insns-cm_jt-SAIL,reftext="cm.jt SAIL code"]
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+# target_address is temporary internal state, it doesn't represent a real register
+# InstMemory is byte indexed
+
+switch(XLEN) {
+  32:  table_address[XLEN-1:0] = jvt.base + (index<<2);
+  64:  table_address[XLEN-1:0] = jvt.base + (index<<3);
+}
+
+//fetch from the jump table
+target_address[XLEN-1:0] = InstMemory[table_address][XLEN-1:0];
+
+j target_address[XLEN-1:0]&~0x1;
+
+----
+
+=== cm.jalt
+
+Mnemonic::
+--
+  cm.jalt _index_
+--
+
+Encoding (RV32, RV64)::
+
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  2, name: 0x2,      attr: ['C2'] },
+    { bits:  8, name: 'index',  attr: [] },
+    { bits:  3, name: 0x0,      attr: [] },
+    { bits:  3, name: 0x5,      attr: ['FUNCT3'] },
+],config:{bits:16}}
+....
+
+[NOTE]
+====
+For this encoding to decode as _cm.jalt_, _index>=32_, otherwise it decodes as _cm.jt_, see <<insns-cm_jt>>.
+====
+
+[NOTE]
+====
+If jvt.mode = 0 (Jump Table Mode) then _cm.jalt_ behaves as specified here. If jvt.mode is a reserved value, then _cm.jalt_ is also reserved. In the future other defined values of jvt.mode may change the behaviour of _cm.jalt_.
+====
+
+Assembly Syntax::
+
+[source,sail]
+----
+cm.jalt index
+----
+
+Description::
+
+_cm.jalt_ reads an entry from the jump vector table in memory and jumps to the address that was read, linking to _ra_.
+
+For further information see <<insns-tablejump>>.
+
+Prerequisites::
+
+None
+
+32-bit equivalent::
+
+No direct equivalent encoding exists.
+
+
+[#insns-cm_jalt-SAIL,reftext="cm.jalt SAIL code"]
+Implementation::
+
+[source,sail]
+----
+//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+# target_address is temporary internal state, it doesn't represent a real register
+# InstMemory is byte indexed
+
+switch(XLEN) {
+  32:  table_address[XLEN-1:0] = jvt.base + (index<<2);
+  64:  table_address[XLEN-1:0] = jvt.base + (index<<3);
+}
+
+//fetch from the jump table
+target_address[XLEN-1:0] = InstMemory[table_address][XLEN-1:0];
+
+jal ra, target_address[XLEN-1:0]&~0x1;
+
+----

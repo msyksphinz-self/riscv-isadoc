@@ -342,10 +342,34 @@
 <li><a href="#_fcvt_h_lu">12.36. fcvt.h.lu</a></li>
 </ul>
 </li>
-<li><a href="#_register_definitions">13. Register Definitions</a>
+<li><a href="#_zc_extension">13. Zc Extension</a>
 <ul class="sectlevel2">
-<li><a href="#_integer_registers">13.1. Integer Registers</a></li>
-<li><a href="#_floating_point_registers">13.2. Floating Point Registers</a></li>
+<li><a href="#insns-c_lbu">13.1. c.lbu</a></li>
+<li><a href="#insns-c_lhu">13.2. c.lhu</a></li>
+<li><a href="#insns-c_lh">13.3. c.lh</a></li>
+<li><a href="#insns-c_sb">13.4. c.sb</a></li>
+<li><a href="#insns-c_sh">13.5. c.sh</a></li>
+<li><a href="#insns-c_zext_b">13.6. c.zext.b</a></li>
+<li><a href="#insns-c_sext_b">13.7. c.sext.b</a></li>
+<li><a href="#insns-c_zext_h">13.8. c.zext.h</a></li>
+<li><a href="#insns-c_sext_h">13.9. c.sext.h</a></li>
+<li><a href="#insns-c_zext_w">13.10. c.zext.w</a></li>
+<li><a href="#insns-c_not">13.11. c.not</a></li>
+<li><a href="#insns-c_mul">13.12. c.mul</a></li>
+<li><a href="#insns-cm_push">13.13. cm.push</a></li>
+<li><a href="#insns-cm_pop">13.14. cm.pop</a></li>
+<li><a href="#insns-cm_popretz">13.15. cm.popretz</a></li>
+<li><a href="#insns-cm_popret">13.16. cm.popret</a></li>
+<li><a href="#insns-cm_mvsa01">13.17. cm.mvsa01</a></li>
+<li><a href="#insns-cm_mva01s">13.18. cm.mva01s</a></li>
+<li><a href="#insns-cm_jt">13.19. cm.jt</a></li>
+<li><a href="#_cm_jalt">13.20. cm.jalt</a></li>
+</ul>
+</li>
+<li><a href="#_register_definitions">14. Register Definitions</a>
+<ul class="sectlevel2">
+<li><a href="#_integer_registers">14.1. Integer Registers</a></li>
+<li><a href="#_floating_point_registers">14.2. Floating Point Registers</a></li>
 </ul>
 </li>
 </ul>
@@ -13865,10 +13889,2335 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_register_definitions">13. Register Definitions</h2>
+<h2 id="_zc_extension">13. Zc Extension</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_integer_registers">13.1. Integer Registers</h3>
+<h3 id="insns-c_lbu">13.1. c.lbu</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.lbu rd', uimm(rs1')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-9c3d73e867efa5e6843db2f139bfd071.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="paragraph">
+<p>The immediate offset is formed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = encoding[6];</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction loads a byte from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting byte is zero extended to XLEN bits and is written to rd'.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd' and rs1' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTZ(mem[X(rs1c)+EXTZ(uimm)][7..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_lhu">13.2. c.lhu</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.lhu rd', uimm(rs1')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-c440a40856283183dee37760ecb495a8.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="paragraph">
+<p>The immediate offset is formed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction loads a halfword from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting halfword is zero extended to XLEN bits and is written to rd'.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd' and rs1' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTZ(load_mem[X(rs1c)+EXTZ(uimm)][15..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_lh">13.3. c.lh</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.lh rd', uimm(rs1')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-fc592289d1e020ae8d74ca5acb7f916b.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="paragraph">
+<p>The immediate offset is formed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction loads a halfword from the memory address formed by adding rs1' to the zero extended immediate uimm. The resulting halfword is sign extended to XLEN bits and is written to rd'.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd' and rs1' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+X(rdc) = EXTS(load_mem[X(rs1c)+EXTZ(uimm)][15..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_sb">13.4. c.sb</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.sb rs2', uimm(rs1')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-628ce03e6e8a94cc6396c4e570e64668.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="paragraph">
+<p>The immediate offset is formed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = encoding[6];</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction stores the least significant byte of rs2' to the memory address formed by adding rs1' to the zero extended immediate uimm.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rs1' and rs2' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+mem[X(rs1c)+EXTZ(uimm)][7..0] = X(rs2c)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_sh">13.5. c.sh</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.sh rs2', uimm(rs1')</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-3610fec2eedcb8da65f79688d2f0fec2.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="paragraph">
+<p>The immediate offset is formed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">  uimm[31:2] = 0;
+  uimm[1]    = encoding[5];
+  uimm[0]    = 0;</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction stores the least significant halfword of rs2' to the memory address formed by adding rs1' to the zero extended immediate uimm.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rs1' and rs2' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+mem[X(rs1c)+EXTZ(uimm)][15..0] = X(rs2c)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_zext_b">13.6. c.zext.b</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.zext.b rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-f34b9a272b6afd7ccd01e26a13c3ccb0.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes a single source/destination operand.
+It zero-extends the least-significant byte of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 7.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">andi rd'/rs1', rd'/rs1', 0xff</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = EXTZ(X(rsdc)[7..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_sext_b">13.7. c.sext.b</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.sext.b rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-b3cfba10e5366f8bc67a03a774bf1b6b.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes a single source/destination operand.
+It sign-extends the least-significant byte in the operand to XLEN bits by copying the most-significant bit
+in the byte (i.e., bit 7) to all of the more-significant bits.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>Zbb is also required.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = EXTS(X(rsdc)[7..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_zext_h">13.8. c.zext.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.zext.h rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-3bf101f3fa6727661140837b30979f72.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes a single source/destination operand.
+It zero-extends the least-significant halfword of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 15.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>Zbb is also required.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = EXTZ(X(rsdc)[15..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_sext_h">13.9. c.sext.h</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.sext.h rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-035849eaf61ddc3947d6542494eec1cd.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes a single source/destination operand.
+It sign-extends the least-significant halfword in the operand to XLEN bits by copying the most-significant bit
+in the halfword (i.e., bit 15) to all of the more-significant bits.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>Zbb is also required.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = EXTS(X(rsdc)[15..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_zext_w">13.10. c.zext.w</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.zext.w rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Encoding (RV64):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-4ac5950cdc4f30803c3e6aef2a6fa1b5.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes a single source/destination operand.
+It zero-extends the least-significant word of the operand to XLEN bits by inserting zeros into all of
+the bits more significant than 31.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>Zba is also required.</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">add.uw rd'/rs1', rd'/rs1', zero</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = EXTZ(X(rsdc)[31..0]);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_not">13.11. c.not</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.not rd'/rs1'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-34595cdae5db31225f7e786a758554fd.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction takes the one&#8217;s complement of rd'/rs1' and writes the result to the same register.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' is from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">xori rd'/rs1', rd'/rs1', -1</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">X(rsdc) = X(rsdc) XOR -1;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-c_mul">13.12. c.mul</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>c.mul _rsd'_, rs2'</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-0addde110a5d9d7dfda8e68fe2fcdb77.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction multiplies XLEN bits of the source operands from <em>rsd'</em> and rs2' and writes the lowest XLEN bits of the result to <em>rsd'</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>rd'/rs1' and rs2' are from the standard 8-register set x8-x15.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>M or Zmmul must be configured.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SAIL module variable for rd'/rs1' is called <em>rsdc</em>, and for rs2' is called <em>rs2c</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">let result_wide = to_bits(2 * sizeof(xlen), signed(X(rsdc)) * signed(X(rs2c)));
+X(rsdc) = result_wide[(sizeof(xlen) - 1) .. 0];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_push">13.13. cm.push</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.push _{reg_list}, -stack_adj_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-19c3e786ad2c7b71e2f84b0326557d49.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><em>rlist</em> values 0 to 3 are reserved for a future EABI variant called <em>cm.push.e</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.push {reg_list},  -stack_adj
+cm.push {xreg_list}, -stack_adj</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The variables used in the assembly syntax are defined below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction pushes (stores) the registers in <em>reg_list</em> to the memory below the stack pointer,
+and then creates the stack frame by decrementing the stack pointer by <em>stack_adj</em>,
+including any additional stack space requested by the value of <em>spimm</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-pushpop">[insns-pushpop]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Stack Adjustment Calculation</dt>
+<dd>
+<p><em>stack_adj_base</em> is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>spimm</em> is the number of additional 16-byte address increments allocated for the stack frame.</p>
+</div>
+<div class="paragraph">
+<p>The total stack adjustment represents the total size of the stack frame, which is <em>stack_adj_base</em> added to <em>spimm</em> scaled by 16,
+as defined above.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+<dd>
+<p>The first section of pseudocode may be executed multiple times before the instruction successfully completes.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("sw x[i], 0(addr)");
+      8:  asm("sd x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp-=stack_adj;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_pop">13.14. cm.pop</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.pop  _{reg_list}, stack_adj_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-2e122ebf0d2f3634d2bd8d1f2b7565da.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><em>rlist</em> values 0 to 3 are reserved for a future EABI variant called <em>cm.pop.e</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.pop {reg_list},  stack_adj
+cm.pop {xreg_list}, stack_adj</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The variables used in the assembly syntax are defined below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction pops (loads) the registers in <em>reg_list</em> from stack memory,
+and then adjusts the stack pointer by <em>stack_adj</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-pushpop">[insns-pushpop]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Stack Adjustment Calculation</dt>
+<dd>
+<p><em>stack_adj_base</em> is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>spimm</em> is the number of additional 16-byte address increments allocated for the stack frame.</p>
+</div>
+<div class="paragraph">
+<p>The total stack adjustment represents the total size of the stack frame, which is <em>stack_adj_base</em> added to <em>spimm</em> scaled by 16,
+as defined above.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+<dd>
+<p>The first section of pseudocode may be executed multiple times before the instruction successfully completes.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp+=stack_adj;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_popretz">13.15. cm.popretz</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.popretz _{reg_list}, stack_adj_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-656c03a06282a4dd3c8ea8d1a1ac7bb6.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><em>rlist</em> values 0 to 3 are reserved for a future EABI variant called <em>cm.popretz.e</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.popretz {reg_list},  stack_adj
+cm.popretz {xreg_list}, stack_adj</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction pops (loads) the registers in <em>reg_list</em> from stack memory, adjusts the stack pointer by <em>stack_adj</em>, moves zero into a0 and then returns to <em>ra</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-pushpop">[insns-pushpop]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Stack Adjustment Calculation</dt>
+<dd>
+<p><em>stack_adj_base</em> is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>spimm</em> is the number of additional 16-byte address increments allocated for the stack frame.</p>
+</div>
+<div class="paragraph">
+<p>The total stack adjustment represents the total size of the stack frame, which is <em>stack_adj_base</em> added to <em>spimm</em> scaled by 16, as defined above.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+<dd>
+<p>The first section of pseudocode may be executed multiple times before the instruction successfully completes.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <em>li a0, 0</em> <strong>could</strong> be executed more than once, but is included in the atomic section for convenience.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+asm("li a0, 0");
+sp+=stack_adj;
+asm("ret");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_popret">13.16. cm.popret</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.popret _{reg_list}, stack_adj_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-27fca0003e068a3be8dab3491094b5d0.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><em>rlist</em> values 0 to 3 are reserved for a future EABI variant called <em>cm.popret.e</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.popret {reg_list},  stack_adj
+cm.popret {xreg_list}, stack_adj</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The variables used in the assembly syntax are defined below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I, RV64:
+
+switch (rlist){
+  case  4: {reg_list="ra";         xreg_list="x1";}
+  case  5: {reg_list="ra, s0";     xreg_list="x1, x8";}
+  case  6: {reg_list="ra, s0-s1";  xreg_list="x1, x8-x9";}
+  case  7: {reg_list="ra, s0-s2";  xreg_list="x1, x8-x9, x18";}
+  case  8: {reg_list="ra, s0-s3";  xreg_list="x1, x8-x9, x18-x19";}
+  case  9: {reg_list="ra, s0-s4";  xreg_list="x1, x8-x9, x18-x20";}
+  case 10: {reg_list="ra, s0-s5";  xreg_list="x1, x8-x9, x18-x21";}
+  case 11: {reg_list="ra, s0-s6";  xreg_list="x1, x8-x9, x18-x22";}
+  case 12: {reg_list="ra, s0-s7";  xreg_list="x1, x8-x9, x18-x23";}
+  case 13: {reg_list="ra, s0-s8";  xreg_list="x1, x8-x9, x18-x24";}
+  case 14: {reg_list="ra, s0-s9";  xreg_list="x1, x8-x9, x18-x25";}
+  //note - to include s10, s11 must also be included
+  case 15: {reg_list="ra, s0-s11"; xreg_list="x1, x8-x9, x18-x27";}
+  default: reserved();
+}
+stack_adj      = stack_adj_base + spimm * 16;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32E:
+
+stack_adj_base = 16;
+Valid values:
+stack_adj      = [16|32|48|64];</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV32I:
+
+switch (rlist) {
+  case  4.. 7: stack_adj_base = 16;
+  case  8..11: stack_adj_base = 32;
+  case 12..14: stack_adj_base = 48;
+  case     15: stack_adj_base = 64;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 7: stack_adj = [16|32|48| 64];
+  case  8..11: stack_adj = [32|48|64| 80];
+  case 12..14: stack_adj = [48|64|80| 96];
+  case     15: stack_adj = [64|80|96|112];
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">RV64:
+
+switch (rlist) {
+  case  4.. 5: stack_adj_base =  16;
+  case  6.. 7: stack_adj_base =  32;
+  case  8.. 9: stack_adj_base =  48;
+  case 10..11: stack_adj_base =  64;
+  case 12..13: stack_adj_base =  80;
+  case     14: stack_adj_base =  96;
+  case     15: stack_adj_base = 112;
+}
+
+Valid values:
+switch (rlist) {
+  case  4.. 5: stack_adj = [ 16| 32| 48| 64];
+  case  6.. 7: stack_adj = [ 32| 48| 64| 80];
+  case  8.. 9: stack_adj = [ 48| 64| 80| 96];
+  case 10..11: stack_adj = [ 64| 80| 96|112];
+  case 12..13: stack_adj = [ 80| 96|112|128];
+  case     14: stack_adj = [ 96|112|128|144];
+  case     15: stack_adj = [112|128|144|160];
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction pops (loads) the registers in <em>reg_list</em> from stack memory, adjusts the stack pointer by <em>stack_adj</em> and then returns to <em>ra</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All ABI register mappings are for the UABI. An EABI version is planned once the EABI is frozen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-pushpop">[insns-pushpop]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Stack Adjustment Calculation</dt>
+<dd>
+<p><em>stack_adj_base</em> is the minimum number of bytes, in multiples of 16-byte address increments, required to cover the registers in the list.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>spimm</em> is the number of additional 16-byte address increments allocated for the stack frame.</p>
+</div>
+<div class="paragraph">
+<p>The total stack adjustment represents the total size of the stack frame, which is <em>stack_adj_base</em> added to <em>spimm</em> scaled by 16, as defined above.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+<dd>
+<p>The first section of pseudocode may be executed multiple times before the instruction successfully completes.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+if (XLEN==32) bytes=4; else bytes=8;
+
+addr=sp+stack_adj-bytes;
+for(i in 27,26,25,24,23,22,21,20,19,18,9,8,1)  {
+  //if register i is in xreg_list
+  if (xreg_list[i]) {
+    switch(bytes) {
+      4:  asm("lw x[i], 0(addr)");
+      8:  asm("ld x[i], 0(addr)");
+    }
+    addr-=bytes;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The final section of pseudocode executes atomically, and only executes if the section above completes without any exceptions or interrupts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+sp+=stack_adj;
+asm("ret");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_mvsa01">13.17. cm.mvsa01</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.mvsa01 _r1s'_, _r2s'_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-fb1d247188fb8df8b79a62f366d04056.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For the encoding to be legal <em>r1s'</em> != <em>r2s'</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.mvsa01 r1s', r2s'</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction moves <em>a0</em> into <em>r1s'</em> and <em>a1</em> into <em>r2s'</em>.  <em>r1s'</em> and <em>r2s'</em> must be different.
+The execution is atomic, so it is not possible to observe state where only one of <em>r1s'</em> or <em>r2s'</em> has been updated.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The encoding uses <em>sreg</em> number specifiers instead of <em>xreg</em> number specifiers to save encoding space.
+The mapping between them is specified in the pseudocode below.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <em>s</em> register mapping is taken from the UABI, and may not match the currently unratified EABI. <em>cm.mvsa01.e</em> may be included in the future.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+if (RV32E &amp;&amp; (r1sc&gt;1 || r2sc&gt;1)) {
+  reserved();
+}
+xreg1 = {r1sc[2:1]&gt;0,r1sc[2:1]==0,r1sc[2:0]};
+xreg2 = {r2sc[2:1]&gt;0,r2sc[2:1]==0,r2sc[2:0]};
+X[xreg1] = X[10];
+X[xreg2] = X[11];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_mva01s">13.18. cm.mva01s</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.mva01s _r1s'_, _r2s'_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-7a9b4124d1d3bed765f25e5464e73a42.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.mva01s r1s', r2s'</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>This instruction moves <em>r1s'</em> into <em>a0</em> and <em>r2s'</em> into <em>a1</em>.
+The execution is atomic, so it is not possible to observe state where only one of <em>a0</em> or <em>a1</em> have been updated.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The encoding uses <em>sreg</em> number specifiers instead of <em>xreg</em> number specifiers to save encoding space.
+The mapping between them is specified in the pseudocode below.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <em>s</em> register mapping is taken from the UABI, and may not match the currently unratified EABI. <em>cm.mva01s.e</em> may be included in the future.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists.</p>
+</dd>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+if (RV32E &amp;&amp; (r1sc&gt;1 || r2sc&gt;1)) {
+  reserved();
+}
+xreg1 = {r1sc[2:1]&gt;0,r1sc[2:1]==0,r1sc[2:0]};
+xreg2 = {r2sc[2:1]&gt;0,r2sc[2:1]==0,r2sc[2:0]};
+X[10] = X[xreg1];
+X[11] = X[xreg2];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="insns-cm_jt">13.19. cm.jt</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.jt _index_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-b8e9e5d4fa9667844a57c174612967ae.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For this encoding to decode as <em>cm.jt</em>, <em>index&lt;32</em>, otherwise it decodes as <em>cm.jalt</em>, see <a href="#insns-cm_jalt">[insns-cm_jalt]</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If jvt.mode = 0 (Jump Table Mode) then <em>cm.jt</em> behaves as specified here. If jvt.mode is a reserved value, then <em>cm.jt</em> is also reserved. In the future other defined values of jvt.mode may change the behaviour of <em>cm.jt</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.jt index</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p><em>cm.jt</em> reads an entry from the jump vector table in memory and jumps to the address that was read.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-tablejump">[insns-tablejump]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists.</p>
+</dd>
+</dl>
+</div>
+<div id="insns-cm_jt-SAIL" class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+# target_address is temporary internal state, it doesn't represent a real register
+# InstMemory is byte indexed
+
+switch(XLEN) {
+  32:  table_address[XLEN-1:0] = jvt.base + (index&lt;&lt;2);
+  64:  table_address[XLEN-1:0] = jvt.base + (index&lt;&lt;3);
+}
+
+//fetch from the jump table
+target_address[XLEN-1:0] = InstMemory[table_address][XLEN-1:0];
+
+j target_address[XLEN-1:0]&amp;~0x1;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cm_jalt">13.20. cm.jalt</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mnemonic</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>cm.jalt _index_</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV32, RV64)</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-b8e9e5d4fa9667844a57c174612967ae.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For this encoding to decode as <em>cm.jalt</em>, <em>index&gt;=32</em>, otherwise it decodes as <em>cm.jt</em>, see <a href="#insns-cm_jt">Jump via table</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If jvt.mode = 0 (Jump Table Mode) then <em>cm.jalt</em> behaves as specified here. If jvt.mode is a reserved value, then <em>cm.jalt</em> is also reserved. In the future other defined values of jvt.mode may change the behaviour of <em>cm.jalt</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Assembly Syntax</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">cm.jalt index</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p><em>cm.jalt</em> reads an entry from the jump vector table in memory and jumps to the address that was read, linking to <em>ra</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For further information see <a href="#insns-tablejump">[insns-tablejump]</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<p>None</p>
+</dd>
+<dt class="hdlist1">32-bit equivalent</dt>
+<dd>
+<p>No direct equivalent encoding exists.</p>
+</dd>
+</dl>
+</div>
+<div id="insns-cm_jalt-SAIL" class="dlist">
+<dl>
+<dt class="hdlist1">Implementation</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sail" data-lang="sail">//This is not SAIL, it's pseudocode. The SAIL hasn't been written yet.
+
+# target_address is temporary internal state, it doesn't represent a real register
+# InstMemory is byte indexed
+
+switch(XLEN) {
+  32:  table_address[XLEN-1:0] = jvt.base + (index&lt;&lt;2);
+  64:  table_address[XLEN-1:0] = jvt.base + (index&lt;&lt;3);
+}
+
+//fetch from the jump table
+target_address[XLEN-1:0] = InstMemory[table_address][XLEN-1:0];
+
+jal ra, target_address[XLEN-1:0]&amp;~0x1;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_definitions">14. Register Definitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_integer_registers">14.1. Integer Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -14081,7 +16430,7 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_floating_point_registers">13.2. Floating Point Registers</h3>
+<h3 id="_floating_point_registers">14.2. Floating Point Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -14298,7 +16647,7 @@ X(rd) = X(rs1) | (1 &lt;&lt; index)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-07-04 01:19:21 +0900
+Last updated 2025-07-05 00:36:37 +0900
 </div>
 </div>
 </body>
