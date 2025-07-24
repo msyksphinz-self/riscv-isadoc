@@ -37,5 +37,6 @@ include::rvc.adoc[]
 include::rvb.adoc[]
 include::rv_zfh.adoc[]
 include::rv_zc.adoc[]
+include::rv_zicond.adoc[]
 
 include::regs.adoc[]

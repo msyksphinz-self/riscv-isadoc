@@ -1,0 +1,51 @@
+== Zicond Extension
+
+=== czero.eqz
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  7, name: 0x33, attr: 'opcode'},
+    { bits:  5, name: 'rd', type: 2},
+    { bits:  3, name: 0x5 },
+    { bits:  5, name: 'rs1', type: 2 },
+    { bits:  5, name: 'rs2', type: 2 },
+    { bits:  7, name: 0x7 },
+]}
+....
+
+Format::
+--
+        czero.eqz rd, rs1, rs2
+--
+
+Description::
+If rs2 contains the value zero, this instruction writes the value zero to rd.  Otherwise, this instruction copies the contents of rs1 to rd.
+This instruction carries a syntactic dependency from both rs1 and rs2 to rd.
+Furthermore, if the Zkt extension is implemented, this instruction's timing is independent of the data values in rs1 and rs2.
+
+=== czero.nez
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  7, name: 0x33, attr: 'opcode'},
+    { bits:  5, name: 'rd', type: 2},
+    { bits:  3, name: 0x7 },
+    { bits:  5, name: 'rs1', type: 2 },
+    { bits:  5, name: 'rs2', type: 2 },
+    { bits:  7, name: 0x7 },
+]}
+....
+
+Format::
+--
+        czero.nez rd, rs1, rs2
+--
+
+Description::
+If rs2 contains a nonzero value, this instruction writes the value zero to rd.  Otherwise, this instruction copies the contents of rs1 to rd.
+This instruction carries a syntactic dependency from both rs1 and rs2 to rd.
+Furthermore, if the Zkt extension is implemented, this instruction's timing is independent of the data values in rs1 and rs2.

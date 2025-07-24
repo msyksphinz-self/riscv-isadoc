@@ -366,10 +366,16 @@
 <li><a href="#_cm_jalt">13.20. cm.jalt</a></li>
 </ul>
 </li>
-<li><a href="#_register_definitions">14. Register Definitions</a>
+<li><a href="#_zicond_extension">14. Zicond Extension</a>
 <ul class="sectlevel2">
-<li><a href="#_integer_registers">14.1. Integer Registers</a></li>
-<li><a href="#_floating_point_registers">14.2. Floating Point Registers</a></li>
+<li><a href="#_czero_eqz">14.1. czero.eqz</a></li>
+<li><a href="#_czero_nez">14.2. czero.nez</a></li>
+</ul>
+</li>
+<li><a href="#_register_definitions">15. Register Definitions</a>
+<ul class="sectlevel2">
+<li><a href="#_integer_registers">15.1. Integer Registers</a></li>
+<li><a href="#_floating_point_registers">15.2. Floating Point Registers</a></li>
 </ul>
 </li>
 </ul>
@@ -14618,8 +14624,10 @@ in the halfword (i.e., bit 15) to all of the more-significant bits.</p>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>Encoding (RV64):</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding (RV64)</dt>
+</dl>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -16214,10 +16222,89 @@ jal ra, target_address[XLEN-1:0]&amp;~0x1;</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_register_definitions">14. Register Definitions</h2>
+<h2 id="_zicond_extension">14. Zicond Extension</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_integer_registers">14.1. Integer Registers</h3>
+<h3 id="_czero_eqz">14.1. czero.eqz</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-c56c162d12f26d6dd8ec2562bd842abe.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>czero.eqz rd, rs1, rs2</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>If rs2 contains the value zero, this instruction writes the value zero to rd.  Otherwise, this instruction copies the contents of rs1 to rd.
+This instruction carries a syntactic dependency from both rs1 and rs2 to rd.
+Furthermore, if the Zkt extension is implemented, this instruction&#8217;s timing is independent of the data values in rs1 and rs2.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_czero_nez">14.2. czero.nez</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Encoding</dt>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-wavedrom-md5-2f5cc0f5d42d815dc2f5563e1626bd9e.svg" alt="Diagram" width="800" height="70">
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Format</dt>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>czero.nez rd, rs1, rs2</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Description</dt>
+<dd>
+<p>If rs2 contains a nonzero value, this instruction writes the value zero to rd.  Otherwise, this instruction copies the contents of rs1 to rd.
+This instruction carries a syntactic dependency from both rs1 and rs2 to rd.
+Furthermore, if the Zkt extension is implemented, this instruction&#8217;s timing is independent of the data values in rs1 and rs2.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_definitions">15. Register Definitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_integer_registers">15.1. Integer Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -16430,7 +16517,7 @@ jal ra, target_address[XLEN-1:0]&amp;~0x1;</code></pre>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_floating_point_registers">14.2. Floating Point Registers</h3>
+<h3 id="_floating_point_registers">15.2. Floating Point Registers</h3>
 <table class="tableblock frame-all grid-all" style="width: 91%;">
 <colgroup>
 <col style="width: 17%;">
@@ -16647,7 +16734,7 @@ jal ra, target_address[XLEN-1:0]&amp;~0x1;</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-07-05 00:36:37 +0900
+Last updated 2025-07-25 00:54:10 +0900
 </div>
 </div>
 </body>
