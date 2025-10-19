@@ -10,6 +10,7 @@ $(PROJECT).html: $(SOURCE)
 		-r asciidoctor-diagram \
 		-a imagesdir=images \
 		-a imagesoutdir=docs/images \
+		-a WaveDromEditor=wavedrom-cli \
 		-D docs \
 		source/index.adoc
 
