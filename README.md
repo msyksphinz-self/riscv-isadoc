@@ -17,9 +17,23 @@ Each instruction, bit encoding is generated from RISC-V Instruction set simulato
 
 ## Usage
 
-1. Edit `./source/*.rst`
-2. To generate html page, hit `make html` in root repository.
-3. `./docs/html/` is referred from index.html. To deploy page, just pushing master branch.
+### Local Development
+
+1. Edit `./source/*.adoc` files
+2. Install dependencies:
+   ```bash
+   npm install
+   bundle install
+   ```
+3. Generate HTML documentation:
+   ```bash
+   make
+   ```
+4. The generated documentation will be available in `./docs/` directory
+
+### Automatic Deployment
+
+This project uses GitHub Actions to automatically build and deploy documentation to GitHub Pages.
 
 ## Author
 

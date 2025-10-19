@@ -1,0 +1,12 @@
+{
+  "name": "riscv-isadoc",
+  "version": "1.0.0",
+  "description": "RISC-V Instruction Set Architecture Documentation",
+  "scripts": {
+    "build": "make",
+    "clean": "make clean"
+  },
+  "devDependencies": {
+    "wavedrom-cli": "^3.0.0"
+  }
+}
