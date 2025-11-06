@@ -1244,7 +1244,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x0},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
@@ -1271,7 +1271,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x1},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
@@ -1298,7 +1298,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x4},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
@@ -1325,7 +1325,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x5},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
@@ -1352,7 +1352,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x6},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
@@ -1379,7 +1379,7 @@ Encoding::
   {bits:  5, name: 'imm[4:1|11]'},
   {bits:  3, name: 0x7},
   {bits:  5, name: 'rs1', type: 2},
-  {bits:  5, name: 'rs1', type: 2},
+  {bits:  5, name: 'rs2', type: 2},
   {bits:  7, name: 'imm[12|10:5]'}
 ]}
 ....
